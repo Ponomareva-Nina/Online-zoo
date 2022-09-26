@@ -1,6 +1,8 @@
 @import './fonts.scss';
 @import './common.scss';
 
+$card-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(243, 169, 248, 0.66) 50%,
+  #e0d8f0 80%, #eaf7fe 100%);
 // === SECTION INTRO ===
 .intro {
   background-image: url('../images/panda-bg.jpg');
@@ -253,5 +255,95 @@
 
 // === SECTION FEEDBACK ===
 
+.feedback {
+  margin: 140px 0 180px;
+}
+.feedback__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 
+  & .title_m {
+    margin-bottom: 26px;
+  }
+}
+.carousel-container {
+  width: 100%;
+}
+.carousel-inner{
+  width: 100%;
+  height: 392px;
+  display: flex;
+  gap: 30px;
+}
+.feedback-card {
+  position: relative;
+  width: 268px;
+  padding: 0 14px 15px;
+  box-sizing: border-box;
+
+  border-radius: 20px;
+  background: linear-gradient(#F1F3F2, #F1F3F2) padding-box,
+  $card-gradient border-box;
+  border: 2px solid transparent;
+}
+.author {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  gap: 10px;
+
+  & .username{
+    @include font-main();
+    line-height: 130%;
+    color: $font-card-color;
+  }
+  & .details{
+    @include font-card();
+    color: #BDBDBD;
+  }
+}
+.avatar {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+}
+.text {
+  @include font-card();
+  height: 309px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  color: #767474;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.feedback-btn {
+  border-radius: 5px;
+  align-self: flex-start;
+  margin-top: 10px;
+}
+.scrollbar {
+  position: relative;
+  width: 600px;
+  height: 8px;
+  background: #f5f7f6;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 115px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: $scrollbar-color;
+}
 // === /SECTION FEEDBACK ===
