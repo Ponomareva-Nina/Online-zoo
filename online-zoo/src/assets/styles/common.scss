@@ -36,7 +36,6 @@ a {
   font-size: 48px;
   line-height: 120%;
   font-weight: 400;
-  padding: 5px 0;
 }
 .title_m {
   font-size: 36px;
@@ -62,7 +61,7 @@ a {
   min-height: 80px;
   background-color: $bg-header;
   color: $font-color-secondary;
-  padding: 15px 0;
+  padding: 14px 0;
   box-sizing: border-box;
 }
 .header__inner{
@@ -80,6 +79,10 @@ a {
 }
 .logo {
   width: 82px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid $font-color-secondary;
   box-sizing: border-box;
   border-radius: 2px;
@@ -100,7 +103,7 @@ a {
   font-weight: 400;
   line-height: 120%;
   text-align: center;
-  padding-top: 5px;
+  padding-top: 3px;
 }
 .main-nav__list {
   display: flex;
@@ -123,12 +126,16 @@ a {
 .btn {
   @include font-btn();
   color: $font-color-secondary;
-  width: 300px;
-  height: 55px;
+  width: 298px;
+  height: 54px;
   box-sizing: border-box;
   background: $bg-btn;
   border-radius: 25px;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &:hover{
     cursor: pointer;
     background: $bg-button-hover;
@@ -139,3 +146,8 @@ a {
 }
 
 // === /BUTTONS ===
+
+@mixin section-bg-gradient {
+  background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+  opacity: 0.9;
+}

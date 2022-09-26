@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 @mixin font-main {
   font-family: "Roboto", sans-serif;
@@ -6,24 +6,24 @@
   font-size: 16px;
   line-height: 130%;
 }
+.font-main_bold {
+  @include font-main();
+  font-weight: 500;
+}
 
 @mixin font-btn {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 140%;
-  text-align: center;
   text-transform: uppercase;
 }
 
 @mixin font-intro {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-style: normal;
-  font-size: 106px;
+  font-size: 106.5px;
   line-height: 75%;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 @mixin font-header {

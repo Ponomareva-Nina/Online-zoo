@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 60px;
+  gap: 62px;
 }
 .intro-header {
   @include font-intro();
@@ -34,9 +34,8 @@
 }
 .circle {
   position: relative;
-  left: 34%;
-  top: 10px;
-  width: 50%;
+  left: 33.8%;
+  top: 12px;
   background: $bg-btn;
   border-radius: 50%;
   width: 465px;
@@ -47,7 +46,7 @@
 // === SECTION DESCRIPTION ===
 .description{
   padding-top: 140px;
-  background: url("../../assets/images/flower-description.png") right center no-repeat;
+  background: url("../../assets/images/flower-description.png") right 47% no-repeat;
   background-size: fill;
 }
 .description__inner {
@@ -61,10 +60,14 @@
   flex-direction: column;
 
   & .title_l {
-    margin-bottom: 15px;
+    margin-bottom: 21px;
   }
   & .title_s {
     margin: 54px 0 34px;
+  }
+  & .paragraph {
+    @include font-main();
+    line-height: 140%;
   }
 }
 // === /SECTION DESCRIPTION ===
@@ -73,8 +76,8 @@
 .animals {
   background: url("../../assets/images/strelitzia.png") right bottom no-repeat,
   url("../../assets/images/palm.png") left bottom no-repeat;
-  margin-top: 80px;
-  padding-bottom: 100px;
+  margin-top: 75px;
+  padding-bottom: 98px;
 }
 .animals__inner {
   display: flex;
@@ -86,7 +89,7 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  top: calc(50% - 30px);
+  top: calc(50% - 34px);
   left: -80px;
   right: -80px;
 }
@@ -176,8 +179,79 @@
 // === /SECTION ANIMALS ===
 
 // === SECTION DONATE ===
-.donate a {
-  color: $font-color-accent;
+.donate {
+  @include section-bg-gradient();
+  padding: 69px 0 100px;
+}
+.donate__inner {
+  background: rgba(253, 253, 255, 0.52);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  padding: 40px 0 60px;
+
+  & .support-link {
+    color: $font-color-main;
+    border-bottom: 1px solid $accent-color;
+  }
+  & .title_l {
+    color: $font-color-accent;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  & .paragraph_m {
+    margin-bottom: 30px;
+  }
+  & .p_xs-width {
+    max-width: 863px;
+  }
+  & .title_m {
+    margin: 50px 0 30px;
+  }
+}
+.donate-paragraph {
+  max-width: 1007px;
+  align-self: flex-start;
+  margin-left: 99px;
+}
+.paragraph_m {
+  @include font-main();
+  font-size: 24px;
+  line-height: 120%;
+}
+.donation-scheme {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+.donation-scheme__step {
+  width: 168px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+.donation-scheme__arrow {
+  margin-top: 58px;
+}
+.step-img {
+  width: 100%;
+  height: 168px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $accent-color;
 }
 
 // === /SECTION DONATE ===
+
+// === SECTION FEEDBACK ===
+
+
+// === /SECTION FEEDBACK ===
