@@ -1,3 +1,66 @@
 @import './fonts.scss';
 @import './common.scss';
 
+.donation-intro {
+  min-height: 385px;
+  background-image: url('../images/panda-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.donation-info {
+  @include section-bg-gradient();
+}
+.donation-info__inner {
+  padding: 40px 0 180px;
+  color: $font-color-secondary;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .paragraph {
+    @include font-header();
+    margin-bottom: 30px;
+  }
+  h3, h4 {
+    color: $font-color-accent;
+  }
+}
+.donation-form{
+  background: rgba(255, 255, 255, 0.52);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  padding: 40px 93px 60px;
+  margin-top: 60px;
+  color: $font-color-main;
+}
+.donation-form__text {
+  align-self: flex-start;
+}
+
+.donation-form__animal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animal__diet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  & span:first-child {
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 80%;
+    text-transform: uppercase;
+    margin-bottom: 11px;
+  }
+}
+.animal__icon {
+  margin-left: 64px;
+}
