@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
 @mixin font-main {
   font-family: "Roboto", sans-serif;
@@ -34,7 +34,7 @@
   line-height: 140%;
 }
 
-@mixin font-card {
+@mixin font-light {
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 300;

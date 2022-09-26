@@ -67,10 +67,9 @@ $card-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(24
   & .title_s {
     margin: 54px 0 34px;
   }
-  & .paragraph {
-    @include font-main();
-    line-height: 140%;
-  }
+}
+.paragraph {
+  line-height: 140%;
 }
 // === /SECTION DESCRIPTION ===
 
@@ -119,7 +118,7 @@ $card-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(24
   justify-content: space-between;
 }
 .animal-card__link {
-  @include font-card();
+  @include font-light();
   color: $font-card-color;
 
   & img {
@@ -256,7 +255,11 @@ $card-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(24
 // === SECTION FEEDBACK ===
 
 .feedback {
-  margin: 140px 0 180px;
+  padding: 140px 0 182px;
+  background: url("../images/leaf.png");
+  background-repeat: no-repeat;
+  background-position: 100% 124%;
+  background-size: 240px;
 }
 .feedback__inner {
   display: flex;
@@ -300,7 +303,7 @@ $card-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(24
     color: $font-card-color;
   }
   & .details{
-    @include font-card();
+    @include font-light();
     color: #BDBDBD;
   }
 }
@@ -310,7 +313,7 @@ $card-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(24
   border-radius: 50%;
 }
 .text {
-  @include font-card();
+  @include font-light();
   height: 309px;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -322,7 +325,6 @@ $card-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(24
   }
 }
 .feedback-btn {
-  border-radius: 5px;
   align-self: flex-start;
   margin-top: 10px;
 }
