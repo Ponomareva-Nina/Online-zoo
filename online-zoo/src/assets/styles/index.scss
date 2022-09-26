@@ -1,0 +1,183 @@
+@import './fonts.scss';
+@import './common.scss';
+
+// === SECTION INTRO ===
+.intro {
+  background-image: url('../images/panda-bg.jpg');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.intro__inner {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+.intro__content {
+  z-index: 2;
+  max-width: 500px;
+  box-sizing: border-box;
+  margin: 85px 0 100px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+.intro-header {
+  @include font-intro();
+  color: $font-color-secondary;
+
+  & .accent {
+    color: #FFEE2E;
+  }
+}
+.circle {
+  position: relative;
+  left: 34%;
+  top: 10px;
+  width: 50%;
+  background: $bg-btn;
+  border-radius: 50%;
+  width: 465px;
+  height: 465px;
+}
+// === /SECTION INTRO ===
+
+// === SECTION DESCRIPTION ===
+.description{
+  padding-top: 140px;
+  background: url("../../assets/images/flower-description.png") right center no-repeat;
+  background-size: fill;
+}
+.description__inner {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+.description__text{
+  max-width: 465px;
+  display: flex;
+  flex-direction: column;
+
+  & .title_l {
+    margin-bottom: 15px;
+  }
+  & .title_s {
+    margin: 54px 0 34px;
+  }
+}
+// === /SECTION DESCRIPTION ===
+
+// === SECTION ANIMALS ===
+.animals {
+  background: url("../../assets/images/strelitzia.png") right bottom no-repeat,
+  url("../../assets/images/palm.png") left bottom no-repeat;
+  margin-top: 80px;
+  padding-bottom: 100px;
+}
+.animals__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+.controls {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: calc(50% - 30px);
+  left: -80px;
+  right: -80px;
+}
+.animals__carousel {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+  row-gap: 20px;
+}
+.animal-card {
+  box-sizing: border-box;
+  border: 1px solid $accent-color;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+
+  & img {
+    border-radius: 5px;
+  }
+}
+.animal-card__content {
+  display: flex;
+  padding: 0 15px 13px;
+  justify-content: space-between;
+}
+.animal-card__link {
+  @include font-card();
+  color: $font-card-color;
+
+  & img {
+    transition: all .5s ease-in-out;
+  }
+
+  &:hover {
+    & img {
+      transform: scale(1.2) translateY(20px);
+    }
+    &.animal-card__link::after{
+      opacity: 1;
+    }
+    & .animal-card__text {
+      transform: translateY(-100%);
+      color: $font-color-secondary;
+    }
+    & .animal-card__icon {
+      opacity: 0;
+    }
+  }
+}
+.animal-card__text {
+  position: relative;
+  z-index: 2;
+  transition: all .5s ease-in-out;
+}
+.animal-card__title {
+  @include font-btn();
+  text-align: left;
+}
+.animal-card__link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+.slider-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: $bg-btn;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
+  &:active {
+    background: $bg-button-active;
+  }
+}
+
+// === /SECTION ANIMALS ===
+
+// === SECTION DONATE ===
+.donate a {
+  color: $font-color-accent;
+}
+
+// === /SECTION DONATE ===

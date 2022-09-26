@@ -1,0 +1,141 @@
+@import './fonts.scss';
+
+$font-color-main: #333B41;
+$font-color-secondary: #FFFFFF;
+$font-color-accent: #F9804B;
+$bg-header: #000000;
+$bg-btn: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+$bg-button-hover: #E47209;
+$bg-button-active: #4B9200;
+$bg-btn-disabled: #767474;
+$accent-color: #E47209;
+$font-card-color: #000000;
+
+// default
+body {
+  margin: 0;
+  padding: 0;
+  @include font-main();
+  color: $font-color-main;
+}
+h1, h2, h3, h4, p {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+// headers styles
+.title_l {
+  font-size: 48px;
+  line-height: 120%;
+  font-weight: 400;
+  padding: 5px 0;
+}
+.title_m {
+  font-size: 36px;
+  line-height: 130%;
+  font-weight: 400;
+}
+.title_s {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120%;
+}
+
+// containers
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+// === HEADER ===
+.header {
+  @include font-header();
+  min-height: 80px;
+  background-color: $bg-header;
+  color: $font-color-secondary;
+  padding: 15px 0;
+  box-sizing: border-box;
+}
+.header__inner{
+  display: flex;
+  align-items: center;
+  gap: 60px;
+
+  & a {
+    color: $font-color-secondary;
+
+    &:visited {
+      color: $font-color-secondary;
+    }
+  }
+}
+.logo {
+  width: 82px;
+  border: 1px solid $font-color-secondary;
+  box-sizing: border-box;
+  border-radius: 2px;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.bamboo {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+}
+.logo__title {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 120%;
+  text-align: center;
+  padding-top: 5px;
+}
+.main-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+
+  & a.link_active {
+    color: $font-color-accent;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.copyright {
+  margin-left: auto;
+}
+// === /HEADER ===
+
+// === BUTTONS ===
+.btn {
+  @include font-btn();
+  color: $font-color-secondary;
+  width: 300px;
+  height: 55px;
+  box-sizing: border-box;
+  background: $bg-btn;
+  border-radius: 25px;
+  border: none;
+  &:hover{
+    cursor: pointer;
+    background: $bg-button-hover;
+  }
+  &:active {
+    background: $bg-button-active;
+  }
+}
+
+// === /BUTTONS ===
