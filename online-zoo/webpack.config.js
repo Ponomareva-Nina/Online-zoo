@@ -21,7 +21,7 @@ const config = {
     filename: './pages/[name]/[name].js',
   },
   devServer: {
-    open: true,
+    open: ['/pages/main'],
     host: 'localhost',
   },
   plugins: [
