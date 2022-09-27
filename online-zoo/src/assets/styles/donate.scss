@@ -20,7 +20,7 @@
 
   .paragraph {
     @include font-header();
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
   h3, h4 {
     color: $font-color-accent;
@@ -34,26 +34,24 @@
   align-items: center;
   gap: 10px;
   text-align: left;
-  padding: 40px 93px 60px;
-  margin-top: 60px;
+  padding: 40px 92px 60px;
+  margin-top: 50px;
   color: $font-color-main;
 }
 .donation-form__text {
   align-self: flex-start;
+  margin: 10px 0 50px;
 }
-
 .donation-form__animal {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .animal__diet {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 
-  & span:first-child {
+  & .number {
     font-weight: 500;
     font-size: 72px;
     line-height: 80%;
@@ -62,5 +60,147 @@
   }
 }
 .animal__icon {
-  margin-left: 64px;
+  margin-left: 60px;
+  margin-bottom: 40px;
+}
+.donation-form__amount {
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+fieldset {
+  border: none;
+}
+legend {
+  line-height: 140%;
+}
+.donation-radios {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+
+  &::before{
+    position: absolute;
+    content: "";
+    top: 0px;
+    left: 0px;
+    height: 2px;
+    width: 100%;
+    background-color: #72828e;
+    z-index: 2;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: -13px;
+    border-radius: 2px;
+    left: 0px;
+    height: 27px;
+    width: 100%;
+    background-color: #404950;
+  }
+}
+input[type="radio"] {
+  &:hover {
+    cursor: pointer;
+  }
+}
+.donation-radios__title {
+  margin-bottom: 20px;
+}
+.amount__radio {
+  display: none;
+}
+.amount__radio + label {
+  @include font-btn();
+  font-size: 26px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+    z-index: 2;
+    background: url('../../assets/images/icons/dot.svg') center no-repeat;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 10px;
+    height: 20px;
+    top: -28px;
+    left: -15px;
+    background: url('../../assets/images/icons/dollar.svg') center no-repeat;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+.amount__radio:checked + label {
+  color: $font-color-accent;
+
+  &::before {
+    background: url('../../assets/images/icons/roller-icon.svg'), url('../../assets/images/icons/dot.svg') center no-repeat;
+  }
+  &::after{
+    background: url('../../assets/images/icons/dollar-active.svg');
+  }
+}
+.radio-group {
+  position: relative;
+  top: -24px;
+  z-index: 3;
+}
+.amount__input {
+  user-select: none;
+  width: 268px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding: 16px 37px 16px 9px;
+  border: 1px solid #929699;
+  border-radius: 2px;
+  background-color: transparent;
+  outline: none;
+}
+.period-radios {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 10px 10px 0;
+  gap: 50px;
+
+  & input {
+    display: none;
+  }
+  & label {
+    cursor: pointer;
+  }
+}
+.period__radio + label::before {
+  content: "";
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid $accent-color;
+}
+.period__radio:checked + label::before {
+  border: 1px solid transparent;
+  background-color: green;
+}
+.submit-btn {
+  margin-bottom: 20px;
 }
