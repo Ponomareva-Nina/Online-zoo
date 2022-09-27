@@ -31,28 +31,25 @@ ul {
 }
 a {
   text-decoration: none;
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .nav-link {
   color: $font-color-secondary;
   transition: all .5s ease;
 
-  &:hover {
-    cursor: pointer;
-    color: $font-color-accent;
-  }
-
   &:visited {
     color: $font-color-secondary;
   }
+
   &.link_active {
     color: $font-color-accent;
     pointer-events: none;
     cursor: default;
   }
+}
+.nav-link:hover {
+  cursor: pointer;
+  color: $font-color-accent;
 }
 // headers styles
 .title_l {
@@ -235,8 +232,8 @@ a {
   gap: 10px;
 }
 .social-link__icon {
-  width: 26px;
-  height: 26px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background: rgba(196, 196, 196, 0.5);
   display: inline-flex;
