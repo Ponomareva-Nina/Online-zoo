@@ -31,10 +31,19 @@ ul {
 }
 a {
   text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .nav-link {
   color: $font-color-secondary;
+  transition: all .5s ease;
+
+  &:hover {
+    cursor: pointer;
+    color: $font-color-accent;
+  }
 
   &:visited {
     color: $font-color-secondary;
@@ -96,8 +105,12 @@ a {
   box-sizing: border-box;
   border-radius: 2px;
   position: relative;
-  &:hover {
+  & a {
+    transition: all .5s ease;
+  }
+  & a:hover{
     cursor: pointer;
+    color: $font-color-accent;
   }
 }
 .bamboo {
@@ -122,6 +135,13 @@ a {
 
 .copyright {
   margin-left: auto;
+  & a {
+    transition: all .5s ease;
+  }
+  & a:hover{
+    cursor: pointer;
+    color: $font-color-accent;
+  }
 }
 // === /HEADER ===
 
@@ -223,6 +243,28 @@ a {
   justify-content: center;
   align-items: center;
   margin-right: 12px;
+  transition: all .5s ease;
+  & svg {
+    transition: all .5s ease;
+  }
+}
+.social-link:hover {
+   & .social-link__icon {
+    background-color: #E1E8ED;
+
+    &.youtube svg {
+    fill: red;
+    }
+    &.instagram svg {
+      fill: #E1306C;
+    }
+    &.twitter svg {
+      fill: #1DA1F2;
+    }
+    &.facebook svg {
+      fill: #4267B2;
+    }
+  }
 }
 .footer-nav__list {
   line-height: 140%;
@@ -237,5 +279,10 @@ a {
   font-weight: 100;
   font-size: 16px;
   line-height: 130%;
+  transition: all .5s ease;
+  &:hover {
+    cursor: pointer;
+    color: $font-color-accent;
+  }
 }
 // === /FOOTER ===
