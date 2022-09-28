@@ -13,6 +13,8 @@ $font-card-color: #000000;
 $scrollbar-color: #FE9013;
 $pink-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(243, 169, 248, 0.66) 50%,
   #e0d8f0 80%, #eaf7fe 100%);
+$active-color: #4B9200;
+$mistake-color: red;
 
 // default
 body {
@@ -229,6 +231,12 @@ input[type=range]::-ms-track {
   outline: none;
   border: 1px solid $accent-color;
   border-radius: 2px;
+  &:valid {
+    border: 1px solid $active-color;
+  }
+  &:invalid {
+    border: 1px solid $mistake-color;
+  }
 }
 .subscribe-form__btn {
   padding: 10px 39px;
@@ -236,6 +244,9 @@ input[type=range]::-ms-track {
   background: #F1F3F2;
   border: 1px solid #333B41;
   border-radius: 5px;
+  &:active {
+    color: $active-color;
+  }
 }
 .footer-bottom {
   display: grid;
@@ -260,6 +271,7 @@ input[type=range]::-ms-track {
   align-items: center;
   margin-right: 12px;
   transition: all .5s ease;
+
   & svg {
     transition: all .5s ease;
   }
@@ -282,6 +294,25 @@ input[type=range]::-ms-track {
     }
   }
 }
+.social-link:active{
+  color: $active-color;
+
+  .social-link__icon {
+    background-color: $active-color;
+    &.youtube svg {
+      fill: #ffffff;
+      }
+      &.instagram svg {
+        fill: #ffffff;
+      }
+      &.twitter svg {
+        fill: #ffffff;
+      }
+      &.facebook svg {
+        fill: #ffffff;
+      }
+  }
+}
 .footer-nav__list {
   line-height: 140%;
   display: flex;
@@ -299,6 +330,9 @@ input[type=range]::-ms-track {
   &:hover {
     cursor: pointer;
     color: $font-color-accent;
+  }
+  &:active {
+    color: $active-color;
   }
 }
 // === /FOOTER ===

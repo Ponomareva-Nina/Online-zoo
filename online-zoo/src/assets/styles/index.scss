@@ -105,6 +105,7 @@
   border-radius: 5px;
   position: relative;
   overflow: hidden;
+  height: 426px;
 
   & img {
     border-radius: 5px;
@@ -114,6 +115,7 @@
   display: flex;
   padding: 0 15px 13px;
   justify-content: space-between;
+  align-items: flex-start;
 }
 .animal-card__link {
   @include font-light();
@@ -137,6 +139,35 @@
     & .animal-card__icon {
       opacity: 0;
     }
+    & .animal-card__btn {
+      display: block;
+      opacity: 1;
+    }
+  }
+  &:active {
+    & .animal-card__btn {
+      box-shadow: inset 1px 1px 2px 1px gray;
+      font-weight: 500;
+    }
+  }
+}
+.animal-card__btn {
+  opacity: 0;
+  width: 135px;
+  height: 31px;
+  color: $active-color;
+  background: #F1F3F2;
+  border-radius: 5px;
+  border: none;
+  margin-top: 11px;
+  transition: opacity .5s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    box-shadow: inset 1px 1px 2px 1px gray;
+    font-weight: 500;
   }
 }
 .animal-card__text {
@@ -174,7 +205,6 @@
     background: $bg-button-active;
   }
 }
-
 // === /SECTION ANIMALS ===
 
 // === SECTION DONATE ===

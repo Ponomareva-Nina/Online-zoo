@@ -160,16 +160,37 @@ input[type="radio"] {
   top: -24px;
   z-index: 3;
 }
-.amount__input {
-  user-select: none;
-  width: 268px;
-  box-sizing: border-box;
-  margin-bottom: 12px;
-  padding: 16px 37px 16px 9px;
+.amount-textfield {
   border: 1px solid #929699;
   border-radius: 2px;
+  width: 268px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 10px;
+  gap: 10px;
+}
+.amount__input {
+  flex-grow: 1;
+  user-select: none;
+  box-sizing: border-box;
   background-color: transparent;
+  border: none;
   outline: none;
+  color: #929699;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+  &:focus {
+    color: $active-color;
+    & + svg {
+      fill: $active-color
+    }
+  }
 }
 .period-radios {
   display: flex;
