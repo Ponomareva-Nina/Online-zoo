@@ -11,7 +11,8 @@ $bg-btn-disabled: #767474;
 $accent-color: #E47209;
 $font-card-color: #000000;
 $scrollbar-color: #FE9013;
-
+$pink-gradient: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30%,rgba(243, 169, 248, 0.66) 50%,
+  #e0d8f0 80%, #eaf7fe 100%);
 
 // default
 body {
@@ -31,6 +32,24 @@ ul {
 }
 a {
   text-decoration: none;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
 }
 
 .nav-link {
