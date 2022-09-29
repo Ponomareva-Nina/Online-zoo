@@ -1,0 +1,144 @@
+$small-desktop-max-width: 1399px;
+$small-desktop-min-width: 980px;
+$tablet-max-width: 979px;
+$tablet-min-width: 600px;
+$mobile-max-width: 599px;
+
+
+//=== SMALL DESKTOP STYLES ===
+@media screen and (max-width: $small-desktop-max-width) and (min-width: $small-desktop-min-width) {
+  .container {
+    padding: 0 30px;
+  }
+  // === HEADER ===
+  .main-nav__list {
+    gap: 48px;
+  }
+  // === /HEADER ===
+
+  // === INTRO ===
+  .intro {
+    background-position: center 68%;
+    background-size: 120%;
+  }
+  .intro__inner {
+    overflow: hidden;
+  }
+  .intro__content {
+    margin: 42px 5px 47px 0;
+    gap: 42px;
+  }
+  .intro-header{
+    font-size: 85px;
+  }
+  .circle {
+    width: 367px;
+    height: 367px;
+    left: 358px;
+    top: -11px;
+  }
+  // === /INTRO ===
+
+  // === SECTION DESCRIPTION ===
+  .description{
+    padding-top: 100px;
+  }
+  .description__inner {
+    gap: 30px;
+    align-items: center;
+    padding-bottom: 0;
+  }
+  .description__image {
+    max-width: 455px;
+    max-height: 408px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .description__text {
+    max-width: 454px;
+  }
+
+  // === /SECTION DESCRIPTION ===
+
+  // === ANIMALS ===
+  .animals {
+    margin-top: 142px;
+    padding-bottom: 140px;
+    background-position: right bottom, left bottom;
+    background-size: 230px, 190px;
+  }
+  .controls {
+    position: static;
+    grid-column: span 3;
+    grid-row: 2;
+    justify-content: center;
+    gap: 171px;
+  }
+  .animals__carousel {
+    row-gap: 15px;
+  }
+  .animal-card {
+    height: 354px;
+  }
+  .animal-card__content {
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding-top: 5px;
+    z-index: 2;
+    transition: all .5s ease;
+  }
+  .animal-card__link {
+    &:hover {
+      .animal-card__content {
+        background: none;
+      }
+    }
+  }
+  // === /ANIMALS ===
+
+  // === /DONATE ===
+
+  // === /DONATE ===
+
+
+}
+// ===/SMALL DESKTOP STYLES===
+
+
+//=== TABLET STYLES ===
+@media screen and (max-width: $tablet-max-width) and (min-width: $tablet-min-width) {
+  .container {
+    padding: 0 30px;
+  }
+  .logo {
+    border: none;
+  }
+  .logo__title {
+    font-size: 12px;
+  }
+}
+//=== /TABLET STYLES ===
+
+
+//=== MOBILE STYLES ===
+@media screen and (max-width: $mobile-max-width) {
+  .container {
+    padding: 0 10px;
+  }
+}
+//=== /MOBILE STYLES ===
+
+
+// === MINOR FIXES BETWEEN BREAKPOINTS ===
+@media screen and (max-width: 1579px) {
+  .description {
+    background: none;
+  }
+}
+// === MINOR FIXES BETWEEN BREAKPOINTS ===
