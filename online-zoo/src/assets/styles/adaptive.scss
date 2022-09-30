@@ -6,7 +6,7 @@ $mobile-max-width: 599px;
 
 
 //=== SMALL DESKTOP STYLES ===
-@media screen and (max-width: $small-desktop-max-width) and (min-width: $small-desktop-min-width) {
+@media screen and (max-width: $small-desktop-max-width) {
   .container {
     padding: 0 30px;
   }
@@ -71,14 +71,12 @@ $mobile-max-width: 599px;
     background-size: 230px, 190px;
   }
   .controls {
-    position: static;
-    grid-column: span 3;
-    grid-row: 2;
     justify-content: center;
     gap: 171px;
+    z-index: 99;
   }
-  .animals__carousel {
-    row-gap: 15px;
+  .carousel-track {
+    row-gap: 92px;
   }
   .animal-card {
     height: 354px;

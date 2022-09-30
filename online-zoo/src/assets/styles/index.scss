@@ -83,16 +83,15 @@
 .animals-btn {
   margin: 80px auto 0;
 }
-.controls {
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  top: calc(50% - 34px);
-  left: -80px;
-  right: -80px;
+.animals__inner {
+  position: relative;
 }
 .animals__carousel {
-  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel-track {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 30px;
@@ -194,6 +193,14 @@
   opacity: 0;
   transition: opacity .5s ease-in-out;
 }
+.controls {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: calc(50% - 31px);
+  left: -80px;
+  right: -80px;
+}
 .slider-btn {
   width: 62px;
   height: 62px;
@@ -202,6 +209,7 @@
   border: none;
   &:hover{
     cursor: pointer;
+    background: $accent-color;
   }
   &:active {
     background: $bg-button-active;
