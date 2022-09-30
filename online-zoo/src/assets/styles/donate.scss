@@ -21,6 +21,7 @@
   .paragraph {
     @include font-header();
     margin-bottom: 35px;
+    line-height: 22.4px;
   }
   h3, h4 {
     color: $font-color-accent;
@@ -40,52 +41,51 @@
 }
 .donation-form__text {
   align-self: flex-start;
-  margin: 10px 0 50px;
+  margin: 10px 0 100px;
 }
 .donation-form__animal {
   display: flex;
   align-items: center;
+  justify-content: center;
+  transform: translateX(-15px);
 }
 .animal__diet {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 11px;
 
   & .number {
     font-weight: 500;
     font-size: 72px;
-    line-height: 80%;
+    line-height: 57.6px;
     text-transform: uppercase;
-    margin-bottom: 11px;
   }
 }
-.animal__icon {
-  margin-left: 60px;
-  margin-bottom: 40px;
+.cross {
+  margin: 0 64px 10px 11px;
 }
 .donation-form__amount {
-  width: 98%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-fieldset {
-  border: none;
-}
-legend {
-  line-height: 140%;
+  gap: 10px;
 }
 .donation-radios {
+  border: none;
+  margin-top: 38px;
+  padding: 0;
   position: relative;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
   width: 100%;
+  box-sizing: border-box;
 
   &::before{
     position: absolute;
     content: "";
-    top: 0px;
+    top: 10px;
     left: 0px;
     height: 2px;
     width: 100%;
@@ -96,7 +96,7 @@ legend {
   &::after {
     position: absolute;
     content: "";
-    top: -13px;
+    top: 0;
     border-radius: 2px;
     left: 0px;
     height: 27px;
@@ -110,7 +110,7 @@ input[type="radio"] {
   }
 }
 .donation-radios__title {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .amount__radio {
   display: none;
@@ -157,19 +157,20 @@ input[type="radio"] {
 }
 .radio-group {
   position: relative;
-  top: -24px;
+  top: -8px;
   z-index: 3;
 }
 .amount-textfield {
   border: 1px solid #929699;
   border-radius: 2px;
   width: 268px;
-  margin-bottom: 12px;
+  margin: 12px 0 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px 10px;
   gap: 10px;
+  box-sizing: border-box;
 }
 .amount__input {
   flex-grow: 1;
@@ -196,8 +197,10 @@ input[type="radio"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 10px 10px 0;
+  padding: 0;
+  margin: 12px 16px 20px 0;
   gap: 50px;
+  border: none;
 
   & input {
     display: none;

@@ -27,7 +27,9 @@ $mobile-max-width: 599px;
   }
   // === /FOOTER ===
 }
+//=== /SMALL DESKTOP STYLES ===
 
+//=== TABLET STYLES ===
 @media screen and (max-width: $tablet-max-width) and (min-width: $tablet-min-width) {
   .container {
     padding: 0 30px;
@@ -39,6 +41,7 @@ $mobile-max-width: 599px;
     font-size: 12px;
   }
 }
+//=== /TABLET STYLES ===
 
 //=== MOBILE STYLES ===
 @media screen and (max-width: $mobile-max-width) {
