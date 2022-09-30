@@ -220,7 +220,7 @@
 // === SECTION DONATE ===
 .donate {
   @include section-bg-gradient();
-  padding: 69px 0 100px;
+  padding: 69px 0 102px;
 }
 .donate__inner {
   background: rgba(253, 253, 255, 0.52);
@@ -230,7 +230,7 @@
   align-items: center;
   gap: 10px;
   text-align: left;
-  padding: 40px 0 60px;
+  padding: 40px 54px 60px;
 
   & .support-link {
     color: $font-color-main;
@@ -254,12 +254,11 @@
 .donate-paragraph {
   max-width: 1007px;
   align-self: flex-start;
-  margin-left: 99px;
+  margin-left: 45px;
 }
 .paragraph_m {
   @include font-main();
   font-size: 24px;
-  line-height: 120%;
 }
 .donation-scheme {
   display: flex;
@@ -309,21 +308,22 @@
     margin-bottom: 26px;
   }
 }
-.carousel-container {
+.feedback-carousel {
   width: 100%;
+  overflow: hidden;
 }
-.carousel-inner{
+.feedback-carousel__track {
   width: 100%;
   height: 392px;
   display: flex;
   gap: 30px;
+  flex-wrap: nowrap;
 }
 .feedback-card {
-  position: relative;
-  width: 268px;
+  flex-shrink: 0;
+  flex-basis: 23%;
   padding: 0 14px 15px;
   box-sizing: border-box;
-
   border-radius: 20px;
   background: linear-gradient(#F1F3F2, #F1F3F2) padding-box,
   $pink-gradient border-box;
@@ -339,6 +339,7 @@
     @include font-main();
     line-height: 130%;
     color: $font-card-color;
+    vertical-align: middle;
   }
   & .details{
     @include font-light();

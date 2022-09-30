@@ -249,6 +249,8 @@ input[type=range]::-ms-track {
   }
 }
 .footer-bottom {
+  width: 100%;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
