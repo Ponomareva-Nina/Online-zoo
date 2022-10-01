@@ -33,15 +33,15 @@
 
   <main>
     <div class="donation-intro"></div>
-    <section class="donation-info">
-      <div class="donation-info__inner container">
+    <section class="donation-section">
+      <div class="donation-section__inner container">
         <h2 class="title_m">THE ZOO HAS OFFICIALLY REOPENED BUT WE STILL NEED YOUR HELP!</h2>
         <p class="paragraph">Even though the Zoo has been able to reopen, we are at a greatly reduced capacity with educational programs and public and private events cancelled or postponed for additional months. We need you now more than ever to help ensure that we overcome these challenges. We have been actively raising funds in the community, and we are grateful for the generosity.  But much more support is still needed, and we need your help! Please consider a gift today – no matter what size – to help us sustain our mission.</p>
         <h3 class="title_m">Donation Information</h3>
-        <div class="donation-form">
+        <div class="donation-info">
           <h4 class="title_l">Pick and feed a friend</h4>
-          <p class="title_s donation-form__text">We know the animals bring you joy, and in these extraordinary times, we're glad.</p>
-          <div class="donation-form__animal">
+          <p class="title_s donation-info__text">We know the animals bring you joy, and in these extraordinary times, we're glad.</p>
+          <div class="donation-info__animal">
             <div class="animal__diet">
               <p class="number">4</p>
               <p>Panda diet for the day.</p>
@@ -59,41 +59,33 @@
               <path d="M262.923 131.544C262.888 131.422 262.824 131.316 262.738 131.239C262.652 131.163 262.549 131.12 262.443 131.116C262.336 131.113 262.231 131.148 262.142 131.219C262.053 131.289 261.983 131.39 261.942 131.51C261.238 133.589 260.447 135.625 259.574 137.608C252.27 154.22 243.413 169.754 233.177 183.902C233.09 184.02 233.043 184.175 233.045 184.334C233.047 184.493 233.099 184.645 233.19 184.76L234.959 187.026C234.439 187.773 234.003 188.601 233.662 189.487C233.295 190.466 233.139 191.542 233.207 192.614C233.275 193.686 233.565 194.72 234.051 195.62C234.483 196.476 235.086 197.186 235.804 197.684C236.522 198.182 237.331 198.452 238.158 198.47H265.024C265.688 198.47 266.345 198.308 266.956 197.996C267.567 197.683 268.121 197.225 268.584 196.649C269.048 196.073 269.411 195.39 269.654 194.641C269.897 193.891 270.014 193.091 269.999 192.286C269.733 179.33 268.499 150.618 262.923 131.544Z" fill="black"/>
             </svg>
           </div>
-          <div class="donation-form__amount">
-            <fieldset class="donation-radios">
-              <legend class="donation-radios__title">Amount</legend>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="5000"/>
-                <label for="5000">5000</label>
-              </div>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="2000"/>
-                <label for="2000">2000</label>
-              </div>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="1000" checked/>
-                <label for="1000">1000</label>
-              </div>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="500"/>
-                <label for="500">500</label>
-              </div>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="250"/>
-                <label for="250">250</label>
-              </div>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="100"/>
-                <label for="100">100</label>
-              </div>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="50"/>
-                <label for="50">50</label>
-              </div>
-              <div class="radio-group">
-                <input class="amount__radio" name="donation-sum" type="radio" id="25"/>
-                <label for="25">25</label>
-              </div>
+          <div class="donation-form">
+            <p class="amount-bar-title">Amount</p>
+            <fieldset class="donation-form__amount-bar">
+              <label class="amount-bar__custom-radio" for="radio5000">5000
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio5000"/>
+              </label>
+              <label class="amount-bar__custom-radio" for="radio2000">2000
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio2000"/>
+               </label>
+              <label class="amount-bar__custom-radio" for="radio1000">1000
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio1000" checked/>
+              </label>
+              <label class="amount-bar__custom-radio" for="radio500">500
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio500"/>
+              </label>
+              <label class="amount-bar__custom-radio" for="radio250">250
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio250"/>
+              </label>
+              <label class="amount-bar__custom-radio" for="radio100">100
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio100"/>
+              </label>
+              <label class="amount-bar__custom-radio" for="radio50">50
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio50"/>
+              </label>
+              <label class="amount-bar__custom-radio" for="radio25">25
+                <input class="amount-bar__radio-input" name="donation-sum" type="radio" id="radio25"/>
+              </label>
             </fieldset>
 
             <div class="amount-textfield">
