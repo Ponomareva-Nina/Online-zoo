@@ -31,6 +31,7 @@
   }
   .amount-bar__custom-radio {
     min-width: 0;
+    // === УДАЛИТЬ ПОСЛЕ КРОСС-ЧЕКА (ЭТОТ ГОВНОКОД ВО ИМЯ ПИКСЕЛЬ ПЕРФЕКТ)
     &:nth-child(2) {
       margin-left: 5px;
       &::before {
@@ -75,6 +76,7 @@
       }
     }
   }
+   // === /УДАЛИТЬ ПОСЛЕ КРОСС-ЧЕКА (ЭТОТ ГОВНОКОД ВО ИМЯ ПИКСЕЛЬ ПЕРФЕКТ)
   .amount-bar__custom-radio:has(#radio5000) {
     display: none;
   }
