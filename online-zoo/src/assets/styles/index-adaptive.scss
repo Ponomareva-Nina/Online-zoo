@@ -1,5 +1,10 @@
 @import './common-adaptive.scss';
 
+@media screen and (max-width: 1579px) {
+  .description {
+    background: none;
+  }
+}
 //=== SMALL DESKTOP STYLES ===
 @media screen and (max-width: $small-desktop-max-width) {
 
@@ -10,10 +15,14 @@
   }
   .intro__inner {
     overflow: hidden;
+    padding: 42px 86px 47px 0;
+    gap: 41px;
+    & .btn {
+      margin-right: calc(21.5% - 145px);
+    }
   }
   .intro__content {
-    margin: 42px 5px 47px 0;
-    gap: 42px;
+    max-width: 400px;
   }
   .intro-header{
     font-size: 85px;
@@ -21,8 +30,8 @@
   .circle {
     width: 367px;
     height: 367px;
-    left: 358px;
-    top: -11px;
+    top: -16.5%;
+    left: -14.5%;
   }
   // === /INTRO ===
 
@@ -62,7 +71,7 @@
     right: 0;
     justify-content: center;
     gap: 171px;
-    z-index: 99;
+    z-index: 2;
   }
   .carousel-track {
     row-gap: 92px;
@@ -85,7 +94,7 @@
       .animal-card__content {
         background: none;
       }
-      & img {
+      & .animal-card__image {
         transform: scale(1.15) translateY(20px);
       }
     }
@@ -150,7 +159,182 @@
 
 //=== TABLET STYLES ===
 @media screen and (max-width: $tablet-max-width) and (min-width: $tablet-min-width) {
+  // === SECTION INTRO ===
+  .intro {
+    background-position: center 52%
+  }
+  .intro__inner {
+    padding: 53px 0 40px;
+    gap: 0;
+    align-items: center;
 
+    & .btn {
+      margin: -7px 0 0 20px;
+      align-self: flex-start;
+    }
+  }
+  .circle {
+    width: 237px;
+    height: 237px;
+    top: -19%;
+    left: -14%;
+  }
+  .intro__content {
+    gap: 0;
+    margin: 30px 0 0 55%;
+    & .btn {
+      justify-self: flex-start;
+    }
+  }
+  .intro-header {
+    font-size: 54px;
+    max-width: 256px;
+  }
+  // === /SECTION INTRO ===
+
+  // === SECTION DESCRIPTION ===
+  .description {
+    padding: 60px 0 55px;
+    background: url('http://localhost:8080/assets/images/flower-description.png') 107% center no-repeat;
+    background-size: contain;
+  }
+  .description__image {
+    display: none;
+  }
+  .description__text {
+    max-width: 81%;
+    & .title_l {
+      margin: 0 0 23px 4px;
+    }
+    & .title_s {
+      margin: 30px 0 19px 4px;
+    }
+  }
+  // === /SECTION DESCRIPTION ===
+
+  // === SECTION ANIMALS ===
+  .animals {
+    background: url("../../assets/images/strelitzia.png") right bottom no-repeat,
+    url("../../assets/images/palm.png") -11.5% bottom no-repeat;
+    background-size: 27%, 29%;
+    margin-top: 25px;
+    padding-bottom: 100px;
+  }
+  .animals__carousel {
+    max-width: 600px;
+  }
+  .carousel-track {
+    grid-template-columns: repeat(2, 47.5%);
+    column-gap: 5%;
+  }
+  .controls {
+    gap: 30px;
+  }
+  .animal-card {
+    height: 332px;
+  }
+  .animal-card__text {
+    font-size: 12px;
+  }
+  .animal-card__title {
+    font-size: 12.5px;
+  }
+  .animal-card__content {
+    padding: 5px 10px 0;
+    bottom: -35px;
+  }
+  .animal-card__icon {
+    max-width: 37px;
+    max-height: 29px;
+  }
+  .controls {
+    top: calc(50% - 35px);
+  }
+  .animals-btn {
+    margin: 60px auto 0;
+  }
+  // === /SECTION ANIMALS ===
+
+  // === SECTION DONATE ===
+  .donate {
+    padding: 20px 0 20px;
+  }
+  .donate__inner {
+    padding: 10px 20px 60px;
+
+    & .title_l {
+      font-size: 42px;
+    }
+    & .title_m {
+      margin: 21px 0 10px;
+    }
+  }
+  .paragraph_m {
+    font-size: 22px;
+    line-height: 120%;
+  }
+  .donation-scheme__arrow {
+    display: none;
+  }
+  .donation-scheme {
+    gap: 42px;
+    margin-right: 12px;
+    margin-bottom: 33px;
+  }
+  .step-2 {
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: -39px;
+      width: 100px;
+      height: 70px;
+      z-index: 2;
+      box-sizing: border-box;
+      background: url('../images/icons/donation-step-arrow.svg') center no-repeat;
+    }
+    &::before {
+      left: -47%;
+    }
+    &::after {
+      right: -37%;
+    }
+  }
+  // === /SECTION DONATE ===
+
+  // === SECTION FEEDBACK ===
+  .feedback {
+    padding: 60px 0 80px;
+    background-size: 19.5%;
+    background-position: 101.8% 115.2%;
+  }
+  .feedback-carousel__track {
+    height: 357px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .feedback-card {
+    width: 100%;
+    max-height: 108px;
+    padding: 0px 10px 0px;
+    .username {
+      line-height: 120%;
+    }
+  }
+  .text {
+    height: 38px;
+    padding: 0 5px;
+  }
+  .scrollbar {
+    display: none;
+  }
+  .feedback-btn {
+    align-self: center;
+    margin-top: 20px;
+    max-width: 240px;
+  }
 }
 //=== /TABLET STYLES ===
 
@@ -161,11 +345,3 @@
 }
 //=== /MOBILE STYLES ===
 
-
-// === MINOR FIXES BETWEEN BREAKPOINTS ===
-@media screen and (max-width: 1579px) {
-  .description {
-    background: none;
-  }
-}
-// === MINOR FIXES BETWEEN BREAKPOINTS ===
