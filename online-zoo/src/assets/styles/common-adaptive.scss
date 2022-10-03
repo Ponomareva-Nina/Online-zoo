@@ -32,7 +32,7 @@ $mobile-max-width: 634px;
 //=== /SMALL DESKTOP STYLES ===
 
 //=== TABLET STYLES ===
-@media screen and (max-width: $tablet-max-width) and (min-width: $tablet-min-width) {
+@media screen and (max-width: $tablet-max-width) {
   .container {
     padding: 0 20px;
   }
@@ -190,6 +190,15 @@ $mobile-max-width: 634px;
 @media screen and (max-width: $mobile-max-width) {
   .container {
     padding: 0 10px;
+  }
+  .title_m,
+  .title_l {
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .title_s {
+    font-size: 16px;
+    line-height: 140%;
   }
 }
 //=== /MOBILE STYLES ===
