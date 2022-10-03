@@ -36,6 +36,8 @@ $mobile-max-width: 599px;
   .container {
     padding: 0 20px;
   }
+
+  // === HEADER ===
   .header {
     position: fixed;
     width: 100%;
@@ -46,25 +48,25 @@ $mobile-max-width: 599px;
   .header__inner {
     position: relative;
     justify-content: space-between;
-  }
-  .logo {
-    width: 47px;
-    height: 29.3px;
-    & a {
-      border: none;
+    .logo {
+      width: 47px;
+      height: 29.3px;
+      & a {
+        border: none;
+      }
     }
-  }
-  .bamboo {
-    left: 2px;
-    bottom: 0px;
-    & svg {
-      width: 10px;
-      height: 12px;
+    .bamboo {
+      left: 2px;
+      bottom: 0px;
+      & svg {
+        width: 10px;
+        height: 12px;
+      }
     }
-  }
-  .logo__title {
-    font-size: 12.3px;
-    line-height: 120%;
+    .logo__title {
+      font-size: 12.3px;
+      line-height: 120%;
+    }
   }
    .burger-menu {
     position: absolute;
@@ -136,7 +138,49 @@ $mobile-max-width: 599px;
     margin-left: 0;
     align-self: flex-start;
   }
+  // === /HEADER ===
+
+  // === FOOTER ===
+  .footer {
+    position: relative;
+    padding: 12px 0 20px;
+  }
+  .subscribe-form {
+    display: none;
+  }
+  .socials {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    gap: 20px;
+  }
+  .social-link__name {
+    display: none;
+  }
+  .social-link__icon {
+    margin-right: 0;
+  }
+  .footer-bottom {
+    margin-top: 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-nav__list{
+    justify-content: flex-start;
+    gap: 37px;
+    & .nav-link {
+      color: $font-color-secondary;
+      font-weight: 500;
+    }
+    & .nav-link:visited {
+      color: $font-color-secondary;
+      &:hover {
+        color: $font-color-accent;
+      }
+    }
+  }
+  // === /FOOTER ===
 }
+
 //=== /TABLET STYLES ===
 
 //=== MOBILE STYLES ===

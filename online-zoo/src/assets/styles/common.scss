@@ -51,11 +51,11 @@ input[type=range]::-ms-track {
     }
   }
   &.nav-link_active {
-  color: $font-color-accent;
+  color: $font-color-accent !important;
   pointer-events: none;
   cursor: default;
     &:visited {
-      color:  $font-color-accent;
+      color:  $font-color-accent !important;
     }
   }
 }
