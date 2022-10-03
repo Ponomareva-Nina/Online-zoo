@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 $small-desktop-max-width: 1399px;
 $small-desktop-min-width: 980px;
 $tablet-max-width: 979px;
@@ -32,13 +34,107 @@ $mobile-max-width: 599px;
 //=== TABLET STYLES ===
 @media screen and (max-width: $tablet-max-width) and (min-width: $tablet-min-width) {
   .container {
-    padding: 0 30px;
+    padding: 0 20px;
+  }
+  .header {
+    position: fixed;
+    width: 100%;
+    min-height:min-content;
+    padding: 2px 0 3px 0;
+    z-index: 4;
+  }
+  .header__inner {
+    position: relative;
+    justify-content: space-between;
   }
   .logo {
-    border: none;
+    width: 47px;
+    height: 29.3px;
+    & a {
+      border: none;
+    }
+  }
+  .bamboo {
+    left: 2px;
+    bottom: 0px;
+    & svg {
+      width: 10px;
+      height: 12px;
+    }
   }
   .logo__title {
-    font-size: 12px;
+    font-size: 12.3px;
+    line-height: 120%;
+  }
+   .burger-menu {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+  .burger-menu,
+  .burger-menu::before,
+  .burger-menu::after {
+    display: block;
+    background-color: #fff;
+    height: 2px;
+    width: 18px;
+    transition: transform .5s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+  }
+  .burger-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -4px;
+   }
+  .burger-menu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 4px;
+  }
+  .burger-menu_active {
+    background: transparent;
+    &::before {
+      margin-top: 0px;
+      transform: rotate(405deg);
+      background-color: $accent-color;
+    }
+    &::after {
+      margin-top: 0px;
+      transform: rotate(-405deg);
+      background-color: $accent-color;
+    }
+  }
+  .main-nav {
+    position: absolute;
+    background-color: #E5E5E5;
+    min-width: 50%;
+    top: -100vh;
+    right: 0;
+    transition: all .5s ease;
+  }
+  .main-nav_active {
+    top: 0;
+    right: 0;
+  }
+  .main-nav__list {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 10px 10px 10px 40px;
+  }
+  .nav-link {
+    color: $font-color-main;
+    &:visited {
+      color: $font-color-main;
+    }
+  }
+  .copyright {
+    margin-left: 0;
+    align-self: flex-start;
   }
 }
 //=== /TABLET STYLES ===
