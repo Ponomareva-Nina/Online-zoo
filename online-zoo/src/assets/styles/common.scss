@@ -68,8 +68,8 @@ input[type=range]::-ms-track {
 }
 .title_m {
   font-size: 36px;
-  line-height: 130%;
   font-weight: 400;
+  line-height: 47px;
 }
 .title_s {
   font-weight: 400;
@@ -122,6 +122,9 @@ input[type=range]::-ms-track {
   }
   & a:visited {
     color: $font-color-secondary;
+    &:hover {
+      color: $font-color-accent;
+    }
   }
 }
 .bamboo {

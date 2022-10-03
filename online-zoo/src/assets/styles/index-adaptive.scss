@@ -5,6 +5,7 @@
     background: none;
   }
 }
+
 //=== SMALL DESKTOP STYLES ===
 @media screen and (max-width: $small-desktop-max-width) {
 
@@ -15,7 +16,7 @@
   }
   .intro__inner {
     overflow: hidden;
-    padding: 42px 86px 50px 0;
+    padding: 42px 86px 47px 0;
     gap: 41px;
     & .btn {
       margin-right: calc(21.5% - 145px);
@@ -44,19 +45,25 @@
     align-items: center;
     padding-bottom: 0;
   }
+  .description__text {
+    & .title_l {
+      margin-bottom: 23px;
+    }
+  }
+  .paragraph {
+    padding-right: 5px;
+  }
   .description__image {
-    max-width: 455px;
-    max-height: 408px;
-    box-sizing: border-box;
+    max-width: 470px;
+    min-width: 455px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 998px) {
+      min-width: 435px;
+    }
   }
-  .description__text {
-    max-width: 454px;
-  }
-
   // === /SECTION DESCRIPTION ===
 
   // === ANIMALS ===
@@ -80,8 +87,8 @@
     height: 354px;
   }
   .animal-card__content {
-    position: absolute;
-    bottom: -45px;
+   position: absolute;
+    bottom: -30px;
     left: 0;
     right: 0;
     background-color: white;
@@ -115,6 +122,7 @@
     }
     & .title_m {
       margin: 30px 0;
+      line-height: 47px;
     }
   }
   .donate-paragraph {
@@ -127,7 +135,7 @@
 
   // === SECTION FEEDBACK ===
   .feedback {
-    padding: 100px 0 141px;
+    padding: 100px 0 140px;
     background-position: 100% 118%;
     background-size: 199px;
   }
@@ -136,6 +144,7 @@
 
     & .title_m {
       margin-bottom: 10px;
+      line-height: 47px;
     }
   }
   .feedback-card {
@@ -150,15 +159,25 @@
     }
   }
   .feedback-btn {
-    margin-top: 30px;
+    margin-top: 33px;
   }
   // === /SECTION FEEDBACK ===
+
+  // === FOOTER NAV DIFFERENCES FOR LANDING PAGE ====
+  @media (min-width: $tablet-max-width) {
+    .footer-bottom {
+      grid-template-columns: 1fr 1.3fr 1fr;
+    }
+    .footer-nav__list {
+      justify-content: flex-start;
+      gap: 48px;
+    }
+  }
 }
 // ===/SMALL DESKTOP STYLES===
 
-
 //=== TABLET STYLES ===
-@media screen and (max-width: $tablet-max-width) and (min-width: $tablet-min-width) {
+@media screen and (max-width: $tablet-max-width) {
   // === SECTION INTRO ===
   .intro {
     background-position: center 52%
@@ -318,7 +337,14 @@
   .feedback-card {
     width: 100%;
     max-height: 108px;
-    padding: 0px 10px 0px;
+    gap: 10px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .author {
+      padding: 5px 0 0;
+    }
     .username {
       line-height: 120%;
     }
