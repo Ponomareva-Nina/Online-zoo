@@ -205,7 +205,7 @@
   // === SECTION DESCRIPTION ===
   .description {
     padding: 60px 0 55px;
-    background: url('../../assets/images/flower-description.png') 107% center no-repeat;
+    background: url('../images/flower-description.png') 107% center no-repeat;
     background-size: contain;
   }
   .description__image {
@@ -224,8 +224,8 @@
 
   // === SECTION ANIMALS ===
   .animals {
-    background: url("../../assets/images/strelitzia.png") right bottom no-repeat,
-    url("../../assets/images/palm.png") -11.5% bottom no-repeat;
+    background: url("../images/strelitzia.png") right bottom no-repeat,
+    url("../images/palm.png") -11.5% bottom no-repeat;
     background-size: 27%, 29%;
     margin-top: 25px;
     padding-bottom: 100px;
@@ -388,7 +388,7 @@
   // === SECTION DESCRIPTION ===
   .description {
     padding: 20px 0 15px;
-    background: url('../../assets/images/flower-description.png') 114% 42px no-repeat;
+    background: url('../images/flower-description.png') 114% 42px no-repeat;
     background-size: 21%;
      & .btn {
     display: block;
