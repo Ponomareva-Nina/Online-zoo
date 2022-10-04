@@ -26,7 +26,9 @@
     transform: translateY(-12px);
     padding-top: 56px;
     font-size: 85px;
-    background-size: 80%;
+    @media (max-width: 1015px) {
+      background-size: 80%;
+    }
   }
   // === /INTRO ===
 
@@ -193,8 +195,9 @@
     background-size: contain;
     transform: translateY(-8px);
     margin-right: 5px;
-    @media (max-width: 979px) and (min-width: 787px){
+    @media (max-width: 979px) and (min-width: 730px){
       max-width: 300px;
+      margin-right: 5%;
     }
   }
   // === /SECTION INTRO ===
@@ -356,12 +359,14 @@
 //=== MOBILE STYLES ===
 @media screen and (max-width: $mobile-max-width) {
   .intro {
-    background-position: center top;
+    background-position: center 40%;
   }
   .intro__inner {
     position: relative;
-    padding: 55px 0 22px;
-
+    padding: 8% 0 22px;
+    @media (max-width: 340px) {
+      padding: 54px 0 22px;
+    }
     & .btn {
       display: none;
     }
@@ -430,7 +435,6 @@
     .animal-card {
       max-width: 285px;
       max-height: 332px;
-      margin-right: 15px;
     }
   }
   .animals-btn {
