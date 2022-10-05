@@ -336,3 +336,17 @@ input[type=range]::-ms-track {
   }
 }
 // === /FOOTER ===
+
+.no-scroll {
+  overflow: hidden;
+  &::after{
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+}
