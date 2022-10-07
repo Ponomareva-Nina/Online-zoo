@@ -222,7 +222,7 @@
   }
   .donation-form__amount-bar {
     max-width: 100%;
-    padding: 0 25px;
+    padding: 0 18px;
 
     &::after {
       margin: 0;
@@ -234,11 +234,11 @@
     }
   }
   .amount-bar__custom-radio {
-    font-size: 12px;
+    font-size: 13px;
     top: -4.5px;
 
     &::before {
-      margin: 0 0 3px 0 !important;
+      margin: 0 0 3px 0;
       width: 20px;
       height: 20px;
       background-size: 5px;
@@ -249,6 +249,32 @@
       top: -14px;
       left: -7px;;
       background-size: contain;
+    }
+    &:nth-child(4) {
+      margin-left: -4px;
+      margin-right: 8px;
+      &::before {
+        margin-left: -5px;
+      }
+    }
+    &:nth-child(7) {
+      margin-right: 0;
+      &::before{
+        margin-left: -8px;
+      }
+    }
+    &:nth-child(5) {
+      margin-right: 0;
+      &::before{
+        margin-left: -3px;
+      }
+    }
+    &:nth-child(6)::before{
+      margin-left: -5px;
+    }
+    &:last-child::before {
+      margin-left: 0px;
+      margin-right: 0px;
     }
   }
   .amount-bar__custom-radio:has(.amount-bar__radio-input:checked) {
