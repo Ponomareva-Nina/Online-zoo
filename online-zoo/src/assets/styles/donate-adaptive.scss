@@ -194,24 +194,28 @@
     transform: translateX(0);
     gap: 10px;
     width: 100%;
-    .number {
-      font-size: 40px;
-      line-height: 80%;
-    }
   }
   .animal-icon {
     width: 150px;
-    height: 130px;
-    margin-right: 10px;
+    height: 138px;
+    margin-right: 5px;
+    transform: translateX(-5px);
   }
   .animal__diet {
     flex-shrink: 0;
+    gap: 5px;
+
+    .number {
+      padding-top: 8px;
+      font-size: 40px;
+      line-height: 80%;
+    }
   }
   .diet__text {
     font-size: 9px;
   }
   .cross {
-    margin: 0 30px 10px 0px;
+    margin: 0 30px 13px -2px;
     & svg {
       width: 8px;
       height: 8px;
@@ -219,10 +223,12 @@
   }
   .amount-bar-title {
     margin: 0;
+    transform: translateY(-8px);
   }
   .donation-form__amount-bar {
     max-width: 100%;
     padding: 0 18px;
+    margin-top: -9px;
 
     &::after {
       margin: 0;
