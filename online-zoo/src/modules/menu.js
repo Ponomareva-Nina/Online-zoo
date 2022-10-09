@@ -1,7 +1,7 @@
 export default function toggleMenu(burgerBtn, menu) {
   burgerBtn.classList.toggle('burger-menu_active');
   menu.classList.toggle('main-nav_active');
-  document.body.classList.toggle('no-scroll');
+  document.body.classList.toggle('inactive');
 
   window.addEventListener('click', (elem) => {
     if (menu.classList.contains('main-nav_active')) {
@@ -10,7 +10,7 @@ export default function toggleMenu(burgerBtn, menu) {
       if ((!target.closest('.main-nav') && !target.closest('.burger-menu')) || (target.closest('.nav-link'))) {
         burgerBtn.classList.remove('burger-menu_active');
         menu.classList.remove('main-nav_active');
-        document.body.classList.remove('no-scroll');
+        document.body.classList.remove('inactive');
       }
     }
   });

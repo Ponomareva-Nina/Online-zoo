@@ -339,6 +339,9 @@
     .username {
       line-height: 120%;
     }
+    &:hover {
+      cursor: pointer
+    }
   }
   .text {
     height: 38px;

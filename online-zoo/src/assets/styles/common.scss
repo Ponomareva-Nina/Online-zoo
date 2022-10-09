@@ -337,7 +337,7 @@ input[type=range]::-ms-track {
 }
 // === /FOOTER ===
 
-.no-scroll {
+.inactive {
   overflow: hidden;
   &::after{
     content: '';
@@ -348,5 +348,8 @@ input[type=range]::-ms-track {
     left: 0;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 2;
+  }
+  &:hover::after {
+    cursor: pointer;
   }
 }
