@@ -11,9 +11,18 @@ const Menu = document.querySelector('.main-nav');
 BurgerBtn.addEventListener('click', () => toggleMenu(BurgerBtn, Menu));
 // === /BURGER MENU ===
 
-// === FEEDBACK POPUP ===
+// === FEEDBACK ===
 const feedbackCards = document.querySelectorAll('.feedback-card');
+
+// === FEEDBACK POPUP ===
+const mediaQueryTabletsAndMobiles = window.matchMedia('(max-width: 979px)');
+
 feedbackCards.forEach((feedback) => {
-  feedback.addEventListener('click', () => togglePopup(feedback));
+  feedback.addEventListener('click', () => {
+    if (mediaQueryTabletsAndMobiles.matches) {
+      togglePopup(feedback);
+    }
+  });
 });
 // === /FEEDBACK POPUP ===
+// === /FEEDBACK ===
