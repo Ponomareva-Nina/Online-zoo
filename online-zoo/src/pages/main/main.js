@@ -2,9 +2,10 @@ import '../../assets/styles/normalize.css';
 import '../../assets/styles/index.scss';
 import '../../assets/styles/index-adaptive.scss';
 import '../../assets/styles/index-functional.scss';
+import '../../modules/animals-carousel';
+import '../../modules/testimonials-carousel';
 import toggleMenu from '../../modules/menu';
 import togglePopup from '../../modules/feedback-popup';
-import '../../modules/animals-carousel';
 
 const mediaQueryTabletsAndMobiles = window.matchMedia('(max-width: 979px)');
 
@@ -17,7 +18,6 @@ BurgerBtn.addEventListener('click', () => toggleMenu(BurgerBtn, Menu));
 // === FEEDBACK ===
 const feedbackCards = document.querySelectorAll('.feedback-card');
 
-// === FEEDBACK POPUP ===
 feedbackCards.forEach((feedback) => {
   feedback.addEventListener('click', () => {
     if (mediaQueryTabletsAndMobiles.matches) {
@@ -25,10 +25,5 @@ feedbackCards.forEach((feedback) => {
     }
   });
 });
-// === /FEEDBACK POPUP ===
-
-// === FEEDBACK RANGE SLIDER ===
-
-// === /FEEDBACK RANGE SLIDER ===
 
 // === /FEEDBACK ===
