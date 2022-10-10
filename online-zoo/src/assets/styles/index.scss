@@ -98,6 +98,15 @@
 }
 .carousel-track {
   width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  transform: translateX(calc(-100% - 30px));
+  gap: 30px;
+  box-sizing: border-box;
+}
+.carousel-track__items {
+  flex-shrink: 0;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 31.25%);
   grid-template-rows: repeat(2, auto);

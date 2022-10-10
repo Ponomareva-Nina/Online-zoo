@@ -76,7 +76,7 @@
     gap: 171px;
     z-index: 2;
   }
-  .carousel-track {
+  .carousel-track__items {
     row-gap: 92px;
   }
   .animal-card {
@@ -233,7 +233,7 @@
   .animals__carousel {
     max-width: 600px;
   }
-  .carousel-track {
+  .carousel-track__items {
     grid-template-columns: repeat(2, 47.5%);
     column-gap: 5%;
   }
@@ -426,6 +426,9 @@
 
   @media (max-width: 585px) {
     .carousel-track {
+      flex-direction: column;
+    }
+    .carousel-track__items {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(4, auto);
       grid-auto-flow: row;
