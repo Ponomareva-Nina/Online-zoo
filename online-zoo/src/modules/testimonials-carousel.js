@@ -24,6 +24,6 @@ Slider.addEventListener('input', slideComments);
 
 window.addEventListener('resize', () => {
   TranslateValue = FeedbackContainer.querySelector('.feedback-card').offsetWidth + 30;
-  currentTranslate = 'translateX(0px)';
-  FeedbackContainer.style.transform = currentTranslate;
+  FeedbackContainer.style.transform = 'translateX(0px)';
+  if (window.matchMedia('(max-width: 979px)')) { FeedbackContainer.style.transform = 'none'; }
 });
