@@ -58,10 +58,23 @@ const CarouselTrack = document.querySelector('.carousel-track');
 const LeftItems = document.querySelector('.items-left');
 const RightItems = document.querySelector('.items-right');
 const ActiveItems = document.querySelector('.items-active');
+let cardsQuantity = 6;
 
-createNewCardsTemplate(LeftItems);
-createNewCardsTemplate(RightItems);
-createNewCardsTemplate(ActiveItems);
+window.addEventListener('resize', () => {
+  if (mediaQueryTabletsAndMobiles.matches) { cardsQuantity = 4; } else { cardsQuantity = 6; }
+  LeftItems.innerHTML = '';
+  createNewCardsTemplate(LeftItems, cardsQuantity);
+  RightItems.innerHTML = '';
+  createNewCardsTemplate(RightItems, cardsQuantity);
+  if (window.matchMedia('(width: 980px)').matches) {
+    ActiveItems.innerHTML = '';
+    createNewCardsTemplate(ActiveItems, cardsQuantity);
+  }
+});
+
+createNewCardsTemplate(LeftItems, cardsQuantity);
+createNewCardsTemplate(RightItems, cardsQuantity);
+createNewCardsTemplate(ActiveItems, cardsQuantity);
 
 CarouselBtnLeft.addEventListener('click', moveLeft);
 CarouselBtnRight.addEventListener('click', moveRight);
@@ -71,12 +84,12 @@ CarouselTrack.addEventListener('animationend', (animation) => {
     CarouselTrack.classList.remove('transition-left');
     ActiveItems.innerHTML = LeftItems.innerHTML;
     LeftItems.innerHTML = '';
-    createNewCardsTemplate(LeftItems);
+    createNewCardsTemplate(LeftItems, cardsQuantity);
   } else {
     CarouselTrack.classList.remove('transition-right');
     ActiveItems.innerHTML = RightItems.innerHTML;
     RightItems.innerHTML = '';
-    createNewCardsTemplate(RightItems);
+    createNewCardsTemplate(RightItems, cardsQuantity);
   }
   CarouselBtnLeft.addEventListener('click', moveLeft);
   CarouselBtnRight.addEventListener('click', moveRight);
@@ -112,10 +125,7 @@ function createAnimalCard(i) {
   return card;
 }
 
-function createNewCardsTemplate(sideItems) {
-  let quantity;
-  if (mediaQueryTabletsAndMobiles.matches) { quantity = 4; } else { quantity = 6; }
-
+function createNewCardsTemplate(sideItems, quantity) {
   for (let i = 0; ; i++) {
     const index = Math.floor(Math.random() * ANIMALS.length);
     const card = createAnimalCard(index);
