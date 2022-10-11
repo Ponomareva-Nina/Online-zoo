@@ -428,6 +428,7 @@
   @media (max-width: 585px) {
     .carousel-track {
       flex-direction: column;
+      transform: none;
     }
     .carousel-track__items {
       grid-template-columns: 1fr;

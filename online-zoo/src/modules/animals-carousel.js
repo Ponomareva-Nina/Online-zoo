@@ -51,7 +51,6 @@ const ANIMALS = [
   },
 ];
 
-const mediaQueryTabletsAndMobiles = window.matchMedia('(max-width: 979px)');
 const CarouselBtnLeft = document.querySelector('#btn-left');
 const CarouselBtnRight = document.querySelector('#btn-right');
 const CarouselTrack = document.querySelector('.carousel-track');
@@ -59,16 +58,23 @@ const LeftItems = document.querySelector('.items-left');
 const RightItems = document.querySelector('.items-right');
 const ActiveItems = document.querySelector('.items-active');
 let cardsQuantity = 6;
+const mediaQueryTabletsMax = window.matchMedia('(max-width: 979px)');
 
-window.addEventListener('resize', () => {
-  if (mediaQueryTabletsAndMobiles.matches) { cardsQuantity = 4; } else { cardsQuantity = 6; }
-  LeftItems.innerHTML = '';
-  createNewCardsTemplate(LeftItems, cardsQuantity);
-  RightItems.innerHTML = '';
-  createNewCardsTemplate(RightItems, cardsQuantity);
-  if (window.matchMedia('(width: 980px)').matches) {
+mediaQueryTabletsMax.addEventListener('change', () => {
+  if (mediaQueryTabletsMax.matches) {
+    cardsQuantity = 4;
+    LeftItems.innerHTML = '';
+    createNewCardsTemplate(LeftItems, cardsQuantity);
+    RightItems.innerHTML = '';
+    createNewCardsTemplate(RightItems, cardsQuantity);
+  } else {
+    cardsQuantity = 6;
     ActiveItems.innerHTML = '';
     createNewCardsTemplate(ActiveItems, cardsQuantity);
+    LeftItems.innerHTML = '';
+    createNewCardsTemplate(LeftItems, cardsQuantity);
+    RightItems.innerHTML = '';
+    createNewCardsTemplate(RightItems, cardsQuantity);
   }
 });
 
