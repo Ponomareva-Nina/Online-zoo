@@ -1,13 +1,14 @@
 const FeedbackContainer = document.querySelector('.feedback-carousel__track');
 const Slider = document.querySelector('.scrollbar__slider');
 
-const TranslateValue = -23;
-let currentTranslate = `translateX(${Slider.value * TranslateValue}%)`;
+let TranslateValue = FeedbackContainer.querySelector('.feedback-card').offsetWidth + 30;
+
+let currentTranslate = `translateX(-${Slider.value * TranslateValue}px)`;
 let newTranslate = '';
 
 function slideComments() {
   const previousValue = currentTranslate;
-  newTranslate = `translateX(${Slider.value * TranslateValue}%)`;
+  newTranslate = `translateX(-${Slider.value * TranslateValue}px)`;
 
   const sliderAnimation = [
     { transform: previousValue },
@@ -20,3 +21,9 @@ function slideComments() {
 }
 
 Slider.addEventListener('input', slideComments);
+
+window.addEventListener('resize', () => {
+  TranslateValue = FeedbackContainer.querySelector('.feedback-card').offsetWidth + 30;
+  currentTranslate = 'translateX(0px)';
+  FeedbackContainer.style.transform = currentTranslate;
+});
