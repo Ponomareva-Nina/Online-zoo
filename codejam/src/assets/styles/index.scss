@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+$font-color: #333B41;
+$bg-btn: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+$bg-button-hover: #E47209;
+$bg-button-active: #4B9200;
+$bg-disabled: #d4d1d1;
+$accent-color: #E47209;
+$font-card-color: #000000;
+$tile-bg-color: #ffdd93;
+
+// default
+body {
+  padding: 0;
+  margin: 0;
+}
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+@mixin font-tile {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+}
+
+@mixin font-btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  text-align: center;
+  text-transform: uppercase;
+}
+.body-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.header-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.main {
+
+}
+.btn {
+
+}
+.controls-container {
+ display: flex;
+ justify-content: center;
+ margin-bottom: 20px;
+}
+.status-panel {
+
+}
+.field-container {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  border: 2px solid green;
+}
+.tile {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid $accent-color;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  background-color: $tile-bg-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: 800;
+}
+.empty-tile {
+  background-color: $bg-disabled;
+  border-radius: 0;
+  border: none;
+}
