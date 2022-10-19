@@ -3,6 +3,7 @@ export default class GameField {
     this.size = size;
     this.tiles = [];
     this.movesCounter = 0;
+    this.tileSize = 100;
   }
 
   getMoves() {
@@ -14,7 +15,6 @@ export default class GameField {
       this.tiles.push({
         disabled: false,
         value: i,
-        position: i,
         left: (i % this.size),
         top: (i - (i % this.size)) / this.size,
       })
@@ -35,8 +35,6 @@ export default class GameField {
   }
 
   renderField(fieldContainer) {
-    const tileSize = 100;
-
     for (let tileItem of this.tiles) {
     const tile = document.createElement('div');
       if (tileItem.value === 0) {
@@ -46,8 +44,8 @@ export default class GameField {
         tile.className = 'tile';
         tile.innerHTML = tileItem.value;
       }
-      tile.style.top = `${tileItem.top * tileSize}px`;
-      tile.style.left = `${tileItem.left * tileSize}px`;
+      tile.style.top = `${tileItem.top * this.tileSize}px`;
+      tile.style.left = `${tileItem.left * this.tileSize}px`;
       fieldContainer.append(tile);
     }
   }

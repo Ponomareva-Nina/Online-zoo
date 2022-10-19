@@ -88,9 +88,11 @@ a {
   align-items: center;
   font-size: large;
   font-weight: 800;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .empty-tile {
-  background-color: $bg-disabled;
+  background-color: transparent;
   border-radius: 0;
   border: none;
 }
