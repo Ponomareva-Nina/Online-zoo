@@ -13,7 +13,6 @@ export default class GameField {
   generateTiles() {
     for (let i = 0; i < this.size * this.size; i++) {
       this.tiles.push({
-        disabled: false,
         value: i,
         left: (i % this.size),
         top: (i - (i % this.size)) / this.size,
@@ -31,15 +30,13 @@ export default class GameField {
     for (let i = 0; i < this.tiles.length; i++) {
       this.tiles[i].value = randomValues[i];
     }
-    console.log(this.tiles);
   }
 
   renderField(fieldContainer) {
     for (let tileItem of this.tiles) {
     const tile = document.createElement('div');
       if (tileItem.value === 0) {
-          tileItem.disabled = true,
-          tile.className = 'tile empty-tile';
+        tile.className = 'tile empty-tile';
       } else {
         tile.className = 'tile';
         tile.innerHTML = tileItem.value;
