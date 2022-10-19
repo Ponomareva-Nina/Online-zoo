@@ -17,5 +17,7 @@ window.onload = () => {
 };
 
 
-const FieldObj = new GameField(3);
-FieldObj.renderField(FieldContainer);
+const Field = new GameField(4);
+Field.generateTiles();
+Field.randomizeTiles();
+Field.renderField(FieldContainer);
