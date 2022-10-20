@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 $font-color: #333B41;
-$bg-btn: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+$bg-btn: #eaf0c7;
 $bg-button-hover: #E47209;
 $bg-button-active: #4B9200;
 $bg-disabled: #d4d1d1;
 $accent-color: #E47209;
-$font-card-color: #000000;
 $tile-bg-color: #ffdd93;
 
 // default
@@ -14,10 +13,12 @@ body {
   padding: 0;
   margin: 0;
 }
+
 h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
+
 ul, ol {
   margin: 0;
   padding: 0;
@@ -38,32 +39,48 @@ ul, ol {
   text-align: center;
   text-transform: uppercase;
 }
-.body-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-}
+
 .header-container {
   width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 15px 0;
 }
-.main {
 
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
 }
+
 .btn {
+  border: 1px solid $accent-color;
+  border-radius: 5px;
+  background-color: $bg-btn;
+  padding: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
 }
-.controls-container {
- display: flex;
- justify-content: center;
- margin-bottom: 20px;
+.size-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
 }
-.status-panel {
 
+.size-btn_checked {
+ background-color: $bg-button-active;
 }
+
 .field-container {
   width: 400px;
   height: 400px;
@@ -71,6 +88,7 @@ ul, ol {
   position: relative;
   border: 2px solid green;
 }
+
 .tile {
   position: absolute;
   box-sizing: border-box;
@@ -92,6 +110,7 @@ ul, ol {
   border-radius: 0;
   border: none;
 }
+
 .welcome-text {
   box-sizing: border-box;
   padding: 20px 0;
@@ -102,4 +121,11 @@ ul, ol {
   background-color: $tile-bg-color;
   height: 100%;
   align-items: center;
+}
+
+.status-panel {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
 }

@@ -4,13 +4,16 @@ function createBtn(value) {
   return btn;
 }
 
-export default function createControls() {
+function createSizeOption(value) {
+  const option =  document.createElement('button');
+  option.innerHTML = value;
+  option.className = 'btn size-btn'
+  return option;
+}
+
+export function createControls() {
   const Container = document.createElement('div');
-  Container.className = 'controls-container';
-  const StatusPanel = document.createElement('div');
-  StatusPanel.className = 'status-panel';
-  const Controls = document.createElement('div');
-  Controls.className = 'controls';
+  Container.className = 'controls';
 
   const StartBtn = createBtn('new game');
   StartBtn.className = 'btn start-btn';
@@ -19,12 +22,33 @@ export default function createControls() {
   const ResultsBtn = createBtn('best results');
   ResultsBtn.className = 'btn results-btn';
 
-  Controls.append(StartBtn);
-  Controls.append(SaveBtn);
-  Controls.append(ResultsBtn);
-
-  Container.append(Controls);
-  Container.append(StatusPanel);
-
+  Container.append(StartBtn);
+  Container.append(SaveBtn);
+  Container.append(ResultsBtn);
   return Container;
+}
+
+export function createSizeControls() {
+  const SizeControlsContainer = document.createElement('div');
+  SizeControlsContainer.className = 'size-controls'
+  for (let i = 3; i <= 8; i++) {
+    let sizeOption = createSizeOption(`${i}&times;${i}`);
+    SizeControlsContainer.append(sizeOption);
+    if (i === 4){sizeOption.classList.add('size-btn_checked')}
+  }
+  return SizeControlsContainer;
+}
+
+export function createStatusPanel() {
+  const StatusPanel = document.createElement('div');
+  StatusPanel.className = 'status-panel';
+
+  const Moves = document.createElement('div');
+  Moves.insertAdjacentHTML('afterbegin', '<span>Moves: </span> <span class="moves-counter">0</span>');
+  const Timer = document.createElement('div');
+  Timer.insertAdjacentHTML('afterbegin', '<span>Time: </span> <span class="moves-counter">00:00</span>');
+  StatusPanel.append(Moves);
+  StatusPanel.append(Timer);
+
+  return StatusPanel;
 }

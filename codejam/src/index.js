@@ -1,20 +1,24 @@
 import './assets/styles/normalize.css';
 import './assets/styles/index.scss';
-import GameField from './modules/game-field';
-import createControls from './modules/controls-layout';
+import GameField from './modules/Field';
+import { createControls, createSizeControls, createStatusPanel } from './modules/controls-layout';
 import createHeader from './modules/header-layout';
-import moveTile from './modules/move-tiles';
+import { moveTile, countMoves } from './modules/game-functions';
 
 const Main = document.createElement('main');
 const Controls = createControls();
 const FieldContainer = document.createElement('div');
 FieldContainer.className = 'field-container';
+const SizePanel = createSizeControls();
+const StatusPanel = createStatusPanel();
 
 window.onload = () => {
   createHeader();
   document.body.append(Main);
   Main.append(Controls);
+  Main.append(StatusPanel);
   Main.append(FieldContainer);
+  Main.append(SizePanel);
 
   const StartBtn = document.querySelector('.start-btn');
   const SaveBtn = document.querySelector('.save-btn');
@@ -27,10 +31,12 @@ FieldContainer.insertAdjacentHTML('afterbegin', welcomeText);
 
 function startGame(fieldContainer, size) {
   const Field = new GameField(size);
+  const MovesField = document.querySelector('.moves-counter');
   Field.generateTiles();
   Field.randomizeTiles();
   Field.renderField(fieldContainer);
+  fieldContainer.addEventListener('pointerdown', moveTile);
   fieldContainer.addEventListener('pointerdown', (event) => {
-   moveTile(event);
+    countMoves(event, Field, MovesField);
   });
 }

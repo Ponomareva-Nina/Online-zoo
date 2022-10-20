@@ -4,9 +4,11 @@ export default class GameField {
     this.tiles = [];
     this.movesCounter = 0;
     this.tileSize = 100;
+    this.time = '00:00';
   }
 
-  getMoves() {
+  countMoves() {
+    this.movesCounter++;
     return this.movesCounter;
   }
 
