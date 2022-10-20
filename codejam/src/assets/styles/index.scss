@@ -18,13 +18,9 @@ h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
-ul {
-  list-style: none;
+ul, ol {
   margin: 0;
   padding: 0;
-}
-a {
-  text-decoration: none;
 }
 
 @mixin font-tile {
@@ -95,4 +91,15 @@ a {
   background-color: transparent;
   border-radius: 0;
   border: none;
+}
+.welcome-text {
+  box-sizing: border-box;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  background-color: $tile-bg-color;
+  height: 100%;
+  align-items: center;
 }

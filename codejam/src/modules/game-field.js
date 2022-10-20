@@ -67,6 +67,7 @@ export default class GameField {
   }
 
   renderField(fieldContainer) {
+    fieldContainer.innerHTML = '';
     for (let tileItem of this.tiles) {
     const tile = document.createElement('div');
       if (tileItem.value === 0) {
