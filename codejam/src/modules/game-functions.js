@@ -1,11 +1,12 @@
 function checkIfNeighbors(tile1, tile2) {
-  let Tile1Top = Number(tile1.style.top.charAt(0));
-  let Tile1Left = Number(tile1.style.left.charAt(0));
-  let Tile2Top = Number(tile2.style.top.charAt(0));
-  let Tile2Left = Number(tile2.style.left.charAt(0));
+  let TileSize =  Number(tile1.style.width.slice(0, -2));
+  let Tile1Top = Number(tile1.style.top.slice(0, -2));
+  let Tile1Left = Number(tile1.style.left.slice(0, -2));
+  let Tile2Top = Number(tile2.style.top.slice(0, -2));
+  let Tile2Left = Number(tile2.style.left.slice(0, -2));
 
-  if (Math.abs(Tile1Top - Tile2Top) === 0 && Math.abs(Tile1Left - Tile2Left) === 1
-    || Math.abs(Tile1Top - Tile2Top) === 1 && Math.abs(Tile1Left - Tile2Left) === 0) {
+  if (Math.abs(Tile1Top - Tile2Top) === 0 && Math.abs(Tile1Left - Tile2Left) === TileSize
+    || Math.abs(Tile1Top - Tile2Top) === TileSize && Math.abs(Tile1Left - Tile2Left) === 0) {
     return true;
   } else {
     return false;
