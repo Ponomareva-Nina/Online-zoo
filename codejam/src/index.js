@@ -24,7 +24,20 @@ window.onload = () => {
   const StartBtn = document.querySelector('.start-btn');
   const SaveBtn = document.querySelector('.save-btn');
   const ResultsBtn = document.querySelector('.save-btn');
-  StartBtn.addEventListener('click', () => startGame(FieldContainer, 6));
+  const SizeBtns = document.querySelectorAll('.size-btn');
+  let checkedSize = document.querySelector('.size-btn_checked');
+  let fieldSize = document.querySelector('.size-btn_checked').innerHTML.charAt(0);
+  StartBtn.addEventListener('click', () => startGame(FieldContainer, fieldSize));
+
+  for (let sizeBtn of SizeBtns) {
+    sizeBtn.addEventListener('click', () => {
+      checkedSize.classList.remove('size-btn_checked');
+      checkedSize = sizeBtn;
+      sizeBtn.classList.add('size-btn_checked');
+      fieldSize = sizeBtn.innerHTML.charAt(0);
+      startGame(FieldContainer, fieldSize);
+    })
+  }
 };
 
 const welcomeText = '<div class="welcome-text"><h2>Welcome to the gem puzzle!</h2><p>The goal of the game is to place numbered tiles in order</p><h3>Game controls:</h3><ol><li>To start a new game press NEW GAME</li><li>To save current game press SAVE</li><li>To see your top 10 results press BEST RESULTS</li><li>To move a tile simply click on it or drag it</li></ol><h3>All combinations in this game are solvable</h3></div>';
@@ -48,8 +61,8 @@ function startGame(fieldContainer, size) {
   startTimer(min, sec);
 
   window.addEventListener('resize', () => {
-    let tileSize = FieldContainer.clientWidth / size;
+    let tileSize = fieldContainer.clientWidth / size;
     Field.tileSize = tileSize;
-    Field.renderField(FieldContainer);
+    Field.renderField(fieldContainer);
   });
 }

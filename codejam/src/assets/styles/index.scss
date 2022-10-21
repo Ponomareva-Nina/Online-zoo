@@ -92,6 +92,7 @@ main {
 
 .size-btn_checked {
  background-color: $bg-button-active;
+ pointer-events: none;
 }
 
 .field-container {
@@ -138,7 +139,7 @@ main {
   right: 0;
   bottom: 0;
   box-sizing: border-box;
-  padding: 20px 0;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 15px;
