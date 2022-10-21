@@ -44,7 +44,7 @@ const welcomeText = '<div class="welcome-text"><h2>Welcome to the gem puzzle!</h
 FieldContainer.insertAdjacentHTML('afterbegin', welcomeText);
 
 function startGame(fieldContainer, size) {
-  let tileSize = fieldContainer.clientWidth / size;
+  let tileSize = Math.ceil(fieldContainer.clientWidth / size);
   const sec = document.querySelector('.sec-counter');
   const min = document.querySelector('.min-counter');
   const MovesField = document.querySelector('.moves-counter');
@@ -61,7 +61,7 @@ function startGame(fieldContainer, size) {
   startTimer(min, sec);
 
   window.addEventListener('resize', () => {
-    let tileSize = fieldContainer.clientWidth / size;
+    let tileSize = Math.ceil(fieldContainer.clientWidth / size);
     Field.tileSize = tileSize;
     Field.renderField(fieldContainer);
   });
