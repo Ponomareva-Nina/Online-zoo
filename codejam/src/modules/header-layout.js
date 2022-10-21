@@ -3,9 +3,10 @@ export default function createHeader() {
   Header.className = 'header-container';
   const Title = document.createElement('h1');
   Title.innerHTML = '15 Gem Puzzle';
-  const Menu = document.createElement('div');
+  const SoundBtn = document.createElement('div');
+  SoundBtn.innerHTML = 'sound';
 
   Header.append(Title);
-  Header.append(Menu);
+  Header.append(SoundBtn);
   document.body.prepend(Header);
 }

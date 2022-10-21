@@ -1,9 +1,9 @@
 export default class GameField {
-  constructor(size) {
+  constructor(size, tileSize) {
     this.size = size;
     this.tiles = [];
     this.movesCounter = 0;
-    this.tileSize = 100;
+    this.tileSize = tileSize;
   }
 
   getMoves () {
@@ -80,6 +80,8 @@ export default class GameField {
         tile.className = 'tile';
         tile.innerHTML = tileItem.value;
       }
+      tile.style.width = `${this.tileSize}px`;
+      tile.style.height = `${this.tileSize}px`;
       tile.style.top = `${tileItem.top * this.tileSize}px`;
       tile.style.left = `${tileItem.left * this.tileSize}px`;
       fieldContainer.append(tile);
