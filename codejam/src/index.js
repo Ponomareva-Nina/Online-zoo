@@ -4,6 +4,8 @@ import GameField from './modules/Field';
 import { createControls, createSizeControls, createStatusPanel } from './modules/controls-layout';
 import createHeader from './modules/header-layout';
 import { moveTile, countMoves } from './modules/game-functions';
+import { startTimer, clearTimer } from './modules/timer';
+
 
 const Main = document.createElement('main');
 const Controls = createControls();
@@ -30,8 +32,12 @@ const welcomeText = '<div class="welcome-text"><h2>Welcome to the gem puzzle!</h
 FieldContainer.insertAdjacentHTML('afterbegin', welcomeText);
 
 function startGame(fieldContainer, size) {
+  const sec = document.querySelector('.sec-counter');
+  const min = document.querySelector('.min-counter');
+  clearTimer(min, sec)
   const Field = new GameField(size);
   const MovesField = document.querySelector('.moves-counter');
+  MovesField.innerHTML = Field.getMoves();
   Field.generateTiles();
   Field.randomizeTiles();
   Field.renderField(fieldContainer);
@@ -39,4 +45,5 @@ function startGame(fieldContainer, size) {
   fieldContainer.addEventListener('pointerdown', (event) => {
     countMoves(event, Field, MovesField);
   });
+  startTimer(min, sec);
 }

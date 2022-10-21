@@ -46,7 +46,7 @@ export function createStatusPanel() {
   const Moves = document.createElement('div');
   Moves.insertAdjacentHTML('afterbegin', '<span>Moves: </span> <span class="moves-counter">0</span>');
   const Timer = document.createElement('div');
-  Timer.insertAdjacentHTML('afterbegin', '<span>Time: </span> <span class="moves-counter">00:00</span>');
+  Timer.insertAdjacentHTML('afterbegin', '<span>Time: </span> <span class="min-counter">00</span>:<span class="sec-counter">00</span>');
   StatusPanel.append(Moves);
   StatusPanel.append(Timer);
 

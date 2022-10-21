@@ -38,4 +38,3 @@ export function countMoves(event, obj, input) {
     input.innerHTML = counter;
   }
 }
-
