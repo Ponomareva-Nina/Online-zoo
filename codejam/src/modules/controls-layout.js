@@ -19,11 +19,14 @@ export function createControls() {
   StartBtn.className = 'btn start-btn';
   const SaveBtn = createBtn('save');
   SaveBtn.className = 'btn save-btn';
+  const ContinueBtn = createBtn('continue');
+  ContinueBtn.className = 'btn continue-btn';
   const ResultsBtn = createBtn('best results');
   ResultsBtn.className = 'btn results-btn';
 
   Container.append(StartBtn);
   Container.append(SaveBtn);
+  Container.append(ContinueBtn);
   Container.append(ResultsBtn);
   return Container;
 }
