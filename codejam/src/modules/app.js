@@ -39,3 +39,10 @@ export function countMoves(event, obj, input) {
     input.innerHTML = counter;
   }
 }
+
+export function createBtn(value, className = '') {
+  const btn = document.createElement('button');
+  btn.innerHTML = value;
+  btn.className = className;
+  return btn;
+}

@@ -1,18 +1,43 @@
 import './assets/styles/normalize.css';
 import './assets/styles/index.scss';
 import GameField from './modules/Field';
-import { createControls, createSizeControls, createStatusPanel } from './modules/controls-layout';
 import createHeader from './modules/header-layout';
-import { moveTile, countMoves } from './modules/game-functions';
-import { startTimer, clearTimer } from './modules/timer';
+import { countMoves, createBtn, moveTile } from './modules/app';
+import { startTimer, clearTimer } from './modules/Timer';
 import { renderGameFromStorage, saveToStorage } from './modules/storage';
 
 const Main = document.createElement('main');
-const Controls = createControls();
 const FieldContainer = document.createElement('div');
 FieldContainer.className = 'field-container';
-const SizePanel = createSizeControls();
-const StatusPanel = createStatusPanel();
+
+// cоздаем кнопки управления:
+const Controls = document.createElement('div');
+Controls.className = 'controls';
+const StartBtn = createBtn('new game', 'btn start-btn');
+const SaveBtn = createBtn('save', 'btn save-btn');
+const ContinueBtn = createBtn('continue', 'btn continue-btn');
+const ResultsBtn = createBtn('best results', 'btn results-btn');
+Controls.append(StartBtn, SaveBtn, ContinueBtn, ResultsBtn);
+
+// cоздаем статус-бар (счетчик и таймер игры):
+const StatusPanel = document.createElement('div');
+StatusPanel.className = 'status-panel';
+
+const Moves = document.createElement('div');
+Moves.insertAdjacentHTML('afterbegin', '<span>Moves: </span> <span class="moves-counter">0</span>');
+const Timer = document.createElement('div');
+Timer.insertAdjacentHTML('afterbegin', '<span>Time: </span> <span class="min-counter">00</span>:<span class="sec-counter">00</span>');
+StatusPanel.append(Moves);
+StatusPanel.append(Timer);
+
+// создаем кнопки с размерами поля:
+const SizePanel = document.createElement('div');
+SizePanel.className = 'size-controls'
+for (let i = 3; i <= 8; i++) {
+  let sizeBtn = createBtn(`${i}&times;${i}`, 'size-btn');
+  SizePanel.append(sizeBtn);
+  if (i === 4){sizeBtn.classList.add('size-btn_checked')}
+}
 
 window.onload = () => {
   createHeader();
@@ -22,7 +47,6 @@ window.onload = () => {
   Main.append(FieldContainer);
   Main.append(SizePanel);
 
-  const StartBtn = document.querySelector('.start-btn');
   const SizeBtns = document.querySelectorAll('.size-btn');
   let checkedSize = document.querySelector('.size-btn_checked');
   let fieldSize = document.querySelector('.size-btn_checked').innerHTML.charAt(0);
@@ -39,20 +63,17 @@ window.onload = () => {
   }
 
   // save to Local Storage by click on Save button
-  const SaveBtn = document.querySelector('.save-btn');
   SaveBtn.addEventListener('click', () => {
   const Tiles = document.querySelectorAll('.tile');
     saveToStorage(Tiles);
   });
 
   //render saved game by click on Continue button
-  const ContinueBtn = document.querySelector('.continue-btn');
   ContinueBtn.addEventListener('click', () => {
     if (localStorage.getItem('currentGame') !== null){
       renderGameFromStorage(FieldContainer);
     }
   })
-
 };
 
 

@@ -6,7 +6,7 @@ $bg-btn: #eaf0c7;
 $bg-button-active: #4B9200;
 $accent-color: #E47209;
 $tile-bg-color: #ffdd93;
-
+$maxTabletSize: 680px;
 // default
 body {
   padding: 0;
@@ -24,6 +24,13 @@ ul, ol {
 }
 
 @mixin font-tile {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+}
+
+@mixin font-main {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -53,6 +60,7 @@ main {
   margin: 0 auto;
   padding: 10px;
   background-color: $bg-main;
+  @include font-main();
 }
 
 .btn {
@@ -155,4 +163,10 @@ main {
   justify-content: space-between;
   gap: 15px;
   margin: 15px auto;
+}
+
+@media screen and (max-width: $maxTabletSize) {
+  .field-container {
+    width: 95%;
+  }
 }
