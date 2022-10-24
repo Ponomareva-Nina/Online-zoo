@@ -1,14 +1,15 @@
 export default class GameField {
-  constructor(size, tileSize) {
+  constructor(size, tileSize, counter = 0) {
     this.size = size;
     this.tiles = [];
-    this.movesCounter = 0;
+    this.movesCounter = counter;
     this.tileSize = tileSize;
   }
 
   getMoves () {
     return this.movesCounter;
   }
+
   countMoves() {
     this.movesCounter++;
     return this.movesCounter;

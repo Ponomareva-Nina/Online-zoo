@@ -3,8 +3,8 @@ import './assets/styles/index.scss';
 import GameField from './modules/Field';
 import createHeader from './modules/header-layout';
 import { countMoves, createBtn, moveTile } from './modules/app';
-import { startTimer, clearTimer } from './modules/Timer';
-import { renderGameFromStorage, saveToStorage } from './modules/storage';
+import { Timer } from './modules/Timer';
+import { continueSavedGame, saveToStorage } from './modules/storage';
 
 const Main = document.createElement('main');
 const FieldContainer = document.createElement('div');
@@ -24,11 +24,17 @@ const StatusPanel = document.createElement('div');
 StatusPanel.className = 'status-panel';
 
 const Moves = document.createElement('div');
-Moves.insertAdjacentHTML('afterbegin', '<span>Moves: </span> <span class="moves-counter">0</span>');
-const Timer = document.createElement('div');
-Timer.insertAdjacentHTML('afterbegin', '<span>Time: </span> <span class="min-counter">00</span>:<span class="sec-counter">00</span>');
-StatusPanel.append(Moves);
-StatusPanel.append(Timer);
+let MovesCount = document.createElement('span');
+MovesCount.innerHTML = '0';
+Moves.innerText = 'Moves: ';
+Moves.append(MovesCount);
+const TimerContainer = document.createElement('div');
+TimerContainer.innerText = 'Time: '
+let secCount = document.createElement('span');
+let minCount = document.createElement('span');
+minCount.className = 'min-counter';
+TimerContainer.append(minCount, secCount);
+StatusPanel.append(Moves, TimerContainer);
 
 // создаем кнопки с размерами поля:
 const SizePanel = document.createElement('div');
@@ -46,11 +52,16 @@ window.onload = () => {
   Main.append(StatusPanel);
   Main.append(FieldContainer);
   Main.append(SizePanel);
-
+  let TimeCounter = new Timer(0,0, minCount, secCount);
+  TimeCounter.clearTimer();
   const SizeBtns = document.querySelectorAll('.size-btn');
   let checkedSize = document.querySelector('.size-btn_checked');
   let fieldSize = document.querySelector('.size-btn_checked').innerHTML.charAt(0);
-  StartBtn.addEventListener('click', () => startGame(FieldContainer, fieldSize));
+  StartBtn.addEventListener('click', () => {
+    startGame(FieldContainer, fieldSize)
+    TimeCounter.clearTimer();
+    TimeCounter.startTimer();
+  });
 
   for (let sizeBtn of SizeBtns) {
     sizeBtn.addEventListener('click', () => {
@@ -59,43 +70,48 @@ window.onload = () => {
       sizeBtn.classList.add('size-btn_checked');
       fieldSize = sizeBtn.innerHTML.charAt(0);
       startGame(FieldContainer, fieldSize);
+      TimeCounter.clearTimer();
+      TimeCounter.startTimer();
     })
   }
 
   // save to Local Storage by click on Save button
   SaveBtn.addEventListener('click', () => {
   const Tiles = document.querySelectorAll('.tile');
-    saveToStorage(Tiles);
+  let moves = MovesCount.innerText;
+  let mins = minCount.innerHTML;
+  let secs = secCount.innerHTML;
+  let size = document.querySelector('.size-btn_checked').innerHTML.charAt(0);
+    saveToStorage(Tiles, moves, mins, secs, size);
   });
 
   //render saved game by click on Continue button
   ContinueBtn.addEventListener('click', () => {
-    if (localStorage.getItem('currentGame') !== null){
-      renderGameFromStorage(FieldContainer);
-    }
-  })
-};
+    let min = Number(localStorage.getItem('min'));
+    let sec = Number(localStorage.getItem('sec'));
+    TimeCounter.clearTimer();
+    minCount.innerHTML = localStorage.getItem('min');
+    secCount.innerHTML = localStorage.getItem('sec');
+    TimeCounter = new Timer(min, sec, minCount, secCount);
+    TimeCounter.startTimer()
+    continueSavedGame(FieldContainer, MovesCount);
+  });
 
-
+}
 const welcomeText = '<div class="welcome-text"><h2>Welcome to the gem puzzle!</h2><p>The goal of the game is to place numbered tiles in order</p><h3>Game controls:</h3><ol><li>To start a new game press NEW GAME</li><li>To save current game press SAVE</li><li>To see your top 10 results press BEST RESULTS</li><li>To move a tile simply click on it or drag it</li></ol><h3>All combinations in this game are solvable</h3></div>';
 FieldContainer.insertAdjacentHTML('afterbegin', welcomeText);
 
 function startGame(fieldContainer, size) {
   let tileSize = Math.ceil(fieldContainer.clientWidth / size);
-  const sec = document.querySelector('.sec-counter');
-  const min = document.querySelector('.min-counter');
-  const MovesField = document.querySelector('.moves-counter');
   const Field = new GameField(size, tileSize);
-  MovesField.innerHTML = Field.getMoves();
+  MovesCount.innerHTML = Field.getMoves();
   Field.generateTiles();
   Field.randomizeTiles();
   Field.renderField(fieldContainer);
   fieldContainer.addEventListener('pointerdown', moveTile);
   fieldContainer.addEventListener('pointerdown', (event) => {
-    countMoves(event, Field, MovesField);
+    countMoves(event, Field,  MovesCount);
   });
-  clearTimer(min, sec)
-  startTimer(min, sec);
 
   window.addEventListener('resize', () => {
     let tileSize = Math.ceil(fieldContainer.clientWidth / size);
