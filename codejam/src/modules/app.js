@@ -1,3 +1,5 @@
+import { playAudio } from "./header";
+
 function checkIfNeighbors(tile1, tile2) {
   let TileSize =  Number(tile1.style.width.slice(0, -2));
   let Tile1Top = Number(tile1.style.top.slice(0, -2));
@@ -27,6 +29,8 @@ export function moveTile(event) {
     emptyTile.style.left = clickedTile.style.left;
     clickedTile.style.top = emptyPosTop;
     clickedTile.style.left = emptyPosLeft;
+
+    playAudio();
   }
 }
 

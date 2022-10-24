@@ -48,7 +48,7 @@ const config = {
         },
       },
       {
-        test: /\.(svg|png|jpg|gif)$/i,
+        test: /\.(svg|png|jpg|gif|mp3)$/i,
         type: 'asset',
         generator: {
           filename: './assets/images/[file][ext]',

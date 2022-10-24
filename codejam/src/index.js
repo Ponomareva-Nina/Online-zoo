@@ -1,7 +1,7 @@
 import './assets/styles/normalize.css';
 import './assets/styles/index.scss';
 import GameField from './modules/Field';
-import createHeader from './modules/header-layout';
+import { createHeader } from './modules/header';
 import { countMoves, createBtn, moveTile } from './modules/app';
 import { Timer } from './modules/Timer';
 import { continueSavedGame, saveToStorage } from './modules/storage';
@@ -46,7 +46,8 @@ for (let i = 3; i <= 8; i++) {
 }
 
 window.onload = () => {
-  createHeader();
+  const Header = createHeader();
+  document.body.prepend(Header);
   document.body.append(Main);
   Main.append(Controls);
   Main.append(StatusPanel);

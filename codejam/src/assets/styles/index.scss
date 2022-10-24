@@ -170,6 +170,23 @@ main {
   display: inline-block;
 }
 
+.audio {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 25%;
+  background: url('../images/speaker.png');
+  background-size: contain;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.audio_disabled {
+  background: url('../images/speaker.png'),
+  linear-gradient(-45deg, transparent 0%,  transparent 51%, red 52%, red 55%, transparent 56%, transparent 100%);
+  background-size: contain;
+}
+
 @media screen and (max-width: $maxTabletSize) {
   .field-container {
     width: 95%;
