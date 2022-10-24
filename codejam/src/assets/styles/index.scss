@@ -1,19 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap');
 
-$font-color: #333B41;
-$bg-main: #d4d1d1;
-$bg-btn: #eaf0c7;
-$bg-button-active: #4B9200;
-$accent-color: #E47209;
+$font-color-main: #9297f0;
+$font-color-secondary: #343188;
+$bg-main: #3a373b;
+$bg-btn: #ffdd93;
+$bg-button-active: #b2b5f5;
+$field-corder-color:  #777cd3;
+$hover-color: #fdac31;
+$accent-color: #fdac31;
 $tile-bg-color: #ffdd93;
 $maxTabletSize: 680px;
+
+@mixin font-tile {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+@mixin font-main {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+@mixin font-title {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+@mixin font-btn {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 // default
 body {
   padding: 0;
   margin: 0;
+  background-color: $bg-main;
 }
 
-h1, h2, h3, p {
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+  @include font-title();
+}
+
+p {
   margin: 0;
   padding: 0;
 }
@@ -23,59 +64,46 @@ ul, ol {
   padding: 0;
 }
 
-@mixin font-tile {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 130%;
-}
-
-@mixin font-main {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 130%;
-}
-
-@mixin font-btn {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 140%;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .header-container {
   max-width: 600px;
   margin: 10px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
   align-items: center;
   text-transform: uppercase;
+  @include font-main();
+  color: $font-color-main;
+  text-align: center;
+
+  h1 {
+    font-size: 28px;
+  }
 }
 
 main {
   max-width: 600px;
   margin: 0 auto;
   padding: 10px;
-  background-color: $bg-main;
   @include font-main();
+  color: $font-color-main;
 }
 
-.btn {
+.btn,
+.size-btn {
   border: 1px solid $accent-color;
   border-radius: 5px;
   background-color: $bg-btn;
-  padding: 0 5px;
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all .5s ease;
+  color: $font-color-secondary;
 
   &:hover {
     cursor: pointer;
-    background-color: $accent-color;
+    background-color: $hover-color;
   }
 }
 
@@ -97,7 +125,9 @@ main {
   -khtml-user-select: none;
   user-select: none;
 }
-
+.size-btn {
+  padding: 2px 5px;
+}
 .size-btn_checked {
  background-color: $bg-button-active;
  pointer-events: none;
@@ -107,7 +137,8 @@ main {
   width: 80%;
   margin: 0 auto;
   position: relative;
-  border: 2px solid green;
+  border: 10px solid $field-corder-color;
+  border-radius: 10px;
   -moz-user-select: none;
   -khtml-user-select: none;
   user-select: none;
@@ -124,7 +155,7 @@ main {
   box-sizing: border-box;
   border: 1px solid $accent-color;
   border-radius: 5px;
-
+  color: $font-color-secondary;
   background-color: $tile-bg-color;
   display: flex;
   justify-content: center;
@@ -155,6 +186,14 @@ main {
   background-color: $tile-bg-color;
   height: 100%;
   align-items: center;
+  color: $font-color-secondary;
+
+  h2 {
+    text-align: center;
+  }
+  ol {
+    padding-left: 10px;
+  }
 }
 
 .status-panel {
@@ -174,21 +213,31 @@ main {
   width: 40px;
   height: 40px;
   border: none;
-  border-radius: 25%;
-  background: url('../images/speaker.png');
+  border-radius: 50%;
+  background: url('../images/volume.png');
   background-size: contain;
+
   &:hover {
     cursor: pointer;
   }
 }
 .audio_disabled {
-  background: url('../images/speaker.png'),
-  linear-gradient(-45deg, transparent 0%,  transparent 51%, red 52%, red 55%, transparent 56%, transparent 100%);
+  background: linear-gradient(-45deg, transparent 0%,  transparent 51%, $accent-color 52%, $accent-color 55%, transparent 56%, transparent 100%), url('../images/volume.png');
   background-size: contain;
 }
 
 @media screen and (max-width: $maxTabletSize) {
   .field-container {
     width: 95%;
+  }
+  main {
+    font-size: 12px;
+  }
+  .welcome-text {
+    gap: 10px;
+    padding: 5px 10px;
+  }
+  .header-container h1 {
+    font-size: 22px;
   }
 }

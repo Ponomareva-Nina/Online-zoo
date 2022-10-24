@@ -99,7 +99,7 @@ window.onload = () => {
   });
 
 }
-const welcomeText = '<div class="welcome-text"><h2>Welcome to the gem puzzle!</h2><p>The goal of the game is to place numbered tiles in order</p><h3>Game controls:</h3><ol><li>To start a new game press NEW GAME</li><li>To save current game press SAVE</li><li>To see your top 10 results press BEST RESULTS</li><li>To move a tile simply click on it or drag it</li></ol><h3>All combinations in this game are solvable</h3></div>';
+const welcomeText = '<div class="welcome-text"><h2>Welcome to the gem puzzle!</h2> <p>The goal of the game is to place numbered tiles in order</p> <h3>Game controls:</h3><ol><li>To start a new game press NEW GAME</li><li>To save current game press SAVE</li><li>To continue saved game press CONTINUE</li><li>To see your top 10 results press BEST RESULTS</li></ol><h3>All combinations in this game are solvable</h3></div>';
 FieldContainer.insertAdjacentHTML('afterbegin', welcomeText);
 
 function startGame(fieldContainer, size) {
