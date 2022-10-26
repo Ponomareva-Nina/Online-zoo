@@ -1,3 +1,5 @@
+import { playAudio } from './header';
+
 export default class Field {
   constructor(size, moves = 0) {
     this.moves = moves;
@@ -128,6 +130,7 @@ export default class Field {
       clickedEl.style.top = emptyPosTop;
       clickedEl.style.left = emptyPosLeft;
       this.countMoves();
+      playAudio();
     }
   }
 
@@ -140,6 +143,6 @@ export default class Field {
     });
     if (this.tiles.length === rightTiles) {
       return true;
-    } else { return false; }
+    } return false;
   }
 }
