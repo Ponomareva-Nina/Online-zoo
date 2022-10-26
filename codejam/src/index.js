@@ -54,9 +54,6 @@ SaveBtn.addEventListener('click', () => {
   saveGame(GameField, Time);
 });
 FieldContainer.addEventListener('click', checkIfSolved);
-window.addEventListener('resize', () => {
-  GameField.renderField(FieldContainer);
-});
 
 // === FUNCTIONS ===
 function changeSize(btn) {
@@ -76,6 +73,10 @@ function startGame(size) {
   GameField.renderField(FieldContainer);
   Time = createNewTimer(0, 0, TimeCounter);
   Time.startTimer();
+
+  window.addEventListener('resize', () => {
+    GameField.renderField(FieldContainer);
+  });
 }
 
 function checkIfSolved() {
