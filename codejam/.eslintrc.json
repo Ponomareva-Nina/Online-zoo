@@ -9,6 +9,13 @@
         "sourceType": "module"
     },
     "rules": {
-        "allowForLoopAfterthoughts": true
+        "no-unused-vars": "warn",
+        "no-unused-expressions": "warn",
+        "no-plusplus": "off",
+        "no-param-reassign": "off",
+        "consistent-return": "warn",
+        "max-len": "off",
+        "no-use-before-define": "warn",
+        "no-else-return": "warn"
     }
 }
