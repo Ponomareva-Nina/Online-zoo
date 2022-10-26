@@ -1,10 +1,28 @@
-export class Timer {
-  constructor(min = 0, sec = 0, minBlock, secBlock) {
-    this.minutes = min,
-    this.seconds = sec,
-    this.minBlock = minBlock,
-    this.secBlock = secBlock,
+class Timer {
+  constructor(min = 0, sec = 0) {
+    this.minutes = min;
+    this.seconds = sec;
+    this.minBlock;
+    this.secBlock;
     this.interval;
+  }
+
+  createMinContainer() {
+    const minContainer = document.createElement('div');
+    if (this.minutes <= 9) {
+      minContainer.innerHTML = `0${this.minutes}`;
+    } else { minContainer.innerHTML = this.minutes; }
+    this.minBlock = minContainer;
+    return minContainer;
+  }
+
+  createSecContainer() {
+    const secContainer = document.createElement('div');
+    if (this.minutes <= 9) {
+      secContainer.innerHTML = `0${this.seconds}`;
+    } else { secContainer.innerHTML = this.seconds; }
+    this.secBlock = secContainer;
+    return secContainer;
   }
 
   clearTimer() {
@@ -17,7 +35,7 @@ export class Timer {
 
   countTime() {
     this.seconds++;
-    if (this.seconds <= 9)  {
+    if (this.seconds <= 9) {
       this.secBlock.innerHTML = `0${this.seconds}`;
     } else {
       this.secBlock.innerHTML = this.seconds;
@@ -33,4 +51,23 @@ export class Timer {
     clearInterval(this.interval);
     this.interval = setInterval(() => this.countTime(), 1000);
   }
+
+  stopTimer() {
+    clearInterval(this.interval);
+    this.interval = null;
+  }
+
+  getTime() {
+    return `${this.minutes}:${this.seconds}`;
+  }
+}
+
+export default function createNewTimer(min, sec, timeContainer) {
+  const Time = new Timer(min, sec);
+  timeContainer.innerHTML = 'Time:&nbsp;';
+  const SecCount = Time.createSecContainer();
+  const MinCount = Time.createMinContainer();
+  MinCount.className = 'min-counter';
+  timeContainer.append(MinCount, SecCount);
+  return Time;
 }
