@@ -3,11 +3,13 @@ import './assets/styles/index.scss';
 import { createElem, createBtn, createEndGameMessage } from './modules/service';
 import createNewTimer from './modules/Timer';
 import Field from './modules/Field';
+import { createHeader } from './modules/header';
 
 const Main = createElem('main', 'main');
 const FieldContainer = createElem('div', 'field-container');
 const welcomeText = '<div class="welcome-text"><h2>Welcome to the gem puzzle!</h2> <p>The goal of the game is to place numbered tiles in order</p> <h3>Game controls:</h3><ol><li>To start a new game press NEW GAME</li><li>To save current game press SAVE</li><li>To continue saved game press CONTINUE</li><li>To see your top 10 results press BEST RESULTS</li></ol><h3>All combinations in this game are solvable</h3></div>';
 FieldContainer.insertAdjacentHTML('afterbegin', welcomeText);
+const Header = createHeader();
 
 // === CREATE SIZE BUTTONS: ===
 const SizePanel = createElem('div', 'size-controls');
@@ -38,7 +40,7 @@ const Time = createNewTimer(0, 0, TimeCounter);
 const MovesCounter = createElem('div', '', 'Moves:&nbsp;0');
 StatusPanel.append(MovesCounter, TimeCounter);
 
-Main.append(Controls, StatusPanel, FieldContainer, SizePanel);
+Main.append(Header, Controls, StatusPanel, FieldContainer, SizePanel);
 document.body.append(Main);
 
 // === FUNCTIONS ===
@@ -71,6 +73,7 @@ function startGame(size) {
   }
 
   FieldContainer.addEventListener('click', checkIfSolved);
+
   window.addEventListener('resize', () => {
     GameField.renderField(FieldContainer);
   });
