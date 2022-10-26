@@ -18,7 +18,7 @@ class Timer {
 
   createSecContainer() {
     const secContainer = document.createElement('div');
-    if (this.minutes <= 9) {
+    if (this.seconds <= 9) {
       secContainer.innerHTML = `0${this.seconds}`;
     } else { secContainer.innerHTML = this.seconds; }
     this.secBlock = secContainer;
@@ -59,6 +59,14 @@ class Timer {
 
   getTime() {
     return `${this.minutes}:${this.seconds}`;
+  }
+
+  getMinutes() {
+    return this.minutes;
+  }
+
+  getSeconds() {
+    return this.seconds;
   }
 }
 

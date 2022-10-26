@@ -28,6 +28,14 @@ export default class Field {
     return this.moves;
   }
 
+  getTiles() {
+    return this.tiles;
+  }
+
+  getFieldSize() {
+    return this.fieldSize;
+  }
+
   generateTiles() {
     for (let i = 0; i < this.fieldSize * this.fieldSize; i++) {
       if (i !== 0) { this.successCombination.push(i); }

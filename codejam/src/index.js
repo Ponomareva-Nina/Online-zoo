@@ -4,6 +4,7 @@ import { createElem, createBtn, createEndGameMessage } from './modules/service';
 import createNewTimer from './modules/Timer';
 import Field from './modules/Field';
 import { createHeader } from './modules/header';
+import { continueGame, saveGame } from './modules/storage';
 
 const Main = createElem('main', 'main');
 const FieldContainer = createElem('div', 'field-container');
@@ -24,6 +25,8 @@ for (let i = 3; i <= 8; i++) {
   }
 }
 
+let GameField = new Field(checkedSizeBtn.value);
+
 //  ===  CREATE GAME CONTROLS: ===
 const Controls = createElem('div', 'controls');
 const StartBtn = createBtn('new game', 'btn start-btn');
@@ -36,12 +39,22 @@ Controls.append(StartBtn, SaveBtn, ContinueBtn, ResultsBtn);
 // ===  CREATE STATUS PANEL: ===
 const StatusPanel = createElem('div', 'status-panel');
 const TimeCounter = createElem('div', 'time-container', 'Time:&nbsp;');
-const Time = createNewTimer(0, 0, TimeCounter);
+let Time = createNewTimer(0, 0, TimeCounter);
 const MovesCounter = createElem('div', '', 'Moves:&nbsp;0');
 StatusPanel.append(MovesCounter, TimeCounter);
 
 Main.append(Header, Controls, StatusPanel, FieldContainer, SizePanel);
 document.body.append(Main);
+ContinueBtn.addEventListener('click', () => {
+  continueGame(FieldContainer, MovesCounter, TimeCounter);
+});
+SaveBtn.addEventListener('click', () => {
+  saveGame(GameField, Time);
+});
+FieldContainer.addEventListener('click', checkIfSolved);
+window.addEventListener('resize', () => {
+  GameField.renderField(FieldContainer);
+});
 
 // === FUNCTIONS ===
 function changeSize(btn) {
@@ -52,31 +65,25 @@ function changeSize(btn) {
 }
 
 function startGame(size) {
-  const GameField = new Field(size);
+  GameField = new Field(size);
   const Counter = GameField.createMovesCounter();
   MovesCounter.innerHTML = '';
   MovesCounter.append(Counter);
   GameField.generateTiles();
   GameField.randomizeTiles();
   GameField.renderField(FieldContainer);
-  Time.clearTimer();
+  Time = createNewTimer(0, 0, TimeCounter);
   Time.startTimer();
+}
 
-  function checkIfSolved() {
-    if (GameField.isSolved()) {
-      const count = GameField.getCount();
-      const time = Time.getTime();
-      endGame();
-      createEndGameMessage(count, time, FieldContainer);
-      FieldContainer.removeEventListener('click', checkIfSolved);
-    }
+function checkIfSolved() {
+  if (GameField.isSolved()) {
+    const count = GameField.getCount();
+    const time = Time.getTime();
+    endGame();
+    createEndGameMessage(count, time, FieldContainer);
+    FieldContainer.removeEventListener('click', checkIfSolved);
   }
-
-  FieldContainer.addEventListener('click', checkIfSolved);
-
-  window.addEventListener('resize', () => {
-    GameField.renderField(FieldContainer);
-  });
 }
 
 function endGame() {
