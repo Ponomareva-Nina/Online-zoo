@@ -1,49 +1,45 @@
-import GameField from './Field';
-import { countMoves, moveTile } from './app';
-import { Timer } from './Timer';
+import Field from './Field';
+import createNewTimer from './Timer';
 
-function createJsonObj(obj){
-  const JsonObj = {};
-  for (let i = 0; i < obj.length; i++){
-    JsonObj[i] = obj[i].outerHTML;
-  }
-  return JsonObj;
-}
+export function saveGame(field, time) {
+  const tiles = field.getTiles();
+  const tilesArr = JSON.stringify(tiles);
+  const moves = field.getCount();
+  const size = field.getFieldSize();
+  const min = time.getMinutes();
+  const sec = time.getSeconds();
+  const winCombination = field.successCombination;
 
-export function saveToStorage(obj, moves, min, sec, size) {
-  let currentState = createJsonObj(obj);
-  let str = JSON.stringify(currentState);
-  localStorage.setItem('currentGame', str);
+  localStorage.setItem('currentTilesPosition', tilesArr);
   localStorage.setItem('moves', moves);
-  localStorage.setItem('min', min);
-  localStorage.setItem('sec', sec);
-  localStorage.setItem('size', size);
+  localStorage.setItem('fieldSize', size);
+  localStorage.setItem('minutes', min);
+  localStorage.setItem('seconds', sec);
+  localStorage.setItem('winCombination', winCombination);
 }
 
-export function continueSavedGame(fieldContainer, movesCount) {
-  if (localStorage.getItem('currentGame') == null) {
-    return
+export function continueGame(fieldContainer, movesCount, TimeContainer) {
+  if (localStorage.getItem('currentTilesPosition') == null) {
+    alert('There is no saved game!');
+  } else {
+    const tilesArr = localStorage.getItem('currentTilesPosition');
+    const tiles = JSON.parse(tilesArr);
+    const moves = localStorage.getItem('moves');
+    const fieldSize = localStorage.getItem('fieldSize');
+    const minutes = localStorage.getItem('minutes');
+    const seconds = localStorage.getItem('seconds');
+    const winCombination = localStorage.getItem('winCombination');
+    fieldContainer.innerHTML = '';
+
+    const GameField = new Field(fieldSize);
+    GameField.moves = moves;
+    const Counter = GameField.createMovesCounter();
+    movesCount.innerHTML = '';
+    movesCount.append(Counter);
+    GameField.tiles = tiles;
+    GameField.successCombination = winCombination;
+    GameField.renderField(fieldContainer);
+    const Time = createNewTimer(minutes, seconds, TimeContainer);
+    Time.startTimer();
   }
-
-  let moves = localStorage.getItem('moves');
-  let size = localStorage.getItem('size');
-  let tileSize = Math.ceil(fieldContainer.clientWidth / size);
-  let Field = new GameField(size, tileSize, moves);
-  movesCount.innerHTML = Field.getMoves();
-
-  let str = localStorage.getItem('currentGame');
-  let JsonObj = JSON.parse(str);
-  let length = Object.keys(JsonObj).length;
-  fieldContainer.innerHTML = '';
-
-  for (let i = 0; i < length; i++){
-    fieldContainer.insertAdjacentHTML('afterbegin', JsonObj[i]);
-  }
-
-  fieldContainer.addEventListener('pointerdown', moveTile);
-  fieldContainer.addEventListener('pointerdown', (event) => {
-    countMoves(event, Field, movesCount);
-  });
-
 }
-
