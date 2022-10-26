@@ -25,12 +25,9 @@ for (let i = 3; i <= 8; i++) {
   }
 }
 
-let GameField = new Field(checkedSizeBtn.value);
-
 //  ===  CREATE GAME CONTROLS: ===
 const Controls = createElem('div', 'controls');
 const StartBtn = createBtn('new game', 'btn start-btn');
-StartBtn.addEventListener('click', () => startGame(checkedSizeBtn.value));
 const SaveBtn = createBtn('save', 'btn save-btn');
 const ContinueBtn = createBtn('continue', 'btn continue-btn');
 const ResultsBtn = createBtn('best results', 'btn results-btn');
@@ -43,10 +40,15 @@ let Time = createNewTimer(0, 0, TimeCounter);
 const MovesCounter = createElem('div', '', 'Moves:&nbsp;0');
 StatusPanel.append(MovesCounter, TimeCounter);
 
+// === APPEND ELEMENTS AND ADD LISTENERS ===
 Main.append(Header, Controls, StatusPanel, FieldContainer, SizePanel);
 document.body.append(Main);
+let GameField = new Field(checkedSizeBtn.value);
+StartBtn.addEventListener('click', () => startGame(checkedSizeBtn.value));
 ContinueBtn.addEventListener('click', () => {
-  continueGame(FieldContainer, MovesCounter, TimeCounter);
+  const [field, time] = continueGame(FieldContainer, MovesCounter, TimeCounter);
+  GameField = field;
+  Time = time;
 });
 SaveBtn.addEventListener('click', () => {
   saveGame(GameField, Time);

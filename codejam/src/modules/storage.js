@@ -33,13 +33,14 @@ export function continueGame(fieldContainer, movesCount, TimeContainer) {
 
     const GameField = new Field(fieldSize);
     GameField.moves = moves;
+    GameField.tiles = tiles;
+    GameField.successCombination = winCombination;
     const Counter = GameField.createMovesCounter();
     movesCount.innerHTML = '';
     movesCount.append(Counter);
-    GameField.tiles = tiles;
-    GameField.successCombination = winCombination;
     GameField.renderField(fieldContainer);
     const Time = createNewTimer(minutes, seconds, TimeContainer);
     Time.startTimer();
+    return [GameField, Time];
   }
 }
