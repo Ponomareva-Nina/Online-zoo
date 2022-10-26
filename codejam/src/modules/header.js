@@ -1,6 +1,6 @@
-const audio = require('../assets/audio/click.mp3')
-const myAudio = new Audio(audio);
+const audio = require('../assets/audio/click.mp3');
 
+const myAudio = new Audio(audio);
 const SoundBtn = document.createElement('button');
 
 export function createHeader() {
@@ -15,11 +15,10 @@ export function createHeader() {
 
   SoundBtn.addEventListener('click', () => {
     SoundBtn.classList.toggle('audio_disabled');
-  })
+  });
   return Header;
 }
 
 export function playAudio() {
-  if (!SoundBtn.classList.contains('audio_disabled'))
-  myAudio.play();
+  if (!SoundBtn.classList.contains('audio_disabled')) { myAudio.play(); }
 }

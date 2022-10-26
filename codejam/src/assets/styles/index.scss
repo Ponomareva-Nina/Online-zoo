@@ -9,6 +9,7 @@ $field-corder-color:  #777cd3;
 $hover-color: #fdac31;
 $accent-color: #fdac31;
 $tile-bg-color: #ffdd93;
+$popup-bg-color: rgba(57, 54, 58, 0.7);
 $maxTabletSize: 680px;
 
 @mixin font-tile {
@@ -105,6 +106,10 @@ main {
     cursor: pointer;
     background-color: $hover-color;
   }
+}
+
+.time-container {
+  display: flex;
 }
 
 .controls {
@@ -224,6 +229,23 @@ main {
 .audio_disabled {
   background: linear-gradient(-45deg, transparent 0%,  transparent 51%, $accent-color 52%, $accent-color 55%, transparent 56%, transparent 100%), url('../images/volume.png');
   background-size: contain;
+}
+
+.popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $popup-bg-color;
+  color: white;
+  @include font-title();
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 @media screen and (max-width: $maxTabletSize) {
