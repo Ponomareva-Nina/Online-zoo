@@ -8,8 +8,20 @@ export class Results {
 
   addResult(size, moves, time) {
     const NewResult = new Result(size, moves, time);
-    this.topResults.push(NewResult);
+    if (this.topResults.length < 10) {
+      this.topResults.push(NewResult);
+      this.sortResults();
+    } else {
+      let lastResult = this.topResults[this.topResults.length - 1];
+      if (NewResult.moves < lastResult.moves) {
+        lastResult = NewResult;
+      }
+    }
     this.saveResultsToLocalStorage();
+  }
+
+  sortResults() {
+    this.topResults.sort((a, b) => a.moves - b.moves);
   }
 
   saveResultsToLocalStorage() {

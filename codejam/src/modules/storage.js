@@ -19,7 +19,7 @@ export function saveGame(field, time) {
 }
 
 export function continueGame(fieldContainer, movesCount, TimeContainer) {
-  if (localStorage.getItem('currentTilesPosition') == null) {
+  if (localStorage.getItem('currentTilesPosition') == null || Number(localStorage.getItem('seconds')) === 0) {
     alert('There is no saved game!');
   } else {
     const tilesArr = localStorage.getItem('currentTilesPosition');

@@ -83,7 +83,7 @@ function startGame(size) {
   GameField.renderField(FieldContainer);
   Time = createNewTimer(0, 0, TimeCounter);
   Time.startTimer();
-
+  FieldContainer.addEventListener('click', checkIfSolved);
   window.addEventListener('resize', () => {
     GameField.renderField(FieldContainer);
   });
