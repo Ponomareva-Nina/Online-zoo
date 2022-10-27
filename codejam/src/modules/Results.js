@@ -10,14 +10,13 @@ export class Results {
     const NewResult = new Result(size, moves, time);
     if (this.topResults.length < 10) {
       this.topResults.push(NewResult);
-      this.sortResults();
     } else {
-      let lastResult = this.topResults[this.topResults.length - 1];
+      const lastResult = this.topResults[9];
       if (NewResult.moves < lastResult.moves) {
-        lastResult = NewResult;
+        this.topResults[9] = NewResult;
       }
-      this.sortResults();
     }
+    this.sortResults();
     this.saveResultsToLocalStorage();
   }
 
