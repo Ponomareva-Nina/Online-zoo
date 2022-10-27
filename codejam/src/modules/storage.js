@@ -8,7 +8,7 @@ export function saveGame(field, time) {
   const size = field.getFieldSize();
   const min = time.getMinutes();
   const sec = time.getSeconds();
-  const winCombination = field.successCombination;
+  const winCombination = JSON.stringify(field.successCombination);
 
   localStorage.setItem('currentTilesPosition', tilesArr);
   localStorage.setItem('moves', moves);
@@ -28,7 +28,8 @@ export function continueGame(fieldContainer, movesCount, TimeContainer) {
     const fieldSize = localStorage.getItem('fieldSize');
     const minutes = localStorage.getItem('minutes');
     const seconds = localStorage.getItem('seconds');
-    const winCombination = localStorage.getItem('winCombination');
+    const win = localStorage.getItem('winCombination');
+    const winCombination = JSON.parse(win);
     fieldContainer.innerHTML = '';
 
     const GameField = new Field(fieldSize);

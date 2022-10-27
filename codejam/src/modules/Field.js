@@ -145,7 +145,7 @@ export default class Field {
   isSolved() {
     let rightTiles = 0;
     this.tiles.forEach((tile, index) => {
-      if (tile.value === this.successCombination[index]) {
+      if (tile.value === Number(this.successCombination[index])) {
         rightTiles++;
       }
     });

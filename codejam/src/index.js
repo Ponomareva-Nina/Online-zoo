@@ -51,19 +51,22 @@ const [Table, TBody] = createResultsTable();
 Main.append(Table);
 
 StartBtn.addEventListener('click', () => startGame(checkedSizeBtn.value));
+
 ContinueBtn.addEventListener('click', () => {
   const [field, time] = continueGame(FieldContainer, MovesCounter, TimeCounter);
   GameField = field;
   Time = time;
+  FieldContainer.addEventListener('click', checkIfSolved);
 });
+
 SaveBtn.addEventListener('click', () => {
   saveGame(GameField, Time);
 });
+
 ResultsBtn.addEventListener('click', () => {
   UserResults.renderResults(TBody);
   Table.classList.add('open');
 });
-FieldContainer.addEventListener('click', checkIfSolved);
 
 // === FUNCTIONS ===
 function changeSize(btn) {
@@ -95,7 +98,6 @@ function checkIfSolved() {
     const time = Time.getTime();
     endGame();
     createEndGameMessage(count, time, FieldContainer);
-    FieldContainer.removeEventListener('click', checkIfSolved);
   }
 }
 
@@ -105,4 +107,5 @@ function endGame() {
   const moves = GameField.getCount();
   const size = `${GameField.getFieldSize()}&times;${GameField.getFieldSize()}`;
   UserResults.addResult(size, moves, time);
+  FieldContainer.removeEventListener('click', checkIfSolved);
 }

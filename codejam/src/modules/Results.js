@@ -16,6 +16,7 @@ export class Results {
       if (NewResult.moves < lastResult.moves) {
         lastResult = NewResult;
       }
+      this.sortResults();
     }
     this.saveResultsToLocalStorage();
   }
