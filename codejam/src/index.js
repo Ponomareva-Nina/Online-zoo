@@ -48,7 +48,6 @@ let GameField = new Field(checkedSizeBtn.value);
 const UserResults = new Results();
 UserResults.getResultsFromLocalStorage();
 const [Table, TBody] = createResultsTable();
-UserResults.renderResults(TBody);
 Main.append(Table);
 
 StartBtn.addEventListener('click', () => startGame(checkedSizeBtn.value));
@@ -61,6 +60,7 @@ SaveBtn.addEventListener('click', () => {
   saveGame(GameField, Time);
 });
 ResultsBtn.addEventListener('click', () => {
+  UserResults.renderResults(TBody);
   Table.classList.add('open');
 });
 FieldContainer.addEventListener('click', checkIfSolved);

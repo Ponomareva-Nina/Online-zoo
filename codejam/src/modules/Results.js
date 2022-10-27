@@ -55,6 +55,7 @@ export function createResultsTable() {
   const TBody = createElem('ul', 'results-list');
   Table.append(closeBtn, Header, THead, TBody);
   closeBtn.addEventListener('click', () => {
+    TBody.innerHTML = '';
     Table.classList.remove('open');
   });
   return [Table, TBody];
