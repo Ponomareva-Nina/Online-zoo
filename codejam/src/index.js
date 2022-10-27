@@ -5,6 +5,7 @@ import createNewTimer from './modules/Timer';
 import Field from './modules/Field';
 import { createHeader } from './modules/header';
 import { continueGame, saveGame } from './modules/storage';
+import { Results, createResultsTable } from './modules/Results';
 
 const Main = createElem('main', 'main');
 const FieldContainer = createElem('div', 'field-container');
@@ -40,10 +41,16 @@ let Time = createNewTimer(0, 0, TimeCounter);
 const MovesCounter = createElem('div', '', 'Moves:&nbsp;0');
 StatusPanel.append(MovesCounter, TimeCounter);
 
-// === APPEND ELEMENTS AND ADD LISTENERS ===
+// === CREATE PAGE AND ADD LISTENERS ===
 Main.append(Header, Controls, StatusPanel, FieldContainer, SizePanel);
 document.body.append(Main);
 let GameField = new Field(checkedSizeBtn.value);
+const UserResults = new Results();
+UserResults.getResultsFromLocalStorage();
+const [Table, TBody] = createResultsTable();
+UserResults.renderResults(TBody);
+Main.append(Table);
+
 StartBtn.addEventListener('click', () => startGame(checkedSizeBtn.value));
 ContinueBtn.addEventListener('click', () => {
   const [field, time] = continueGame(FieldContainer, MovesCounter, TimeCounter);
@@ -52,6 +59,9 @@ ContinueBtn.addEventListener('click', () => {
 });
 SaveBtn.addEventListener('click', () => {
   saveGame(GameField, Time);
+});
+ResultsBtn.addEventListener('click', () => {
+  Table.classList.add('open');
 });
 FieldContainer.addEventListener('click', checkIfSolved);
 
@@ -91,4 +101,8 @@ function checkIfSolved() {
 
 function endGame() {
   Time.stopTimer();
+  const time = Time.getTime();
+  const moves = GameField.getCount();
+  const size = `${GameField.getFieldSize()}&times;${GameField.getFieldSize()}`;
+  UserResults.addResult(size, moves, time);
 }

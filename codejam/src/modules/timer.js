@@ -58,7 +58,11 @@ class Timer {
   }
 
   getTime() {
-    return `${this.minutes}:${this.seconds}`;
+    let minutes = this.getMinutes();
+    if (minutes <= 9) { minutes = `0${minutes}`; }
+    let seconds = this.getSeconds();
+    if (seconds <= 9) { seconds = `0${seconds}`; }
+    return `${minutes}:${seconds}`;
   }
 
   getMinutes() {

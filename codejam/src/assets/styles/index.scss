@@ -5,7 +5,7 @@ $font-color-secondary: #343188;
 $bg-main: #3a373b;
 $bg-btn: #ffdd93;
 $bg-button-active: #b2b5f5;
-$field-corder-color:  #777cd3;
+$field-border-color:  #777cd3;
 $hover-color: #fdac31;
 $accent-color: #fdac31;
 $tile-bg-color: #ffdd93;
@@ -83,6 +83,7 @@ ul, ol {
 }
 
 main {
+  position: relative;
   max-width: 600px;
   margin: 0 auto;
   padding: 10px;
@@ -142,7 +143,7 @@ main {
   width: 80%;
   margin: 0 auto;
   position: relative;
-  border: 10px solid $field-corder-color;
+  border: 10px solid $field-border-color;
   border-radius: 10px;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -247,6 +248,86 @@ main {
   box-sizing: border-box;
   text-align: center;
 }
+.results-table {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: $bg-main;
+  top: 10px;
+  left: 0;
+  @include font-main();
+  color: $font-color-main;
+  padding: 15px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transform: translateY(-200%);
+  opacity: 0;
+  transition: all .5s ease;
+}
+.table-title {
+  align-self: center;
+  @include font-title();
+  color: $accent-color;
+}
+.table-head {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  column-gap: 15px;
+  padding-left: 10px;
+  color: $accent-color;
+  font-weight: 700;
+  border-bottom: 2px solid $accent-color;
+}
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.result {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  grid-auto-flow: row;
+  column-gap: 15px;
+  padding-left: 10px;
+  border-bottom: 2px solid $field-border-color;
+}
+.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+	height: 24px;
+  background: none;
+  border: none;
+	cursor: pointer;
+
+  &::before,
+  &::after {
+	  content: '';
+	  position: absolute;
+	  top: 10px;
+	  display: block;
+	  width: 24px;
+	  height: 3px;
+	  background: $accent-color;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
 
 @media screen and (max-width: $maxTabletSize) {
   .field-container {
@@ -265,5 +346,11 @@ main {
   }
   .header-container h1 {
     font-size: 22px;
+  }
+
+  @media screen and (max-width: 540px){
+    .results-table {
+      font-size: 13px;
+    }
   }
 }
