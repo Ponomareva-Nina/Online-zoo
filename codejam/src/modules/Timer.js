@@ -74,8 +74,8 @@ class Timer {
   }
 }
 
-export default function createNewTimer(min, sec, timeContainer) {
-  const Time = new Timer(min, sec);
+export default function createNewTimer(minutes, seconds, timeContainer) {
+  const Time = new Timer(minutes, seconds);
   timeContainer.innerHTML = 'Time:&nbsp;';
   const SecCount = Time.createSecContainer();
   const MinCount = Time.createMinContainer();
