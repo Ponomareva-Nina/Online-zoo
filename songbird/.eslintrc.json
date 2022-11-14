@@ -1,0 +1,21 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["eslint:recommended", "airbnb", "airbnb-base"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+       "no-unused-vars": "warn",
+       "no-unused-expressions": "warn",
+       "no-plusplus": "off",
+       "no-param-reassign": "off",
+       "consistent-return": "warn",
+       "max-len": "off",
+       "no-use-before-define": "warn",
+       "no-else-return": "warn"
+    }
+}
