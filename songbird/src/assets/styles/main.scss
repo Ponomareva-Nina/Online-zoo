@@ -17,6 +17,7 @@ $color-accept: #4BEA6E;
   font-size: 18px;
   color: $font-color-light;
 }
+
 @mixin font-logo {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -84,9 +85,10 @@ a {
   display: flex;
   gap: 10px;
   align-items: center;
+  text-shadow: -2px 1px 0px #ff8000;
 
   img {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -98,11 +100,14 @@ a {
 }
 
 .main {
+  flex: 1 0 auto;
+}
+
+.start-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  flex: 1 0 auto;
 }
 
 .intro-title {
@@ -112,6 +117,7 @@ a {
 }
 
 .btn {
+  @include font-main();
   width: 120px;
   height: 35px;
   box-sizing: border-box;
@@ -199,7 +205,9 @@ a {
   justify-content: center;
   align-items: center;
   color: $font-color-dark;
+  font-size: 16px;
 }
+
 .github-link {
   display: flex;
   align-items: center;
