@@ -181,10 +181,11 @@ a {
   max-width: 950px;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 3rem 50px 0px;
+  padding: 3rem 50px 5px;
   display: flex;
   gap: 20px;
   justify-content: space-between;
+  align-items: center;
   background-image: url('../images/bg-footer.png');
   background-repeat: no-repeat;
 
@@ -198,4 +199,13 @@ a {
   justify-content: center;
   align-items: center;
   color: $font-color-dark;
+}
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.active-link {
+  border-bottom: 1px solid $color-accent;
 }
