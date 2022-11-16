@@ -23,5 +23,5 @@ export default function createStartPage() {
   }
 
   container.append(title, btn, birdsList);
-  return container;
+  return [btn, container];
 }
