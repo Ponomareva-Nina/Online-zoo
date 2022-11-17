@@ -1,53 +1,4 @@
-$font-color-light: #FFFFFF;
-$font-color-dark: #32404F;
-$color-secondary: #FFBA76;
-$color-accent: #FF8000;
-$bg-color: #2A2B2D;
-$block-bg-color: rgba(0, 0, 0, 0.25);
-$color-disabled: #909090;
-$color-error: #FF4343;
-$color-accept: #4BEA6E;
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
-
-@mixin font-main {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 18px;
-  color: $font-color-light;
-}
-
-@mixin font-logo {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 22px;
-  line-height: 130%;
-  color: $font-color-dark;
-}
-
-body,
-ul,
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  &:hover {
-    cursor: pointer;
-  }
-}
+@import './common.scss';
 
 #root {
   background-color: $bg-color;
@@ -85,7 +36,7 @@ a {
   display: flex;
   gap: 10px;
   align-items: center;
-  text-shadow: -2px 1px 0px #ff8000;
+  text-shadow: -2px 1px 0px $color-accent;
 
   img {
     margin-bottom: 1rem;
@@ -116,26 +67,6 @@ a {
   line-height: 140%;
 }
 
-.btn {
-  @include font-main();
-  width: 120px;
-  height: 35px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $color-secondary;
-  color: $bg-color;
-  font-weight: 700;
-  border-radius: 5px;
-  border: 2px solid $color-accent;
-  transition: all .2s ease;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .birds-intro {
   width: 100%;
   display: flex;
@@ -159,15 +90,6 @@ a {
 
 .start-game-btn {
   animation: scale 1s infinite;
-
-  &:hover {
-    animation: none;
-    box-shadow: 0px 0px 5px $color-accent;
-  }
-
-  &:active {
-    box-shadow: inset 0px 0px 5px $color-accent;
-  }
 }
 
 @keyframes scale {
@@ -215,5 +137,6 @@ a {
 }
 
 .active-link {
+  transition: all .5s ease-in-out;
   border-bottom: 1px solid $color-accent;
 }
