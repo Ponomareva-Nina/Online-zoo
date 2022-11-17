@@ -4,7 +4,8 @@ const birds = [
   { src: './assets/images/vulture.png', text: 'hiss-hiss' },
   { src: './assets/images/owl.png', text: 'whoo-whoo' },
   { src: './assets/images/sparrow.png', text: 'tweet' },
-  { src: './assets/images/heron.png', text: 'ro-ro-ro' }];
+  { src: './assets/images/heron.png', text: 'ro-ro-ro' },
+];
 
 export default function createStartPage() {
   const container = createElem('div', 'start-page');
