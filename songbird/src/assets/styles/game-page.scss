@@ -1,0 +1,100 @@
+@import './common.scss';
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.score {
+  align-self: flex-end;
+}
+
+.categories {
+ display: flex;
+ flex-wrap: wrap;
+ column-gap: 1rem;
+ justify-content: space-between;
+ align-items: center;
+ border-top: 1px solid $color-secondary;
+ border-bottom: 1px solid $color-secondary;
+}
+
+.category {
+  padding: 5px;
+}
+
+.category_active {
+  color: $color-accent;
+  font-weight: 500;
+}
+
+.question,
+.answers__list,
+.answers__bird-info {
+  background-color: $block-bg-color;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.question {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 1rem;
+}
+
+.question__bird-img {
+  border-radius: 10px;
+  grid-row: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+
+  & img {
+    border-radius: 10px;
+    width: 100%;
+  }
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 1rem;
+}
+
+.answers__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer {
+  background-color: $bg-color;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: 1px solid $color-secondary;
+}
+
+.circle_correct {
+  border: 1px solid $color-accept;
+  background-color: $color-accept;
+}
+
+.circle_error {
+  border: 1px solid $color-error;
+  background-color: $color-error;
+}
+
+.btn-next {
+  align-self: flex-end;
+}
