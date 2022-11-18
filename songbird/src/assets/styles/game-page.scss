@@ -76,23 +76,28 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  & .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 1px solid $color-secondary;
+  }
+
 }
 
-.circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-  border: 1px solid $color-secondary;
+.answer_correct {
+  & .circle {
+    border: 1px solid $color-accept;
+    background-color: $color-accept;
+  }
 }
 
-.circle_correct {
-  border: 1px solid $color-accept;
-  background-color: $color-accept;
-}
-
-.circle_error {
-  border: 1px solid $color-error;
-  background-color: $color-error;
+.answer_wrong {
+  & .circle {
+    border: 1px solid $color-error;
+    background-color: $color-error;
+  }
 }
 
 .btn-next {
