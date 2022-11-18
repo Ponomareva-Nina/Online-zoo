@@ -5,11 +5,11 @@ export default class GameView {
   constructor() {
     this.controller = new GameController(this);
     this.scoreContainer = createElem('div', 'score', 'Счёт: 0');
+    this.birdName = createElem('div', 'question__bird-name', '******');
+    this.birdImgContainer = createElem('div', 'question__bird-img');
+    this.answersContainer = createElem('ul', 'answers__list');
     this.nextBtn = createElem('button', 'btn btn-next btn_disabled', 'Далее');
-    this.birdName = '******';
-    this.birdImg = './assets/images/question-bird.png';
-    this.currentBirdCard;
-    this.currentCategory;
+    this.gameContainer = createElem('section', 'game wrapper');
   }
 
   updateScore(number) {
@@ -17,75 +17,77 @@ export default class GameView {
   }
 
   disableNextBtn() {
-    this.nextBtn.classListAdd('btn_disabled');
+    this.nextBtn.classList.add('btn_disabled');
   }
 
   enableNextBtn() {
-    this.nextBtn.classListRemove('btn_disabled');
+    this.nextBtn.classList.remove('btn_disabled');
   }
-
-
-
-  // Это точно относится к вью:
 
   createPlayer() {
     const playerContainer = createElem('div', 'question__player');
     return playerContainer;
   }
 
-  checkSuccess(answer) {
-    answer.classList.add('answer_correct');
-  }
-
-  checkError(answer) {
-    answer.classList.add('answer_wrong');
-  }
-
   createCategories() {
     const categoriesList = createElem('ul', 'categories');
     const categories = this.controller.getCategories();
-    categories.forEach((category) => {
-      const li = createElem('li', 'category', category);
+    const activeNum = this.controller.getCurrentCategoryNum();
+    for (let i = 0; i < categories.length; i++) {
+      const li = createElem('li', 'category', categories[i]);
+      if (i === activeNum) {
+        li.classList.add('category_active');
+      }
       categoriesList.append(li);
-    });
+    }
     return categoriesList;
   }
 
-  createQuestionContainer() {
-    const questionContainer = createElem('div', 'question');
-    const birdImgContainer = createElem('div', 'question__bird-img');
-    const birdImg = createElem('img');
-    birdImg.setAttribute('alt', '');
-    birdImg.setAttribute('src', this.birdImg);
-    birdImgContainer.append(birdImg);
-    const birdName = createElem('div', 'question__bird-name', this.birdName);
-
-    const player = this.createPlayer();
-    questionContainer.append(birdImgContainer, birdName, player);
-    return questionContainer;
-  }
-
-  createGamePage() {
-    const gameContainer = createElem('section', 'game wrapper');
-    const categories = this.createCategories();
-    const question = this.createQuestionContainer();
-    const answersSection = createElem('div', 'answers');
-    const variants = createElem('ul', 'answers__list');
+  createAnswers() {
     const answersArr = this.controller.getAnswers();
     answersArr.forEach((el) => {
       const answer = createElem('li', 'answer', el);
       const circle = createElem('span', 'circle');
       answer.prepend(circle);
-      variants.append(answer);
+      this.answersContainer.append(answer);
       answer.onclick = () => {
         this.controller.checkAnswer(answer);
       };
     });
+  }
 
+  updateInfo() {
+    this.gameContainer.innerHTML = '';
+    this.answersContainer.innerHTML = '';
+    this.birdImgContainer.innerHTML = '';
+    this.birdName.innerHTML = '******';
+    const categories = this.createCategories();
+    const topSection = createElem('div', 'question');
+    const birdImg = createElem('img');
+    birdImg.setAttribute('alt', '');
+    birdImg.setAttribute('src', './assets/images/question-bird.png');
+    this.birdImgContainer.append(birdImg);
+
+    const player = this.createPlayer();
+
+    topSection.append(this.birdImgContainer, this.birdName, player);
+
+    const answersSection = createElem('div', 'answers');
+    this.createAnswers();
     const birdCardContainer = createElem('div', 'answers__bird-info');
-    answersSection.append(variants, birdCardContainer);
-    gameContainer.append(this.scoreContainer, categories, question, answersSection, this.nextBtn);
+    answersSection.append(this.answersContainer, birdCardContainer);
 
-    return gameContainer;
+    this.nextBtn.onclick = () => {
+      this.controller.toNextQuestion();
+      this.disableNextBtn();
+      this.updateInfo();
+    };
+
+    this.gameContainer.append(this.scoreContainer, categories, topSection, answersSection, this.nextBtn);
+  }
+
+  createGamePage() {
+    this.updateInfo();
+    return this.gameContainer;
   }
 }

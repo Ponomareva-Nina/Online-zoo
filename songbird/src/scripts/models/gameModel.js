@@ -42,7 +42,10 @@ export default class GameModel {
     this.attempt = 0;
   }
 
-  increaseScore(number) {}
-
-
+  toNextQuestion() {
+    this.currentQuestionNum += 1;
+    this.currentCategory += 1;
+    this.correctAnswer = this.chooseRandomAnswer();
+    this.isSolved = false;
+  }
 }

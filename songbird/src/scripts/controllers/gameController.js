@@ -10,6 +10,10 @@ export default class GameController {
     return this.model.categories;
   }
 
+  getCurrentCategoryNum() {
+    return this.model.currentCategory;
+  }
+
   getAnswers() {
     return this.model.getCurrentAnswers();
   }
@@ -17,15 +21,19 @@ export default class GameController {
   checkAnswer(answer) {
     if (answer.innerText === this.model.correctAnswer) {
       if (!this.model.isSolved) {
+        answer.classList.add('answer_correct');
         this.model.solveQuestion();
-        this.view.checkSuccess(answer);
         this.view.updateScore(this.model.getScore());
+        this.view.enableNextBtn();
+        this.view.birdName.innerText = this.model.correctAnswer;
       }
-    } else {
-      if (!this.model.isSolved) {
-        this.model.addAttempt();
-        this.view.checkError(answer);
-      }
+    } else if (!this.model.isSolved) {
+      answer.classList.add('answer_wrong');
+      this.model.addAttempt();
     }
+  }
+
+  toNextQuestion() {
+    this.model.toNextQuestion();
   }
 }
