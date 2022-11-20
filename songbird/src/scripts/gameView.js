@@ -1,13 +1,18 @@
-import createElem from '../utils/create-element';
-import GameController from '../controllers/gameController';
+import createElem from './utils/create-element';
+import GameController from './gameController';
 
 export default class GameView {
   constructor() {
     this.controller = new GameController(this);
     this.scoreContainer = createElem('div', 'score', 'Счёт: 0');
+    this.categoriesList = createElem('ul', 'categories');
+    this.questionSection = createElem('div', 'question');
     this.birdName = createElem('div', 'question__bird-name', '******');
     this.birdImgContainer = createElem('div', 'question__bird-img');
+    this.playerContainer = createElem('div', 'player-container');
+    this.answersSection = createElem('div', 'answers');
     this.answersContainer = createElem('ul', 'answers__list');
+    this.birdCardContainer = createElem('div', 'answers__bird-info');
     this.nextBtn = createElem('button', 'btn btn-next btn_disabled', 'Далее');
     this.gameContainer = createElem('section', 'game wrapper');
   }
@@ -24,23 +29,17 @@ export default class GameView {
     this.nextBtn.classList.remove('btn_disabled');
   }
 
-  createPlayer() {
-    const playerContainer = createElem('div', 'question__player');
-    return playerContainer;
-  }
-
   createCategories() {
-    const categoriesList = createElem('ul', 'categories');
     const categories = this.controller.getCategories();
     const activeNum = this.controller.getCurrentCategoryNum();
     for (let i = 0; i < categories.length; i++) {
       const li = createElem('li', 'category', categories[i]);
       if (i === activeNum) {
-        li.classList.add('category_active');
+        this.activeCategory = li;
+        this.activeCategory.classList.add('category_active');
       }
-      categoriesList.append(li);
+      this.categoriesList.append(li);
     }
-    return categoriesList;
   }
 
   createAnswers() {
@@ -56,26 +55,28 @@ export default class GameView {
     });
   }
 
-  updateInfo() {
-    this.gameContainer.innerHTML = '';
-    this.answersContainer.innerHTML = '';
+  setBirdImg(imgSrc) {
     this.birdImgContainer.innerHTML = '';
-    this.birdName.innerHTML = '******';
-    const categories = this.createCategories();
-    const topSection = createElem('div', 'question');
     const birdImg = createElem('img');
     birdImg.setAttribute('alt', '');
-    birdImg.setAttribute('src', './assets/images/question-bird.png');
+    birdImg.setAttribute('src', imgSrc);
     this.birdImgContainer.append(birdImg);
+  }
 
-    const player = this.createPlayer();
-
-    topSection.append(this.birdImgContainer, this.birdName, player);
-
-    const answersSection = createElem('div', 'answers');
+  updateInfo() {
+    this.categoriesList.innerHTML = '';
+    this.createCategories();
+    this.answersContainer.innerHTML = '';
     this.createAnswers();
-    const birdCardContainer = createElem('div', 'answers__bird-info');
-    answersSection.append(this.answersContainer, birdCardContainer);
+    this.setBirdImg('./assets/images/question-bird.png');
+    this.birdName.innerHTML = '******';
+    this.birdCardContainer.innerHTML = 'Прослушайте запись и выберите правильный ответ';
+  }
+
+  createGamePage() {
+    this.updateInfo();
+    this.questionSection.append(this.birdImgContainer, this.birdName, this.playerContainer);
+    this.answersSection.append(this.answersContainer, this.birdCardContainer);
 
     this.nextBtn.onclick = () => {
       this.controller.toNextQuestion();
@@ -83,11 +84,7 @@ export default class GameView {
       this.updateInfo();
     };
 
-    this.gameContainer.append(this.scoreContainer, categories, topSection, answersSection, this.nextBtn);
-  }
-
-  createGamePage() {
-    this.updateInfo();
+    this.gameContainer.append(this.scoreContainer, this.categoriesList, this.questionSection, this.answersSection, this.nextBtn);
     return this.gameContainer;
   }
 }

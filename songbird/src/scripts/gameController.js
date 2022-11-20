@@ -1,4 +1,4 @@
-import GameModel from '../models/gameModel';
+import GameModel from './gameModel';
 
 export default class GameController {
   constructor(view) {
@@ -18,14 +18,19 @@ export default class GameController {
     return this.model.getCurrentAnswers();
   }
 
+  getCorrectAnswer() {
+    return this.model.correctAnswer;
+  }
+
   checkAnswer(answer) {
-    if (answer.innerText === this.model.correctAnswer) {
+    if (answer.innerText === this.model.correctAnswer.name) {
       if (!this.model.isSolved) {
         answer.classList.add('answer_correct');
         this.model.solveQuestion();
         this.view.updateScore(this.model.getScore());
         this.view.enableNextBtn();
-        this.view.birdName.innerText = this.model.correctAnswer;
+        this.view.birdName.innerText = this.model.correctAnswer.name;
+        this.view.setBirdImg(this.model.correctAnswer.image);
       }
     } else if (!this.model.isSolved) {
       answer.classList.add('answer_wrong');

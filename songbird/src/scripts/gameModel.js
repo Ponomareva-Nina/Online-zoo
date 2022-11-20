@@ -1,4 +1,4 @@
-import birdsDataRu from '../data/birds-ru';
+import birdsDataRu from './data/birds-ru';
 
 export default class GameModel {
   constructor(controller) {
@@ -20,7 +20,7 @@ export default class GameModel {
   chooseRandomAnswer() {
     const randomId = Math.floor(Math.random() * 6) + 1;
     const answer = this.questions[this.currentQuestionNum].find((el) => el.id === randomId);
-    return answer.name;
+    return answer;
   }
 
   getCurrentAnswers() {
