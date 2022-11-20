@@ -16,6 +16,7 @@ export default class AudioPlayer {
     this.isOn = true;
     if (this.audio) {
       this.audio.play();
+      this.showPauseBtn();
     }
   }
 
@@ -23,6 +24,7 @@ export default class AudioPlayer {
     this.isOn = false;
     if (this.audio) {
       this.audio.pause();
+      this.showPlayBtn();
     }
   }
 
@@ -40,10 +42,8 @@ export default class AudioPlayer {
     this.playBtn.addEventListener('click', () => {
       if (this.isOn) {
         this.pause();
-        this.showPlayBtn();
       } else {
         this.play();
-        this.showPauseBtn();
       }
     });
 

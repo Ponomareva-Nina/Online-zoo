@@ -29,6 +29,7 @@ export default class GameController {
   checkAnswer(answer) {
     if (answer.innerText === this.model.correctAnswer.name) {
       if (!this.model.isSolved) {
+        this.model.audioPlayer.pause();
         answer.classList.add('answer_correct');
         this.model.solveQuestion();
         this.view.updateScore(this.model.getScore());
@@ -43,6 +44,7 @@ export default class GameController {
   }
 
   toNextQuestion() {
+    this.model.audioPlayer.pause();
     this.model.toNextQuestion();
   }
 }
