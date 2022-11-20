@@ -22,6 +22,10 @@ export default class GameController {
     return this.model.correctAnswer;
   }
 
+  getPlayerView() {
+    return this.model.audioPlayer.createPlayer();
+  }
+
   checkAnswer(answer) {
     if (answer.innerText === this.model.correctAnswer.name) {
       if (!this.model.isSolved) {

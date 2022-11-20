@@ -1,0 +1,41 @@
+@import './common.scss';
+
+.player-container{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.player-btn {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  border: 2px solid $color-accent;
+  background-color: transparent;
+}
+
+.player-btn_play::after {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-left: 20px solid $color-secondary;
+  border-bottom: 10px solid transparent;
+}
+
+.player-btn_pause {
+  &::after {
+    position: absolute;
+    top: 10px;
+    left: 13px;
+    content: '';
+    width: 5px;
+    height: 20px;
+    border-left: 5px solid $color-secondary;
+    border-right: 5px solid $color-secondary;
+  }
+}

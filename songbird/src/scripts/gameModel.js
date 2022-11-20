@@ -1,3 +1,4 @@
+import AudioPlayer from './components/AudioPlayer';
 import birdsDataRu from './data/birds-ru';
 
 export default class GameModel {
@@ -11,6 +12,7 @@ export default class GameModel {
     this.currentCategory = 0;
     this.correctAnswer = this.chooseRandomAnswer();
     this.isSolved = false;
+    this.audioPlayer = new AudioPlayer(this.correctAnswer.audio);
   }
 
   getScore() {
@@ -46,6 +48,7 @@ export default class GameModel {
     this.currentQuestionNum += 1;
     this.currentCategory += 1;
     this.correctAnswer = this.chooseRandomAnswer();
+    this.audioPlayer.setSong(this.correctAnswer.audio);
     this.isSolved = false;
   }
 }

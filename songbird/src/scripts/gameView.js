@@ -9,7 +9,6 @@ export default class GameView {
     this.questionSection = createElem('div', 'question');
     this.birdName = createElem('div', 'question__bird-name', '******');
     this.birdImgContainer = createElem('div', 'question__bird-img');
-    this.playerContainer = createElem('div', 'player-container');
     this.answersSection = createElem('div', 'answers');
     this.answersContainer = createElem('ul', 'answers__list');
     this.birdCardContainer = createElem('div', 'answers__bird-info');
@@ -75,7 +74,8 @@ export default class GameView {
 
   createGamePage() {
     this.updateInfo();
-    this.questionSection.append(this.birdImgContainer, this.birdName, this.playerContainer);
+    const player = this.controller.getPlayerView();
+    this.questionSection.append(this.birdImgContainer, this.birdName, player);
     this.answersSection.append(this.answersContainer, this.birdCardContainer);
 
     this.nextBtn.onclick = () => {

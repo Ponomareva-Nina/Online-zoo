@@ -1,12 +1,13 @@
 /* eslint-disable no-use-before-define */
 import './assets/styles/main-page.scss';
 import './assets/styles/game-page.scss';
+import './assets/styles/player.scss';
 import Header from './scripts/components/header';
 import createFooter from './scripts/components/footer';
 import createStartPage from './scripts/components/start-page';
 import createElem from './scripts/utils/create-element';
 import { getHash, Router } from './scripts/router';
-import GameView from './scripts/views/gameView';
+import GameView from './scripts/gameView';
 
 const root = document.getElementById('root');
 const headerView = new Header();
