@@ -44,7 +44,7 @@ export default class GameController {
   }
 
   toNextQuestion() {
-    this.model.audioPlayer.pause();
+    this.model.audioPlayer.stop();
     this.model.toNextQuestion();
   }
 }
