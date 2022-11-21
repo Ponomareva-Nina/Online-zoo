@@ -53,6 +53,10 @@ const config = {
           filename: './assets/images/[file][ext]',
         },
       },
+      {
+        test: /\.mp3$/i,
+        loader: 'file-loader',
+      },
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
