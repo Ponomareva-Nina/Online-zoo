@@ -1,5 +1,6 @@
 import createElem from './utils/create-element';
 import GameController from './gameController';
+import BirdCard from './components/birdCard';
 
 export default class GameView {
   constructor() {
@@ -45,12 +46,17 @@ export default class GameView {
   createAnswers() {
     const answersArr = this.controller.getAnswers();
     answersArr.forEach((el) => {
-      const answer = createElem('li', 'answer', el);
+      const answer = createElem('li', 'answer', el.name);
       const circle = createElem('span', 'circle');
       answer.prepend(circle);
       this.answersContainer.append(answer);
+      const bird = new BirdCard(el);
+      const birdCard = bird.createCard();
+
       answer.onclick = () => {
         this.controller.checkAnswer(answer);
+        this.birdCardContainer.innerHTML = '';
+        this.birdCardContainer.append(birdCard);
       };
     });
   }

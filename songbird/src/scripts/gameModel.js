@@ -26,12 +26,7 @@ export default class GameModel {
   }
 
   getCurrentAnswers() {
-    const answers = this.questions[this.currentQuestionNum];
-    const names = [];
-    answers.forEach((el) => {
-      names.push(el.name);
-    });
-    return names;
+    return this.questions[this.currentQuestionNum];
   }
 
   addAttempt() {

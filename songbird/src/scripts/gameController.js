@@ -42,7 +42,7 @@ export default class GameController {
         this.view.birdName.innerText = this.model.correctAnswer.name;
         this.view.setBirdImg(this.model.correctAnswer.image);
       }
-    } else if (!this.model.isSolved) {
+    } else if (!this.model.isSolved && !answer.classList.contains('answer_wrong')) {
       this.wrongSound.play();
       answer.classList.add('answer_wrong');
       this.model.addAttempt();
