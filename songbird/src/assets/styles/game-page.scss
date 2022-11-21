@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
 }
 
 .score {
@@ -37,6 +38,10 @@
   padding: 10px;
 }
 
+.answers__bird-info {
+  text-align: center;
+}
+
 .question {
   display: grid;
   grid-template-columns: 1fr 2.5fr;
@@ -49,16 +54,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 250px;
-  min-height: 180px;
-  max-width: 250px;
-  max-height: 180px;
+  min-width: 200px;
+  min-height: 160px;
+  max-width: 200px;
+  max-height: 160px;
   overflow: hidden;
 
   & img {
     border-radius: 10px;
     width: 100%;
   }
+}
+
+.question__bird-name {
+  align-self: center;
+  font-size: 20px;
 }
 
 .answers {
@@ -80,6 +90,12 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  transition: all .5s ease;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-accent;
+  }
 
   & .circle {
     width: 20px;
@@ -106,4 +122,22 @@
 
 .btn-next {
   align-self: flex-end;
+}
+
+.end-game-msg {
+  @include font-logo();
+  color: $color-accept;
+  position: absolute;
+  background-color: $bg-color;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }

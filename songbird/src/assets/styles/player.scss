@@ -1,24 +1,33 @@
 @import './common.scss';
 
 .player-container{
+  width: 100%;
+  box-sizing: border-box;
+  align-self: start;
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  align-items: center;
+  padding-right: 10px;
 }
 
 .player-btn {
+  flex-shrink: 0;
   position: relative;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
   border: 2px solid $color-accent;
   background-color: transparent;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .player-btn_play::after {
   position: absolute;
-  top: 10px;
-  left: 14px;
+  top: 8px;
+  left: 12px;
   content: '';
   width: 0;
   height: 0;
@@ -30,12 +39,44 @@
 .player-btn_pause {
   &::after {
     position: absolute;
-    top: 10px;
-    left: 13px;
-    content: '';
+    top: 9px;
+    left: 12px;
+    content: "";
     width: 5px;
-    height: 20px;
-    border-left: 5px solid $color-secondary;
-    border-right: 5px solid $color-secondary;
+    height: 18px;
+    border-left: 4px solid $color-secondary;
+    border-right: 4px solid $color-secondary;
+  }
+}
+
+.progress-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 10px;
+  border: 2px solid $color-secondary;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.progress-bar {
+  position: relative;
+  width: 0;
+  height: 100%;
+  background-color: $color-secondary;
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: -5px;
+    right: -13px;
+    box-sizing: border-box;
+    width: 15px;
+    height: 15px;
+    background: #FFBA76;
+    border: 2px solid #FF8000;
+    border-radius: 100%;
   }
 }
