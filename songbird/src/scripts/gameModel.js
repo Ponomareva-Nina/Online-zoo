@@ -20,7 +20,7 @@ export default class GameModel {
   }
 
   chooseRandomAnswer() {
-    const randomId = Math.floor(Math.random() * 6) + 1;
+    const randomId = Math.floor(Math.random() * this.questions.length) + 1;
     const answer = this.questions[this.currentQuestionNum].find((el) => el.id === randomId);
     return answer;
   }
@@ -50,5 +50,15 @@ export default class GameModel {
     this.correctAnswer = this.chooseRandomAnswer();
     this.audioPlayer.setSong(this.correctAnswer.audio);
     this.isSolved = false;
+  }
+
+  endGame() {
+    this.score = 0;
+    this.attempt = 0;
+    this.currentQuestionNum = 0;
+    this.currentCategory = 0;
+    this.correctAnswer = this.chooseRandomAnswer();
+    this.isSolved = false;
+    this.audioPlayer = new AudioPlayer(this.correctAnswer.audio);
   }
 }

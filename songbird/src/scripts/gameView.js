@@ -14,6 +14,7 @@ export default class GameView {
     this.birdCardContainer = createElem('div', 'answers__bird-info');
     this.nextBtn = createElem('button', 'btn btn-next btn_disabled', 'Далее');
     this.gameContainer = createElem('section', 'game wrapper');
+    this.endMsgContainer = createElem('div', 'end-game-msg hidden', '');
   }
 
   updateScore(number) {
@@ -62,6 +63,17 @@ export default class GameView {
     this.birdImgContainer.append(birdImg);
   }
 
+  createEndGameMsg(score) {
+    const message = createElem('div', '', `Конец игры! Вы набрали ${score} баллов из 30!`);
+    this.endMsgContainer.innerHTML = '';
+    const playAgainBtn = createElem('button', 'btn start-game-btn', 'Играть');
+    playAgainBtn.addEventListener('click', () => {
+      this.endMsgContainer.classList.add('hidden');
+    });
+    this.endMsgContainer.append(message, playAgainBtn);
+    this.endMsgContainer.classList.remove('hidden');
+  }
+
   updateInfo() {
     this.categoriesList.innerHTML = '';
     this.createCategories();
@@ -84,7 +96,7 @@ export default class GameView {
       this.updateInfo();
     };
 
-    this.gameContainer.append(this.scoreContainer, this.categoriesList, this.questionSection, this.answersSection, this.nextBtn);
+    this.gameContainer.append(this.scoreContainer, this.categoriesList, this.questionSection, this.answersSection, this.nextBtn, this.endMsgContainer);
     return this.gameContainer;
   }
 }
