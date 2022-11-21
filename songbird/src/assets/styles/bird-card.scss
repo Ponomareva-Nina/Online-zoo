@@ -1,0 +1,37 @@
+@import './common.scss';
+
+.bird-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.bird-card__player-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bird-card__top-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.bird-card__name {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.bird-card__description {
+
+}
+
+.bird-card__img {
+  max-width: 50%;
+}
+
+.bird-card__species {
+
+}

@@ -12,15 +12,19 @@ export default class BirdCard {
 
   createCard() {
     const cardContainer = createElem('div', 'bird-card');
-    const topSection = createElem('div', 'top-section');
+    const topSection = createElem('div', 'bird-card__top-section');
+    const playerSection = createElem('div', 'bird-card__player-section');
     const birdName = createElem('div', 'bird-card__name', this.birdName);
-    const birdImg = createElem('img', 'bird-card__image');
+    const birdImgContainer = createElem('div', 'bird-img bird-card__img');
+    const birdImg = createElem('img');
+    birdImgContainer.append(birdImg);
     birdImg.setAttribute('alt', '');
     birdImg.setAttribute('src', this.image);
     const description = createElem('div', 'bird-card__description', this.description);
     const species = createElem('div', 'bird-card__species', this.species);
     const player = this.audio.createPlayer();
-    topSection.append(birdImg, birdName, species, player);
+    playerSection.append(birdName, species, player);
+    topSection.append(birdImgContainer, playerSection);
     cardContainer.append(topSection, description);
     return cardContainer;
   }
