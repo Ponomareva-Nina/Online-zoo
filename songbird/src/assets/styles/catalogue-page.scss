@@ -1,0 +1,48 @@
+@import './common.scss';
+
+.catalogue {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.category {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  .bird-card {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $block-bg-color;
+
+    .bird-card__top-section {
+      display: flex;
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    .bird-card__player-section {
+      gap: 10px;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    grid-template-columns: 1fr;
+
+    .bird-card__name {
+      font-size: 16px;
+    }
+
+    .category__name {
+      grid-column: span 1;
+    }
+  }
+}
+
+.category__name {
+  grid-column: span 2;
+  font-size: 25px;
+  text-align: center;
+  color: $color-accent;
+}
