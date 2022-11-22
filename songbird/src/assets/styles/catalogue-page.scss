@@ -6,7 +6,7 @@
   gap: 2rem;
 }
 
-.category {
+.catalogue__category {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -34,13 +34,13 @@
       font-size: 16px;
     }
 
-    .category__name {
+    .catalogue__category__name {
       grid-column: span 1;
     }
   }
 }
 
-.category__name {
+.catalogue__category__name {
   grid-column: span 2;
   font-size: 25px;
   text-align: center;

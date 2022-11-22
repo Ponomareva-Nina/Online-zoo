@@ -11,8 +11,8 @@ export default class BirdCatalogue {
 
   createCataloguePage() {
     this.categories.forEach((category, index) => {
-      const group = createElem('article', 'category');
-      const groupName = createElem('p', 'category__name', category);
+      const group = createElem('article', 'catalogue__category');
+      const groupName = createElem('p', 'catalogue__category__name', category);
       group.append(groupName);
       this.birds[index].forEach((bird) => {
         const birdCardObj = new BirdCard(bird);
