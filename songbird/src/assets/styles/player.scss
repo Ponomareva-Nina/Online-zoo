@@ -5,46 +5,18 @@
   box-sizing: border-box;
   align-self: start;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  gap: 10px;
+  column-gap: 10px;
   align-items: center;
   padding-right: 10px;
-
-  @media screen and (max-width: 600px) {
-    .player-btn {
-      width: 35px;
-      height: 35px;
-    }
-    .player-btn_play::after {
-      top: 7px;
-      left: 11px;
-      border-top: 8px solid transparent;
-      border-left: 15px solid $color-secondary;
-      border-bottom: 8px solid transparent;
-    }
-
-    .player-btn_pause {
-      &::after {
-        top: 8px;
-        left: 10px;
-        width: 5px;
-        height: 15px;
-        border-left: 3px solid $color-secondary;
-        border-right: 3px solid $color-secondary;
-      }
-    }
-    .progress-container {
-      height: 8px;
-      border: 1px solid $color-secondary;
-    }
-  }
 }
 
 .player-btn {
   flex-shrink: 0;
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 100%;
   border: 2px solid $color-accent;
   background-color: transparent;
@@ -55,26 +27,26 @@
 
 .player-btn_play::after {
   position: absolute;
-  top: 8px;
-  left: 12px;
+  top: 7px;
+  left: 11px;
+  border-top: 8px solid transparent;
+  border-left: 15px solid $color-secondary;
+  border-bottom: 8px solid transparent;
   content: '';
   width: 0;
   height: 0;
-  border-top: 10px solid transparent;
-  border-left: 20px solid $color-secondary;
-  border-bottom: 10px solid transparent;
 }
 
 .player-btn_pause {
   &::after {
     position: absolute;
-    top: 9px;
-    left: 12px;
     content: "";
+    top: 8px;
+    left: 10px;
     width: 5px;
-    height: 18px;
-    border-left: 4px solid $color-secondary;
-    border-right: 4px solid $color-secondary;
+    height: 15px;
+    border-left: 3px solid $color-secondary;
+    border-right: 3px solid $color-secondary;
   }
 }
 
@@ -82,8 +54,9 @@
   box-sizing: border-box;
   width: 100%;
   height: 10px;
-  border: 2px solid $color-secondary;
+  border: 1px solid $color-secondary;
   border-radius: 5px;
+  width: calc(100% - 45px);
 
   &:hover {
     cursor: pointer;
@@ -99,13 +72,82 @@
   &::after {
     position: absolute;
     content: '';
-    top: -5px;
+    top: -4px;
     right: -13px;
     box-sizing: border-box;
     width: 15px;
     height: 15px;
-    background: #FFBA76;
-    border: 2px solid #FF8000;
+    background: $color-secondary;
+    border: 2px solid $color-accent;
     border-radius: 100%;
   }
+}
+
+.volume-bar-container {
+  width: 100%;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.volume-bar {
+  box-sizing: border-box;
+  width: 120px;
+  height: 7px;
+  border: 1px solid $color-secondary;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input[type=range].volume-bar {
+  -webkit-appearance: none;
+  background: linear-gradient(90deg, $color-secondary 0%, $color-secondary 50%, transparent 50%, transparent 100% );
+}
+
+input[type=range].volume-bar:focus {
+  outline: none;
+}
+
+/*webkit*/
+input[type=range].volume-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: $color-accent;
+  border: none;
+}
+
+/*mozilla*/
+input[type=range].volume-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background: $color-accent;
+  border: none;
+  box-shadow: none;
+}
+
+input[type=range].volume-bar::-moz-range-track {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid $color-secondary;
+  border-radius: 5px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.volume-icon {
+  width: 30px;
+  height: 30px;
+  background-image: url('../images/volume.svg');
+  background-size: contain;
+}
+
+.mute-icon {
+  background-image: url('../images/mute.svg');
 }
