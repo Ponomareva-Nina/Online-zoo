@@ -6,9 +6,38 @@
   align-self: start;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 10px;
   align-items: center;
   padding-right: 10px;
+
+  @media screen and (max-width: 600px) {
+    .player-btn {
+      width: 35px;
+      height: 35px;
+    }
+    .player-btn_play::after {
+      top: 7px;
+      left: 11px;
+      border-top: 8px solid transparent;
+      border-left: 15px solid $color-secondary;
+      border-bottom: 8px solid transparent;
+    }
+
+    .player-btn_pause {
+      &::after {
+        top: 8px;
+        left: 10px;
+        width: 5px;
+        height: 15px;
+        border-left: 3px solid $color-secondary;
+        border-right: 3px solid $color-secondary;
+      }
+    }
+    .progress-container {
+      height: 8px;
+      border: 1px solid $color-secondary;
+    }
+  }
 }
 
 .player-btn {

@@ -15,14 +15,19 @@ $color-accept: #4BEA6E;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
+  line-height: 130%;
   color: $font-color-light;
+
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+  }
 }
 
 @mixin font-logo {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 22px;
+  font-size: 35px;
   line-height: 130%;
   color: $font-color-dark;
 }
@@ -85,3 +90,4 @@ a {
 .hidden {
   display: none;
 }
+

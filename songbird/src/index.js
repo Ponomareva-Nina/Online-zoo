@@ -2,6 +2,7 @@
 import './assets/styles/main-page.scss';
 import './assets/styles/game-page.scss';
 import './assets/styles/player.scss';
+import './assets/styles/bird-card.scss';
 import Header from './scripts/components/header';
 import createFooter from './scripts/components/footer';
 import createStartPage from './scripts/components/start-page';

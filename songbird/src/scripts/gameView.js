@@ -9,7 +9,7 @@ export default class GameView {
     this.categoriesList = createElem('ul', 'categories');
     this.questionSection = createElem('div', 'question');
     this.birdName = createElem('div', 'question__bird-name', '******');
-    this.birdImgContainer = createElem('div', 'question__bird-img');
+    this.birdImgContainer = createElem('div', 'bird-img');
     this.answersSection = createElem('div', 'answers');
     this.answersContainer = createElem('ul', 'answers__list');
     this.birdCardContainer = createElem('div', 'answers__bird-info');

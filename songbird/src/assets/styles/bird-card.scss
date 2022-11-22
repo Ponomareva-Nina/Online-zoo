@@ -12,26 +12,38 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media screen and (max-width: 600px) {
+    gap: 10px;
+  }
 }
 
 .bird-card__top-section {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
   gap: 1rem;
+
+  @media screen and (max-width: 490px) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
 }
 
 .bird-card__name {
   font-weight: 500;
   font-size: 20px;
-}
 
-.bird-card__description {
-
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+  }
 }
 
 .bird-card__img {
-  max-width: 50%;
+  max-width: 250px;
+  max-height: 175px;
+  margin: 0 auto;
 }
 
-.bird-card__species {
-
+.bird-card__description {
+  text-align: justify;
 }
