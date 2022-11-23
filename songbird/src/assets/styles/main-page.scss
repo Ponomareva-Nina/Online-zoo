@@ -19,6 +19,7 @@
 }
 
 .header {
+  position: relative;
   width: 100%;
   max-width: 950px;
   box-sizing: border-box;
@@ -39,29 +40,7 @@
   }
 
   @media screen and (max-width: 620px) {
-    background: none;
-    padding: 0px 10px 3rem;
-    gap: 10px;
-
-    .main-nav {
-      gap: 1rem;
-      padding: 0;
-      font-size: 14px;
-    }
-
-    .logo {
-      background-color: $color-secondary;
-      border-radius: 10px;
-      margin-top: 5px;
-      img {
-        width: 55px;
-        margin-bottom: 10px;
-        padding: 0 5px;
-      }
-      h1 {
-        display: none;
-      }
-    }
+    background-position: -85px -22px;
   }
 }
 
@@ -87,23 +66,76 @@
 
 }
 
-.main-nav {
-  display: flex;
-  height: 100%;
-  gap: 2rem;
-  align-items: center;
-  padding: 0 15px;
+.burger-btn {
+  background: linear-gradient(180deg, transparent 48%, #fff 48%, #fff 52%, transparent 52%);
+  padding: 15px 0;
+  height: 2px;
+  width: 25px;
+  border-radius: 2px;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  z-index: 2;
 
-
-  @media screen and (max-width: 700px) {
-    border-radius: 20px;
-    justify-content: center;
-    padding: 15px;
-    font-size: 16px;
+  &:hover {
+    cursor: pointer;
   }
-
+}
+.burger-btn::before,
+.burger-btn::after {
+  content: '';
+  position: absolute;
+  background-color: #fff;
+  height: 2px;
+  width: 25px;
+  transition: transform .5s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+.burger-btn::before {
+  margin-top: -6px;
+ }
+.burger-btn::after {
+  margin-top: 6px;
 }
 
+.main-nav {
+  position: absolute;
+  min-width: 180px;
+  top: -100vh;
+  right: 0;
+  transition: all .5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 3rem 2rem 3rem;
+  border: 1px solid $color-secondary;
+  border-radius: 10px;
+  background-color: $bg-color;
+  z-index: 1;
+
+  @media screen and (max-width: 700px) {
+    font-size: 16px;
+  }
+}
+
+.main-nav_opened {
+  top: 10px;
+
+  & ~ .burger-btn {
+    background: transparent;
+  }
+  & ~ .burger-btn::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+    background-color: $color-accent
+  }
+  & ~ .burger-btn::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+    background-color: $color-accent;
+  }
+}
 .main {
   flex: 1 0 auto;
 
@@ -240,4 +272,21 @@
 .active-link {
   transition: all .5s ease-in-out;
   border-bottom: 1px solid $color-accent;
+}
+
+.inactive {
+  overflow: hidden;
+  &::after{
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+  }
+  &:hover::after {
+    cursor: pointer;
+  }
 }
