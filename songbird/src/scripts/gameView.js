@@ -80,9 +80,10 @@ export default class GameView {
   }
 
   createEndGameMsg(score) {
-    const message = createElem('div', '', `Конец игры! Вы набрали ${score} баллов из 30!`);
+    const message = createElem('div', '');
+    message.textContent = `${this.langContent.endGameMsgFirstPart} ${score} ${this.langContent.endGameMsgSecondPart}`;
     this.endMsgContainer.innerHTML = '';
-    const playAgainBtn = createElem('button', 'btn start-game-btn', 'Играть');
+    const playAgainBtn = createElem('button', 'btn start-game-btn', `${this.langContent.mainPlayBtn}`);
     playAgainBtn.addEventListener('click', () => {
       this.endMsgContainer.classList.add('hidden');
     });

@@ -10,6 +10,8 @@ const langRu = {
   score: 'Счёт',
   gamePageListen: 'Прослушайте запись и выберите правильный ответ',
   nextBtn: 'Далее',
+  endGameMsgFirstPart: 'Конец игры! Вы набрали',
+  endGameMsgSecondPart: 'из 30 возможных баллов!',
 };
 
 export default langRu;
