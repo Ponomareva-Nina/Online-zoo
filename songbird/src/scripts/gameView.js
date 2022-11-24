@@ -66,11 +66,6 @@ export default class GameView {
       this.answersContainer.append(answer);
       const bird = new BirdCard(el);
       const birdCard = bird.createCard();
-      for (let i = 0; i < this.checkedAnswersIds.length; i++) {
-        if (this.checkedAnswersIds[i].id === el.id) {
-          answer.className = this.checkedAnswersIds[i].class;
-        }
-      }
 
       answer.onclick = () => {
         this.controller.checkAnswer(answer);
@@ -81,6 +76,12 @@ export default class GameView {
         });
         this.birdCardContainer.append(birdCard);
       };
+
+      for (let i = 0; i < this.checkedAnswersIds.length; i++) {
+        if (this.checkedAnswersIds[i].id === el.id) {
+          answer.className = this.checkedAnswersIds[i].class;
+        }
+      }
     });
   }
 
@@ -120,6 +121,8 @@ export default class GameView {
     this.endMsgContainer.innerHTML = '';
     const playAgainBtn = createElem('button', 'btn start-game-btn', `${this.langContent.mainPlayBtn}`);
     playAgainBtn.addEventListener('click', () => {
+      this.questionSection.innerHTML = '';
+      this.createGamePage();
       this.endMsgContainer.classList.add('hidden');
     });
     this.endMsgContainer.append(message, playAgainBtn);

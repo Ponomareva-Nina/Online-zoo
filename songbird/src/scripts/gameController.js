@@ -51,14 +51,15 @@ export default class GameController {
   }
 
   toNextQuestion() {
+    this.model.audioPlayer.stop();
     if (this.model.currentQuestionNum === (this.model.questions.length - 1)) {
       this.view.createEndGameMsg(this.model.score);
       this.model.endGame();
       this.view.updateInfo();
       this.view.updateScore(0);
+    } else {
+      this.model.toNextQuestion();
     }
-    this.model.audioPlayer.stop();
-    this.model.toNextQuestion();
   }
 
   changeModelLang() {
