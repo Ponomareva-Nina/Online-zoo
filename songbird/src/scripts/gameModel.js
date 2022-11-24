@@ -35,7 +35,8 @@ export default class GameModel {
     } else {
       this.questions = birdsDataRu;
     }
-    this.correctAnswer = this.chooseRandomAnswer();
+    const correctAnswerId = this.correctAnswer.id;
+    this.correctAnswer = this.questions[this.currentQuestionNum].find((el) => el.id === correctAnswerId);
     this.categories = this.langContent.gameCategories;
   }
 

@@ -18,14 +18,18 @@ export default class GameView {
     this.nextBtn = createElem('button', 'btn btn-next btn_disabled', `${this.langContent.nextBtn}`);
     this.gameContainer = createElem('section', 'game wrapper');
     this.endMsgContainer = createElem('div', 'end-game-msg hidden', '');
+    this.checkedAnswersIds = [];
   }
 
   changeLanguage(lang) {
     this.controller.changeModelLang();
-    this.createGamePage();
     this.langContent = lang;
     this.birdCardContainer.textContent = lang.gamePageListen;
     this.nextBtn.textContent = lang.nextBtn;
+    this.categoriesList.innerHTML = '';
+    this.createCategories();
+    this.answersContainer.innerHTML = '';
+    this.updateAnswers();
   }
 
   updateScore(number) {
@@ -53,6 +57,33 @@ export default class GameView {
     }
   }
 
+  updateAnswers() {
+    const answersArr = this.controller.getAnswers();
+    answersArr.forEach((el) => {
+      const answer = createElem('li', 'answer', el.name);
+      const circle = createElem('span', 'circle');
+      answer.prepend(circle);
+      this.answersContainer.append(answer);
+      const bird = new BirdCard(el);
+      const birdCard = bird.createCard();
+      for (let i = 0; i < this.checkedAnswersIds.length; i++) {
+        if (this.checkedAnswersIds[i].id === el.id) {
+          answer.className = this.checkedAnswersIds[i].class;
+        }
+      }
+
+      answer.onclick = () => {
+        this.controller.checkAnswer(answer);
+        this.birdCardContainer.innerHTML = '';
+        this.checkedAnswersIds.push({
+          id: el.id,
+          class: answer.getAttribute('class'),
+        });
+        this.birdCardContainer.append(birdCard);
+      };
+    });
+  }
+
   createAnswers() {
     const answersArr = this.controller.getAnswers();
     answersArr.forEach((el) => {
@@ -65,6 +96,10 @@ export default class GameView {
 
       answer.onclick = () => {
         this.controller.checkAnswer(answer);
+        this.checkedAnswersIds.push({
+          id: el.id,
+          class: answer.getAttribute('class'),
+        });
         this.birdCardContainer.innerHTML = '';
         this.birdCardContainer.append(birdCard);
       };
@@ -99,6 +134,7 @@ export default class GameView {
     this.setBirdImg('./assets/images/question-bird.png');
     this.birdName.innerHTML = '******';
     this.birdCardContainer.innerHTML = this.langContent.gamePageListen;
+    this.checkedAnswersIds = [];
   }
 
   createGamePage() {
