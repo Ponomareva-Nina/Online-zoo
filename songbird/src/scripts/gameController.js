@@ -60,4 +60,8 @@ export default class GameController {
     this.model.audioPlayer.stop();
     this.model.toNextQuestion();
   }
+
+  changeModelLang() {
+    this.model.updateLanguage();
+  }
 }

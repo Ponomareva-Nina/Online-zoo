@@ -1,16 +1,45 @@
 import createElem from '../utils/create-element';
 import logo from '../../assets/images/logo.svg';
+import { getLangContent } from './translation';
 
 export default class Header {
-  constructor() {
-    this.routes = [
-      { name: 'Главная', href: '#start' },
-      { name: 'Игра', href: '#game' },
-      { name: 'Справочник', href: '#catalogue' },
-    ];
+  constructor(root) {
+    this.root = root;
+    this.lang = getLangContent();
+    this.linkMain = createElem('a');
+    this.linkGame = createElem('a');
+    this.linkCatalogue = createElem('a');
     this.activeLink;
     this.menuBtn = createElem('div', 'burger-btn');
     this.nav = createElem('ul', 'main-nav');
+    this.langBtnRu = createElem('button', 'lang-btn', 'ru');
+    this.langBtnEn = createElem('button', 'lang-btn', 'en');
+  }
+
+  getLangButtons() {
+    return [this.langBtnEn, this.langBtnRu];
+  }
+
+  setActiveLangBtn() {
+    const currentLang = localStorage.getItem('language');
+    if (currentLang === 'en') {
+      this.langBtnEn.classList.add('lang-btn_active');
+    } else {
+      this.langBtnRu.classList.add('lang-btn_active');
+    }
+  }
+
+  changeLanguage(lang) {
+    if (lang.language === 'en') {
+      this.langBtnRu.classList.remove('lang-btn_active');
+      this.langBtnEn.classList.add('lang-btn_active');
+    } else {
+      this.langBtnRu.classList.add('lang-btn_active');
+      this.langBtnEn.classList.remove('lang-btn_active');
+    }
+    this.linkMain.textContent = lang.menuMain;
+    this.linkGame.textContent = lang.menuGame;
+    this.linkCatalogue.textContent = lang.menuCatalogue;
   }
 
   updateActiveLink(a) {
@@ -35,7 +64,7 @@ export default class Header {
     });
   }
 
-  renderHeader() {
+  renderHeader(root) {
     const header = createElem('header', 'header');
     const logoContainer = createElem('div', 'logo');
     const img = createElem('img');
@@ -45,16 +74,30 @@ export default class Header {
     logoContainer.append(img, title);
     this.menuBtn.addEventListener('click', () => this.toggleMenu());
 
-    this.routes.forEach((route) => {
-      const li = createElem('li', 'nav-link');
-      const a = createElem('a', '', route.name);
-      a.setAttribute('href', route.href);
-      a.addEventListener('click', () => { this.updateActiveLink(a); });
-      li.append(a);
-      this.nav.append(li);
-    });
+    const liMain = createElem('li', 'nav-link');
+    const liGame = createElem('li', 'nav-link');
+    const liCatalogue = createElem('li', 'nav-link');
+    this.linkMain.textContent = this.lang.menuMain;
+    this.linkMain.setAttribute('href', '#start');
+    this.linkMain.addEventListener('click', () => { this.updateActiveLink(this.linkMain); });
+    liMain.append(this.linkMain);
 
+    this.linkGame.textContent = this.lang.menuGame;
+    this.linkGame.setAttribute('href', '#game');
+    this.linkGame.addEventListener('click', () => { this.updateActiveLink(this.linkGame); });
+    liGame.append(this.linkGame);
+
+    this.linkCatalogue.textContent = this.lang.menuCatalogue;
+    this.linkCatalogue.setAttribute('href', '#catalogue');
+    this.linkCatalogue.addEventListener('click', () => { this.updateActiveLink(this.linkCatalogue); });
+    liCatalogue.append(this.linkCatalogue);
+
+    this.setActiveLangBtn();
+    this.nav.append(liMain, liGame, liCatalogue);
+    const languages = createElem('div', 'lang-panel');
+    languages.append(this.langBtnRu, this.langBtnEn);
+    this.nav.append(languages);
     header.append(logoContainer, this.nav, this.menuBtn);
-    return header;
+    root.append(header);
   }
 }

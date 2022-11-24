@@ -1,13 +1,21 @@
 import AudioPlayer from './components/AudioPlayer';
+import { getLangContent } from './components/translation';
 import birdsDataRu from './data/birds-ru';
+import birdsDataEn from './data/birds-en';
 
 export default class GameModel {
   constructor(controller) {
+    this.StorageLanguage = localStorage.getItem('language');
+    this.langContent = getLangContent();
     this.controller = controller;
     this.score = 0;
     this.attempt = 0;
-    this.questions = birdsDataRu;
-    this.categories = ['Разминка', 'Воробьиные', 'Лесные', 'Певчие', 'Хищные', 'Морские'];
+    if (this.StorageLanguage === 'en') {
+      this.questions = birdsDataEn;
+    } else {
+      this.questions = birdsDataRu;
+    }
+    this.categories = this.langContent.gameCategories;
     this.currentQuestionNum = 0;
     this.currentCategory = 0;
     this.correctAnswer = this.chooseRandomAnswer();
@@ -17,6 +25,18 @@ export default class GameModel {
 
   getScore() {
     return this.score;
+  }
+
+  updateLanguage() {
+    this.StorageLanguage = localStorage.getItem('language');
+    this.langContent = getLangContent();
+    if (this.StorageLanguage === 'en') {
+      this.questions = birdsDataEn;
+    } else {
+      this.questions = birdsDataRu;
+    }
+    this.correctAnswer = this.chooseRandomAnswer();
+    this.categories = this.langContent.gameCategories;
   }
 
   chooseRandomAnswer() {

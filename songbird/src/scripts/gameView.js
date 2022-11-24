@@ -1,11 +1,13 @@
 import createElem from './utils/create-element';
 import GameController from './gameController';
 import BirdCard from './components/birdCard';
+import { getLangContent } from './components/translation';
 
 export default class GameView {
   constructor() {
     this.controller = new GameController(this);
-    this.scoreContainer = createElem('div', 'score', 'Счёт: 0');
+    this.langContent = getLangContent();
+    this.scoreContainer = createElem('div', 'score', `${this.langContent.score}: 0`);
     this.categoriesList = createElem('ul', 'categories');
     this.questionSection = createElem('div', 'question');
     this.birdName = createElem('div', 'question__bird-name', '******');
@@ -13,13 +15,21 @@ export default class GameView {
     this.answersSection = createElem('div', 'answers');
     this.answersContainer = createElem('ul', 'answers__list');
     this.birdCardContainer = createElem('div', 'answers__bird-info');
-    this.nextBtn = createElem('button', 'btn btn-next btn_disabled', 'Далее');
+    this.nextBtn = createElem('button', 'btn btn-next btn_disabled', `${this.langContent.nextBtn}`);
     this.gameContainer = createElem('section', 'game wrapper');
     this.endMsgContainer = createElem('div', 'end-game-msg hidden', '');
   }
 
+  changeLanguage(lang) {
+    this.controller.changeModelLang();
+    this.createGamePage();
+    this.langContent = lang;
+    this.birdCardContainer.textContent = lang.gamePageListen;
+    this.nextBtn.textContent = lang.nextBtn;
+  }
+
   updateScore(number) {
-    this.scoreContainer.innerHTML = `Cчет: ${number}`;
+    this.scoreContainer.innerHTML = `${this.langContent.score}: ${number}`;
   }
 
   disableNextBtn() {
@@ -87,7 +97,7 @@ export default class GameView {
     this.createAnswers();
     this.setBirdImg('./assets/images/question-bird.png');
     this.birdName.innerHTML = '******';
-    this.birdCardContainer.innerHTML = 'Прослушайте запись и выберите правильный ответ';
+    this.birdCardContainer.innerHTML = this.langContent.gamePageListen;
   }
 
   createGamePage() {

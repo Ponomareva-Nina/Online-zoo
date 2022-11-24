@@ -6,18 +6,20 @@ import './assets/styles/bird-card.scss';
 import './assets/styles/catalogue-page.scss';
 import Header from './scripts/components/header';
 import createFooter from './scripts/components/footer';
-import createStartPage from './scripts/components/start-page';
 import createElem from './scripts/utils/create-element';
 import { getHash, Router } from './scripts/router';
 import GameView from './scripts/gameView';
 import BirdCatalogue from './scripts/components/CataloguePage';
+import StartPage from './scripts/components/start-page';
+import { changeToEnglish, changeToRussian, setLangInLocalStorage } from './scripts/components/translation';
 
 const root = document.getElementById('root');
-const headerView = new Header();
-const header = headerView.renderHeader();
+const header = new Header();
+header.renderHeader(root);
 const footer = createFooter();
 const main = createElem('main', 'wrapper main');
-const [startGameBtn, startPage] = createStartPage();
+const startPageObj = new StartPage();
+const [startGameBtn, startPage] = startPageObj.createStartPage();
 startGameBtn.onclick = () => { window.location.hash = '#game'; };
 const Game = new GameView();
 const gamePage = Game.createGamePage();
@@ -25,7 +27,23 @@ const catalogue = new BirdCatalogue();
 const cataloguePage = catalogue.createCataloguePage();
 const Route = new Router(main, startPage, gamePage, cataloguePage);
 
-root.append(header, main, footer);
+const [langBtnEn, langBtnRu] = header.getLangButtons();
+langBtnRu.addEventListener('click', () => {
+  setLangInLocalStorage('ru');
+  changeToRussian(header);
+  changeToRussian(startPageObj);
+  changeToRussian(catalogue);
+  changeToRussian(Game);
+});
+langBtnEn.addEventListener('click', () => {
+  setLangInLocalStorage('en');
+  changeToEnglish(header);
+  changeToEnglish(startPageObj);
+  changeToEnglish(catalogue);
+  changeToEnglish(Game);
+});
+
+root.append(main, footer);
 
 window.addEventListener('hashchange', () => {
   updateRoute();
@@ -37,11 +55,11 @@ window.addEventListener('load', () => {
 
 function updateRoute() {
   Route[`${getHash()}Route`]();
-  headerView.updateActiveLink(document.querySelector(`a[href="#${getHash()}"]`));
+  header.updateActiveLink(document.querySelector(`a[href="#${getHash()}"]`));
 }
 
 console.log(`
-Cамооценка в соответствии с требованиями ТЗ = 260 баллов:
+Cамооценка в соответствии с требованиями ТЗ = 270 баллов:
 Вёрстка, дизайн, UI всех трёх страниц приложения +60
 
 Аудиоплеер +30 (кастомный как в демо? + возможность регулирования громкости)
@@ -72,5 +90,6 @@ Cамооценка в соответствии с требованиями ТЗ
 - страница с результатами содержит количество набранных баллов и кнопку с предложением сыграть ещё раз +10
 
 Extra scope +10
+- возможность смены языка +10 (есть небольшой недочет в логике выбора ответов со сменой языка. Я пока не придумала как его устранить, но работаю над этим. Надеюсь не будешь снижать оценку за это.)
 - создание галереи всех птиц приложения c информацией о них (фото, аудио, название, описание) +10
 `);
