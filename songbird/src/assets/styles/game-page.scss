@@ -149,6 +149,7 @@
 
 .end-game-msg {
   @include font-logo();
+  text-align: center;
   color: $color-accept;
   position: absolute;
   background-color: $bg-color;
