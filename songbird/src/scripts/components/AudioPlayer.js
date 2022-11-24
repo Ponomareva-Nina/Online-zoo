@@ -11,6 +11,7 @@ export default class AudioPlayer {
     this.volumeBar = createElem('input', 'volume-bar');
     this.volumeBar.setAttribute('type', 'range');
     this.volumeIcon = createElem('div', 'volume-icon');
+    this.lastVolumeSetting = this.volumeBar.value;
   }
 
   setSong(song) {
@@ -88,6 +89,13 @@ export default class AudioPlayer {
     this.volumeBar.style.background = 'linear-gradient(90deg, transparent 0%, transparent 100% )';
   }
 
+  umnute() {
+    this.volumeIcon.classList.remove('mute-icon');
+    this.audio.volume = this.lastVolumeSetting / 100;
+    this.volumeBar.value = this.lastVolumeSetting;
+    this.volumeBar.style.background = `linear-gradient(90deg, #FFBA76 0%, #FFBA76 ${this.volumeBar.value}%, transparent ${this.volumeBar.value}%, transparent 100% )`;
+  }
+
   createPlayer() {
     this.playBtn.addEventListener('click', () => {
       if (this.isOn) {
@@ -99,7 +107,14 @@ export default class AudioPlayer {
 
     const volumeContainer = createElem('div', 'volume-bar-container');
     volumeContainer.append(this.volumeIcon, this.volumeBar);
-    this.volumeIcon.addEventListener('click', () => this.mute());
+    this.volumeIcon.addEventListener('click', () => {
+      if (this.audio.volume === 0) {
+        this.umnute();
+      } else {
+        this.lastVolumeSetting = this.volumeBar.value;
+        this.mute();
+      }
+    });
     this.volumeBar.addEventListener('input', () => this.setVolume());
     this.progressContainer.addEventListener('click', (e) => this.setProgress(e));
     this.progressContainer.append(this.progressBar);
