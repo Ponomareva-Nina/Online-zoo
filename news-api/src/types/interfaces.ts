@@ -5,12 +5,12 @@ export interface SourcesRequest {
     country?: string;
 }
 
-export interface Sources {
+export interface SourcesInterface {
     status: string;
-    sources: Array<Source>;
+    sources: Array<SourceItem>;
 }
 
-export interface Source {
+export interface SourceItem {
     id: string;
     name: string;
     description?: string;
@@ -20,14 +20,14 @@ export interface Source {
     country?: string;
 }
 
-export interface News {
+export interface NewsInterface {
     status: string;
     totalResults: number;
     articles: Array<NewsItem>;
 }
 
 export interface NewsItem {
-    source: Source;
+    source: SourceItem;
     author: string;
     title: string;
     description: string;
