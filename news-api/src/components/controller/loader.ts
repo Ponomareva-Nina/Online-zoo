@@ -1,4 +1,4 @@
-import { NewsItem, SourceItem } from '../../types/interfaces';
+import { NewsInterface, SourcesInterface } from '../../types/interfaces';
 import { Endpoints, GetResponse, Options } from '../../types/types';
 
 class Loader {
@@ -40,7 +40,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: Endpoints, callback: (data: NewsItem[] | SourceItem[]) => void, options = {}) {
+    load(
+        method: string,
+        endpoint: Endpoints,
+        callback: (data: NewsInterface | SourcesInterface) => void,
+        options = {}
+    ) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

@@ -9,7 +9,7 @@ export type GetResponse = {
 };
 
 export type Options = {
-    apiKey: string;
+    readonly apiKey: string;
     endpoint: Endpoints;
     sources: string;
     searchIn: string;
