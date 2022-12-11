@@ -1,5 +1,5 @@
 import { NewsInterface, SourcesInterface, Options } from '../../types/interfaces';
-import { Endpoints, GetResponse } from '../../types/types';
+import { Endpoints, GetResponse, ResponseStatuses } from '../../types/types';
 
 class Loader {
     private baseLink: string;
@@ -21,7 +21,7 @@ class Loader {
 
     private errorHandler(res: Response) {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === ResponseStatuses.UNAUTHORIZED || res.status === ResponseStatuses.NOTFOUND)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }

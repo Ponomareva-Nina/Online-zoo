@@ -5,6 +5,12 @@ export enum Endpoints {
     EVERYTHING = 'everything',
 }
 
+export enum ResponseStatuses {
+    UNAUTHORIZED = 401,
+    OK = 200,
+    NOTFOUND = 404,
+}
+
 export type GetResponse = {
     endpoint: Endpoints;
     options?: Partial<Options>;
