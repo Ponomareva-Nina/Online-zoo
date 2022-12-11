@@ -2,6 +2,9 @@ import './footer.css';
 import { NullableElement } from '../../../types/types';
 import createElem from '../../../utils/utils';
 
+import githubImage from '../../../assets/github.svg';
+import rsImage from '../../../assets/rs-school.svg';
+
 export default class Footer {
     footerEl: NullableElement<HTMLElement>;
 
@@ -13,7 +16,7 @@ export default class Footer {
         const rsLink = createElem('a');
         rsLink.setAttribute('href', 'https://rs.school');
         const rsImg = createElem('img');
-        rsImg.setAttribute('src', './assets/rs-school.svg');
+        rsImg.setAttribute('src', rsImage);
         rsImg.setAttribute('alt', 'RS School');
         rsLink.append(rsImg);
         return rsLink;
@@ -23,7 +26,7 @@ export default class Footer {
         const github = createElem('a', 'github-link', 'Ponomareva-Nina');
         github.setAttribute('href', 'https://github.com/Ponomareva-Nina');
         const githubImg = createElem('img');
-        githubImg.setAttribute('src', './assets/github.svg');
+        githubImg.setAttribute('src', githubImage);
         githubImg.setAttribute('alt', 'Github:');
         github.prepend(githubImg);
         return github;

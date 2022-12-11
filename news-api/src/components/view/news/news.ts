@@ -1,7 +1,7 @@
 import './news.css';
 import { NewsItem } from '../../../types/interfaces';
 import { NullableElement } from '../../../types/types';
-
+import placeholder from '../../../assets/news-placeholder.jpg';
 class News {
     public draw(data: NewsItem[]) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
@@ -17,7 +17,7 @@ class News {
                 if (idx % 2) newsClone.querySelector('.news__item')?.classList.add('alt');
 
                 (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
-                    item.urlToImage || './assets/news-placeholder.jpg'
+                    item.urlToImage || placeholder
                 })`;
                 (newsClone.querySelector('.news__meta-author') as HTMLElement).textContent =
                     item.author || item.source.name;
