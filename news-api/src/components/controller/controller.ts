@@ -1,18 +1,18 @@
 import { NewsInterface, SourcesInterface } from '../../types/interfaces';
-import { Endpoints } from '../../types/types';
+import { Endpoints, CallbackType } from '../../types/types';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback: (arg?: SourcesInterface) => void) {
+    public getSources(callback: CallbackType<SourcesInterface>) {
         super.getResp(
             {
-                endpoint: Endpoints.sources,
+                endpoint: Endpoints.SOURCES,
             },
             callback
         );
     }
 
-    getNews(e: Event, callback: (arg?: NewsInterface) => void) {
+    public getNews(e: Event, callback: CallbackType<NewsInterface>) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
@@ -23,7 +23,7 @@ class AppController extends AppLoader {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
                         {
-                            endpoint: Endpoints.everything,
+                            endpoint: Endpoints.EVERYTHING,
                             options: {
                                 sources: sourceId,
                             },

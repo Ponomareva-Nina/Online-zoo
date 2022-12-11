@@ -1,10 +1,4 @@
-export interface SourcesRequest {
-    apiKey: string;
-    category?: string;
-    language?: string;
-    country?: string;
-}
-
+import { Endpoints } from './types';
 export interface SourcesInterface {
     status: string;
     sources: Array<SourceItem>;
@@ -35,4 +29,18 @@ export interface NewsItem {
     urlToImage: string;
     publishedAt: string;
     content: string;
+}
+export interface Options {
+    readonly apiKey: string;
+    endpoint: Endpoints;
+    sources: string;
+    searchIn: string;
+    domains: string;
+    excludeDomains: string;
+    from: string;
+    to: string;
+    language: string;
+    sortBy: string;
+    pageSize: number;
+    page: number;
 }

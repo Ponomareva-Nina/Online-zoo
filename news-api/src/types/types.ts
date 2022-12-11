@@ -1,6 +1,8 @@
+import { Options } from './interfaces';
+
 export enum Endpoints {
-    sources = 'sources',
-    everything = 'everything',
+    SOURCES = 'sources',
+    EVERYTHING = 'everything',
 }
 
 export type GetResponse = {
@@ -8,17 +10,6 @@ export type GetResponse = {
     options?: Partial<Options>;
 };
 
-export type Options = {
-    readonly apiKey: string;
-    endpoint: Endpoints;
-    sources: string;
-    searchIn: string;
-    domains: string;
-    excludeDomains: string;
-    from: string;
-    to: string;
-    language: string;
-    sortBy: string;
-    pageSize: number;
-    page: number;
-};
+export type CallbackType<T> = (arg?: T) => void;
+
+export type NullableElement<T> = T | null;
