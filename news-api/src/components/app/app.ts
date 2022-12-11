@@ -23,6 +23,7 @@ class App {
                 this.view.drawSources(data);
             }
         });
+        this.view.drawFooter();
     }
 }
 
