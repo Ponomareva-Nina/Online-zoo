@@ -2,14 +2,12 @@ import './news.css';
 import { NewsItem } from '../../../types/interfaces';
 import { NullableElement } from '../../../types/types';
 import placeholder from '../../../assets/news-placeholder.jpg';
-import createElem from '../../../utils/utils';
+
 class News {
-    openMoreBtn: HTMLElement;
     newsContainer: NullableElement<HTMLElement>;
 
     constructor() {
         this.newsContainer = document.querySelector('.news');
-        this.openMoreBtn = createElem('button', 'open-more-btn', 'Open more news');
     }
 
     private createPlaceholder() {
@@ -59,9 +57,10 @@ class News {
                 fragment.append(newsClone);
             });
         }
-
-        (document.querySelector('.news') as HTMLElement).innerHTML = '';
-        (document.querySelector('.news') as HTMLElement).appendChild(fragment);
+        if (this.newsContainer) {
+            this.newsContainer.innerHTML = '';
+            this.newsContainer.appendChild(fragment);
+        }
     }
 }
 
