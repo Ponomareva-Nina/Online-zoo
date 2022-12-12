@@ -32,3 +32,87 @@
     font-weight: 400;
     white-space: nowrap;
 }
+
+.sources-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.sources {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: initial;
+    transition: all .2s ease;
+}
+
+.sources::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar {
+    margin: 0 auto;
+    min-width: 300px;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    height: min-content;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 0.5px solid #30c5ff;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10%;
+    height: 100%;
+    border-radius: 5px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 10%;
+    height: 100%;
+    border-radius: 5px;
+    background: #ffffff;
+    cursor: pointer;
+}
