@@ -41,6 +41,7 @@
 .sources-container {
     width: 100%;
     overflow: hidden;
+    margin-bottom: 30px;
 }
 
 .sources {
@@ -62,7 +63,6 @@
     width: 100%;
     display: flex;
     height: min-content;
-    margin-bottom: 15px;
 }
 
 input[type=range] {
