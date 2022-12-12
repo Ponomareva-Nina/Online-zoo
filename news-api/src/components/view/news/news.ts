@@ -2,12 +2,30 @@ import './news.css';
 import { NewsItem } from '../../../types/interfaces';
 import { NullableElement } from '../../../types/types';
 import placeholder from '../../../assets/news-placeholder.jpg';
+import createElem from '../../../utils/utils';
 class News {
+    openMoreBtn: HTMLElement;
+    newsContainer: NullableElement<HTMLElement>;
+
+    constructor() {
+        this.newsContainer = document.querySelector('.news');
+        this.openMoreBtn = createElem('button', 'open-more-btn', 'Open more news');
+    }
+
+    private createPlaceholder() {
+        if (this.newsContainer) {
+            this.newsContainer.innerHTML = 'Sorry, this channel have no news for today!';
+        }
+    }
+
     public draw(data: NewsItem[]) {
+        if (data.length === 0) {
+            this.createPlaceholder();
+            return;
+        }
+
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
-
         const fragment = document.createDocumentFragment();
-
         const newsItemTemplate: NullableElement<HTMLTemplateElement> = document.querySelector('#newsItemTemp');
 
         if (newsItemTemplate) {
