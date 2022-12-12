@@ -20,8 +20,6 @@ class Sources {
             let newTranslate = '';
             const previousValue = this.currentTranslate;
             newTranslate = `translateX(-${Number(this.scrollbar.value) * TranslateValue}px)`;
-            console.log(this.currentTranslate);
-            console.log(newTranslate);
             const animation = [{ transform: previousValue }, { transform: newTranslate }];
 
             sourcesTrack.animate(animation, { duration: 1000 });
