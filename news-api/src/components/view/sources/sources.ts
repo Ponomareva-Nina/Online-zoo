@@ -4,9 +4,11 @@ import { NullableElement } from '../../../types/types';
 
 class Sources {
     scrollbar: NullableElement<HTMLInputElement>;
+    currentTranslate: string;
 
     constructor() {
         this.scrollbar = document.querySelector('.scrollbar');
+        this.currentTranslate = '0px';
     }
 
     private slideSources(SourcesNumber: number) {
@@ -15,13 +17,16 @@ class Sources {
         this.scrollbar?.setAttribute('max', SourcesNumber.toString());
 
         if (this.scrollbar) {
-            let currentTranslate = `translateX(-${Number(this.scrollbar.value) * TranslateValue}px)`;
-            const previousValue = currentTranslate;
-            const newTranslate = `translateX(-${Number(this.scrollbar.value) * TranslateValue}px)`;
+            let newTranslate = '';
+            const previousValue = this.currentTranslate;
+            newTranslate = `translateX(-${Number(this.scrollbar.value) * TranslateValue}px)`;
+            console.log(this.currentTranslate);
+            console.log(newTranslate);
             const animation = [{ transform: previousValue }, { transform: newTranslate }];
-            currentTranslate = newTranslate;
-            sourcesTrack.style.transform = currentTranslate;
-            sourcesTrack.animate(animation, { duration: 2000 });
+
+            sourcesTrack.animate(animation, { duration: 1000 });
+            this.currentTranslate = newTranslate;
+            sourcesTrack.style.transform = this.currentTranslate;
         }
     }
 
