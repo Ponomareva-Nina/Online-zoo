@@ -13,8 +13,10 @@ class Sources {
 
     private slideSources(SourcesNumber: number) {
         const sourcesTrack = document.querySelector('.sources') as HTMLElement;
-        const TranslateValue = (sourcesTrack.scrollWidth - sourcesTrack.clientWidth) / SourcesNumber;
-        this.scrollbar?.setAttribute('max', SourcesNumber.toString());
+        const sourceItem = document.querySelector('.source__item') as HTMLElement;
+        const TranslateValue = sourcesTrack.scrollWidth / SourcesNumber;
+        const visibleSourcesNum = Math.floor(sourcesTrack.offsetWidth / sourceItem.offsetWidth);
+        this.scrollbar?.setAttribute('max', (SourcesNumber - visibleSourcesNum).toString());
 
         if (this.scrollbar) {
             let newTranslate = '';
@@ -22,17 +24,18 @@ class Sources {
             newTranslate = `translateX(-${Number(this.scrollbar.value) * TranslateValue}px)`;
             const animation = [{ transform: previousValue }, { transform: newTranslate }];
 
-            sourcesTrack.animate(animation, { duration: 1000 });
+            sourcesTrack.animate(animation, { duration: 500 });
             this.currentTranslate = newTranslate;
             sourcesTrack.style.transform = this.currentTranslate;
         }
     }
 
     public draw(data: SourceItem[]) {
+        const sources = data.length >= 50 ? data.filter((_item, idx) => idx < 50) : data;
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
-        data.forEach((item) => {
+        sources.forEach((item) => {
             const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
 
             (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
@@ -45,9 +48,13 @@ class Sources {
 
         if (this.scrollbar) {
             this.scrollbar.addEventListener('input', () => {
-                this.slideSources(data.length);
+                this.slideSources(sources.length);
             });
         }
+
+        window.addEventListener('resize', () => {
+            this.slideSources(sources.length);
+        });
     }
 }
 

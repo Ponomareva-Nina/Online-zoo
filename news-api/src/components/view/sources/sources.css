@@ -1,23 +1,36 @@
 .sources {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    overflow: auto;
-    align-items: center;
     font: 300 1em 'Fira Sans', sans-serif;
+    width: 100%;
+    display: flex;
+    column-gap: 10px;
+    overflow: initial;
+    transition: all .2s ease;
     margin-bottom: 10px;
+    padding: 15px 0;
 }
 
 .source__item {
     background: none;
     border: 2px solid #30c5ff;
     font: inherit;
-    line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
     color: #70d6ff;
     transition: 0.2s;
     cursor: pointer;
+    flex-basis: calc(100% / 5 - 10px);
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+}
+
+@media screen and (max-width: 605px) {
+    .source__item {
+        flex-basis: calc(100% / 3 - 10px);
+        font-size: 14px;
+    }
 }
 
 .source__item:hover,
@@ -35,21 +48,12 @@
 
 .source__item-name {
     font-weight: 400;
-    white-space: nowrap;
 }
 
 .sources-container {
     width: 100%;
     overflow: hidden;
     margin-bottom: 30px;
-}
-
-.sources {
-    width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: initial;
-    transition: all .2s ease;
 }
 
 .sources::-webkit-scrollbar {
@@ -107,7 +111,7 @@ input[type=range]::-moz-range-track {
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 25px;
+    width: 35px;
     height: 100%;
     border-radius: 5px;
     background: #ffffff;
@@ -117,7 +121,7 @@ input[type=range]::-webkit-slider-thumb {
 
 input[type=range]::-moz-range-thumb {
     -webkit-appearance: none;
-    width: 25px;
+    width: 35px;
     height: 100%;
     border-radius: 5px;
     background: #ffffff;
